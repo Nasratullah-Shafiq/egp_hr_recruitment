@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Whitelist custom fields for website form submission -->
+    <function model="ir.model.fields" name="formbuilder_whitelist">
+        <value>hr.applicant</value>
+        <value eval="[
+            'description',
+            'email_from',
+            'partner_name',
+            'partner_phone',
+            'job_id',
+            'department_id',
+            'father_name',
+            'last_name',
+            'grand_father_name',
+            'country_id',
+            'province_id',
+            'district_id',
+            'gender',
+            'type_id',
+            'applicant_faculty_name',
+            'total_years_experience',
+            'attachment_ids',
+            'current_province_id',
+            'current_district_id',
+            'tazkira_number',
+            'education_country',
+            'education_reference',
+            'graduation_year',
+            'village',
+            'current_village',
+            'date_of_birth',
+            'is_document_approved',
+            'previous_job',
+            'current_job',
+            'lecturer_time',
+            'lecturer_end_date',
+            'lecturer_level',
+            'computer_skill_ids',
+            'is_currently_lecturer',
+            'lecturer_duration_display',
+            'type_of_application',
+            'partner_mobile',
+
+        ]"/>
+    </function>
+</odoo>
