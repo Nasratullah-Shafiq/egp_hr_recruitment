@@ -29,6 +29,7 @@
         <field name="paperformat_id" ref="egp_hr_org_structure.report_paperformat_a4"/>
         <!--        <field name="groups_id" eval="[(4, ref('egp_hr_org_structure.group_tashkil_Layha_Wazaif_Karmand'))]"/>-->
     </record>
+    
     <!--      Short list-->
     <record id="action_hr_applicant_short_tree" model="ir.actions.report">
         <field name="name">Short List</field>
