@@ -9,6 +9,7 @@
                         <table class="table table-bordered"
                                style="width: 100%; border-collapse: collapse; margin-top: 20px;">
 
+
                             <t t-set="displayed_stage" t-value="false"/>
                             <t t-foreach="docs" t-as="doc">
                                 <tr t-if="doc.stage_id.sequence == 4 and not displayed_stage">
