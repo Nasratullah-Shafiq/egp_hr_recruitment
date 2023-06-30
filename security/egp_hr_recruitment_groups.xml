@@ -30,6 +30,7 @@
         <record id="hr_recruitment.menu_crm_case_categ_all_app" model="ir.ui.menu">
             <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
         </record>
+        
 
         <record id="hr_recruitment.menu_hr_job_position" model="ir.ui.menu">
             <field name="groups_id"
