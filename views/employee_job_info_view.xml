@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- ========================================================= -->
+    <!-- Employee Job Information - Tree View                      -->
+    <!-- ========================================================= -->
+
+    <record id="view_employee_job_information_tree" model="ir.ui.view">
+        <field name="name">employee.job.information.tree</field>
+        <field name="model">employee.job.information</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Job Information">
+                <field name="employee_id"/>
+                <field name="execution_type"/>
+                <field name="p2_form_no"/>
+                <field name="p2_approval_date"/>
+                <field name="province_id"/>
+                <field name="job_district"/>
+                <field name="department_id"/>
+                <field name="job_id"/>
+                <field name="grade_id"/>
+                <field name="transfer_date"/>
+
+            </tree>
+
+        </field>
+
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- Employee Job Information - Form View                      -->
+    <!-- ========================================================= -->
+
+    <record id="view_employee_job_information_form" model="ir.ui.view">
+        <field name="name">employee.job.information.form</field>
+        <field name="model">employee.job.information</field>
+        <field name="arch" type="xml">
+            <form string="Employee Job Information">
+                <header>
+                    <button
+                            name="action_send_to_employee"
+                            string="Approve"
+                            type="object"
+                            class="btn-success"
+                            icon="fa-check"
+                    />
+
+                </header>
+
+                <sheet>
+                    <!-- Employee -->
+                    <group string="Employee Information">
+
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="father_names" readonly="1"/>
+                            <field name="grand_father_names" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="job_id" readonly="1"/>
+                            <field name="department_id" readonly="1"/>
+                        </group>
+                    </group>
+
+
+                    <!-- Job Information -->
+                    <group string="Employee Job Information">
+
+                        <group>
+                            <field name="execution_type"/>
+                            <field name="p2_form_no"/>
+                            <field name="p2_approval_date"/>
+                            <field name="country_id"/>
+                            <field name="province_id"/>
+                            <field name="job_district" domain="[('province_id', '=', province_id)]"/>
+                            <field name="employee_department_id"/>
+                            <field name="employee_job_id"/>
+                            <field name="grade_id"/>
+                        </group>
+
+                        <group>
+
+                            <field name="court_level"/>
+                            <field name="approval_date"/>
+                            <field name="transfer_reason"/>
+                            <field name="organizer"/>
+                            <field name="arranger_id"/>
+                            <field name="approver"/>
+                            <field name="transfer_date"/>
+                            <field name="attachments" widget="many2many_binary"/>
+                        </group>
+                    </group>
+                </sheet>
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================================================= -->
+    <!-- Employee Job Information - Search View                    -->
+    <!-- ========================================================= -->
+
+    <record id="view_employee_job_information_search" model="ir.ui.view">
+        <field name="name">employee.job.information.search</field>
+        <field name="model">employee.job.information</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Job Information">
+
+                <!-- Search Fields -->
+                <field name="employee_id"/>
+                <field name="p2_form_no"/>
+                <field name="province_id"/>
+                <field name="department_id"/>
+                <field name="job_id"/>
+                <field name="grade_id"/>
+
+                <!-- Search Panel -->
+                <searchpanel>
+                    <field name="execution_type" string="Execution Type" enable_counters="1"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- Employee Job Information - Action                         -->
+    <!-- ========================================================= -->
+
+    <record id="action_employee_job_information" model="ir.actions.act_window">
+        <field name="name">Employee Job Information</field>
+        <field name="res_model">employee.job.information</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_employee_job_information_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Employee Job Information record.
+            </p>
+        </field>
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- Employee Job Information - Menu                           -->
+    <!-- ========================================================= -->
+
+    <menuitem
+            id="menu_employee_job_information"
+            name="Employee Job Information"
+            parent="hr_recruitment.menu_hr_recruitment_root"
+            action="action_employee_job_information"
+            sequence="20"
+    />
+
+</odoo>
