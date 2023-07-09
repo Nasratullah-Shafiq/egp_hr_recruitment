@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_hr_job_kanban_hired" model="ir.ui.view">
+        <field name="name">hr.job.kanban.hired</field>
+        <field name="model">hr.job</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_dashboard o_hr_recruitment_kanban" on_create="hr_recruitment.create_job_simple" sample="1" limit="40" action="%(hr_recruitment.action_hr_job_applications)d" type="action">
+                <field name="active"/>
+                <field name="name"/>
+                <field name="alias_email"/>
+                <field name="is_favorite"/>
+                <field name="department_id"/>
+                <field name="no_of_recruitment"/>
+                <field name="color"/>
+                <field name="new_application_count"/>
+                <field name="no_of_hired_employee"/>
+                <field name="manager_id"/>
+                <field name="user_id"/>
+                <field name="application_count"/>
+                <templates>
+                    <t t-name="kanban-menu" groups="egp_hr_recruitment.group_hr_recruitment_user">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6 o_kanban_card_manage_section">
+                                    <h5 role="menuitem" class="o_kanban_card_manage_title">
+                                        <span>View</span>
+                                    </h5>
+                                    <div role="menuitem" name="menu_view_applications">
+                                        <a name="%(hr_recruitment.action_hr_job_applications)d" type="action">Applications</a>
+                                    </div>
+                                    <div role="menuitem">
+                                        <a name="action_open_activities" type="object">Activities</a>
+                                    </div>
+                                    <div role="menuitem">
+                                        <a name="%(hr_recruitment.action_hr_job_sources)d" type="action" context="{'default_job_id': id}">Trackers</a>
+                                    </div>
+                                </div>
+                                <div class="col-6 o_kanban_card_manage_section">
+                                    <h5 role="menuitem" class="o_kanban_card_manage_title">
+                                        <span>New</span>
+                                    </h5>
+                                    <div role="menuitem" name="menu_new_applications">
+                                        <a name="%(hr_recruitment.action_hr_applicant_new)d" type="action">Application</a>
+                                    </div>
+                                </div>
+                                <div class="col-6 o_kanban_card_manage_section">
+                                    <h5 role="menuitem" class="o_kanban_card_manage_title">
+                                        <span>Reporting</span>
+                                    </h5>
+                                    <div role="menuitem" name="o_kanban_job_reporting">
+                                        <a name="%(hr_recruitment.action_hr_recruitment_report_filtered_job)d" type="action">Analysis</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_kanban_card_manage_settings row">
+                                <div class="col-6" role="menuitem" aria-haspopup="true">
+                                    <ul class="oe_kanban_colorpicker" data-field="color" role="popup"/>
+                                </div>
+                                <div class="col-6" role="menuitem">
+                                    <a class="dropdown-item" t-if="widget.editable" name="edit_job" type="edit">Configuration</a>
+                                    <a class="dropdown-item" t-if="record.active.raw_value" name="toggle_active" type="object">Archive</a>
+                                    <a class="dropdown-item" t-if="!record.active.raw_value" name="toggle_active" type="object">Unarchive</a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''}">
+                            <div class="o_kanban_card_header d-flex align-items-baseline gap-1">
+                                <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary">
+                                        <span><t t-esc="record.name.value"/></span>
+                                    </div>
+                                    <div class="text-muted">
+                                        <field name="user_id" />
+                                    </div>
+                                    <div class="o_secondary" groups="base.group_multi_company">
+                                        <small><i class="fa fa-building-o" role="img" aria-label="Company" title="Company"></i> <field name="company_id"/></small>
+                                    </div>
+                                    <div t-if="record.alias_email.value" class="o_secondary o_job_alias">
+                                        <small><i class="fa fa-envelope-o" role="img" aria-label="Alias" title="Alias"></i> <field name="alias_id"/></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container o_recruitment_job_container o_kanban_card_content mt-0 mt-sm-3">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <button class="btn btn-primary" name="%(hr_recruitment.action_hr_job_applications)d" type="action">
+                                            <field name="new_application_count"/> New Applications
+                                        </button>
+                                    </div>
+                                    <ul class="col-5 o_job_activities">
+                                        <li>
+                                            <a name="edit_job" type="edit" t-attf-class="{{ record.no_of_recruitment.raw_value > 0 ? 'text-primary fw-bolder' : 'text-secondary' }}" groups="hr_recruitment.group_hr_recruitment_user">
+                                                <field name="no_of_recruitment"/> To Recruit
+                                            </a>
+                                            <span t-attf-class="{{ record.no_of_recruitment.raw_value > 0 ? 'text-primary fw-bolder' : 'text-secondary' }}" groups="!hr_recruitment.group_hr_recruitment_user">
+                                                <field name="no_of_recruitment"/> To Recruit
+                                            </span>
+                                        </li>
+                                        <li t-if="record.application_count.raw_value > 0">
+                                            <field name="application_count"/> Applications
+                                        </li>
+                                        <li class="text-warning" t-if="record.activities_today.raw_value > 0">
+                                            <a name="action_open_today_activities" type="object" class="text-warning"><field name="activities_today"/> Activities Today</a>
+                                        </li>
+                                        <li t-if="record.activities_overdue.raw_value > 0">
+                                            <a name="action_open_late_activities" type="object" class="text-danger"><field name="activities_overdue"/> Late Activities</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div name="kanban_boxes" class="row flex-nowrap" groups="egp_hr_recruitment.group_hr_recruitment_user"></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- hr related job position menu action -->
+    <record model="ir.actions.act_window" id="action_hr_job_hired">
+        <field name="name">Hired Job Positions</field>
+        <field name="res_model">hr.job</field>
+        <field name="view_mode">kanban,tree</field>
+        <field name="domain">[('no_of_employee', '&gt;', 0)]</field>
+        <field name="view_id" ref="hr_recruitment.view_hr_job_kanban"/>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('hr_recruitment.view_hr_job_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_recruitment.hr_job_view_tree_inherit')}),
+            ]"/>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Ready to recruit more efficiently?
+          </p><p>
+              Let's create a job position.
+          </p>
+        </field>
+    </record>
+    <menuitem name="Hired Job Positions" parent="hr_recruitment.menu_crm_case_categ0_act_job"
+        id="menu_hr_job_position_hired" action="action_hr_job_hired"
+        sequence="1" groups="egp_hr_recruitment.group_recruitment_amir,egp_hr_recruitment.group_recruitment_expert"/>
+
+    <record id="view_hr_job_kanban_empty" model="ir.ui.view">
+        <field name="name">hr.job.kanban.empty</field>
+        <field name="model">hr.job</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_dashboard o_hr_recruitment_kanban" on_create="hr_recruitment.create_job_simple" sample="1" limit="40" action="%(hr_recruitment.action_hr_job_applications)d" type="action">
+                <field name="active"/>
+                <field name="name"/>
+                <field name="alias_email"/>
+                <field name="is_favorite"/>
+                <field name="department_id"/>
+                <field name="no_of_recruitment"/>
+                <field name="color"/>
+                <field name="new_application_count"/>
+                <field name="no_of_hired_employee"/>
+                <field name="manager_id"/>
+                <field name="user_id"/>
+                <field name="application_count"/>
+                <templates>
+                    <t t-name="kanban-menu" groups="egp_hr_recruitment.group_hr_recruitment_user">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6 o_kanban_card_manage_section">
+                                    <h5 role="menuitem" class="o_kanban_card_manage_title">
+                                        <span>View</span>
+                                    </h5>
+                                    <div role="menuitem" name="menu_view_applications">
+                                        <a name="%(hr_recruitment.action_hr_job_applications)d" type="action">Applications</a>
+                                    </div>
+                                    <div role="menuitem">
+                                        <a name="action_open_activities" type="object">Activities</a>
+                                    </div>
+                                    <div role="menuitem">
+                                        <a name="%(hr_recruitment.action_hr_job_sources)d" type="action" context="{'default_job_id': id}">Trackers</a>
+                                    </div>
+                                </div>
+                                <div class="col-6 o_kanban_card_manage_section">
+                                    <h5 role="menuitem" class="o_kanban_card_manage_title">
+                                        <span>New</span>
+                                    </h5>
+                                    <div role="menuitem" name="menu_new_applications">
+                                        <a name="%(hr_recruitment.action_hr_applicant_new)d" type="action">Application</a>
+                                    </div>
+                                </div>
+                                <div class="col-6 o_kanban_card_manage_section">
+                                    <h5 role="menuitem" class="o_kanban_card_manage_title">
+                                        <span>Reporting</span>
+                                    </h5>
+                                    <div role="menuitem" name="o_kanban_job_reporting">
+                                        <a name="%(hr_recruitment.action_hr_recruitment_report_filtered_job)d" type="action">Analysis</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_kanban_card_manage_settings row">
+                                <div class="col-6" role="menuitem" aria-haspopup="true">
+                                    <ul class="oe_kanban_colorpicker" data-field="color" role="popup"/>
+                                </div>
+                                <div class="col-6" role="menuitem">
+                                    <a class="dropdown-item" t-if="widget.editable" name="edit_job" type="edit">Configuration</a>
+                                    <a class="dropdown-item" t-if="record.active.raw_value" name="toggle_active" type="object">Archive</a>
+                                    <a class="dropdown-item" t-if="!record.active.raw_value" name="toggle_active" type="object">Unarchive</a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''}">
+                            <div class="o_kanban_card_header d-flex align-items-baseline gap-1">
+                                <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary">
+                                        <span><t t-esc="record.name.value"/></span>
+                                    </div>
+                                    <div class="text-muted">
+                                        <field name="user_id" />
+                                    </div>
+                                    <div class="o_secondary" groups="base.group_multi_company">
+                                        <small><i class="fa fa-building-o" role="img" aria-label="Company" title="Company"></i> <field name="company_id"/></small>
+                                    </div>
+                                    <div t-if="record.alias_email.value" class="o_secondary o_job_alias">
+                                        <small><i class="fa fa-envelope-o" role="img" aria-label="Alias" title="Alias"></i> <field name="alias_id"/></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container o_recruitment_job_container o_kanban_card_content mt-0 mt-sm-3">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <button class="btn btn-primary" name="%(hr_recruitment.action_hr_job_applications)d" type="action">
+                                            <field name="new_application_count"/> New Applications
+                                        </button>
+                                    </div>
+                                    <ul class="col-5 o_job_activities">
+                                        <li>
+                                            <a name="edit_job" type="edit" t-attf-class="{{ record.no_of_recruitment.raw_value > 0 ? 'text-primary fw-bolder' : 'text-secondary' }}" groups="hr_recruitment.group_hr_recruitment_user">
+                                                <field name="no_of_recruitment"/> To Recruit
+                                            </a>
+                                            <span t-attf-class="{{ record.no_of_recruitment.raw_value > 0 ? 'text-primary fw-bolder' : 'text-secondary' }}" groups="!hr_recruitment.group_hr_recruitment_user">
+                                                <field name="no_of_recruitment"/> To Recruit
+                                            </span>
+                                        </li>
+                                        <li t-if="record.application_count.raw_value > 0">
+                                            <field name="application_count"/> Applications
+                                        </li>
+                                        <li class="text-warning" t-if="record.activities_today.raw_value > 0">
+                                            <a name="action_open_today_activities" type="object" class="text-warning"><field name="activities_today"/> Activities Today</a>
+                                        </li>
+                                        <li t-if="record.activities_overdue.raw_value > 0">
+                                            <a name="action_open_late_activities" type="object" class="text-danger"><field name="activities_overdue"/> Late Activities</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div name="kanban_boxes" class="row flex-nowrap" groups="egp_hr_recruitment.group_hr_recruitment_user"></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- hr related job position menu action -->
+    <record model="ir.actions.act_window" id="action_hr_job_empty">
+        <field name="name">Empty Job Positions</field>
+        <field name="res_model">hr.job</field>
+        <field name="view_mode">kanban,tree</field>
+        <field name="domain">[('no_of_employee', '=', 0)]</field>
+        <field name="view_id" ref="hr_recruitment.view_hr_job_kanban"/>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('hr_recruitment.view_hr_job_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_recruitment.hr_job_view_tree_inherit')}),
+            ]"/>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Ready to recruit more efficiently?
+          </p><p>
+              Let's create a job position.
+          </p>
+        </field>
+    </record>
+    <menuitem name="Empty Job Positions" parent="hr_recruitment.menu_crm_case_categ0_act_job"
+        id="menu_hr_job_position_empty" action="action_hr_job_empty"
+        sequence="1" groups="egp_hr_recruitment.group_recruitment_amir,egp_hr_recruitment.group_recruitment_expert" />
+</odoo>
