@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="menu_egp_hr_recruitment_main" model="website.menu">
+        <field name="name">Recruitment</field>
+        <field name="url"></field>
+        <field name="parent_id" search="[('parent_id', '=', False), ('website_id', '=', 1)]"/>
+        <field name="sequence" type="int">10</field>
+        <field name="website_id" ref="website.default_website"/>
+    </record>
+
+    <record id="menu_egp_hr_recruitment_jobs" model="website.menu">
+        <field name="name">Available Jobs</field>
+        <field name="url">/jobs</field>
+        <field name="parent_id" ref="egp_hr_recruitment.menu_egp_hr_recruitment_main"/>
+        <field name="sequence" type="int">10</field>
+        <field name="website_id" ref="website.default_website"/>
+    </record>
+
+    <record id="menu_egp_hr_recruitment_jobs_advertisements" model="website.menu">
+        <field name="name">Advertisements</field>
+        <field name="url"></field>
+        <field name="parent_id" search="[('parent_id', '=', False), ('website_id', '=', 1)]"/>
+        <field name="sequence" type="int">105</field>
+        <field name="website_id" ref="website.default_website"/>
+    </record>
+
+
+
+</odoo>
