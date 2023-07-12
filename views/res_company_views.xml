@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_company_form_inherit_about" model="ir.ui.view">
+        <field name="name">res.company.form.inherit.about</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <!-- Add at the very end of the form -->
+            <xpath expr="//field[@name='color']" position="after">
+                <field name="about" placeholder="Tell your company's story, mission, and values..."/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
