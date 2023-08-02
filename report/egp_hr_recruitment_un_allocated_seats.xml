@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="action_un_allocated_seats" model="ir.actions.report">
+            <field name="name">Un Allocated Seats</field>
+            <field name="model">hr.job</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">egp_hr_recruitment.un_allocated_seat_template</field>
+            <field name="report_file">egp_hr_recruitment.un_allocated_seat_template</field>
+            <field name="print_report_name">'Un Allocated Seats'</field>
+            <field name="binding_model_id" ref="model_hr_job"/>
+            <field name="binding_type">report</field>
+            <field name="groups_id"
+                   eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert')),(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+            <field name="paperformat_id" ref="egp_hr_org_structure.report_paperformat_a4"/>
+        </record>
+
+        <template id="un_allocated_seat_template">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <t t-set="company" t-value="docs and docs[0].company_id"/>
+                    <div class="page" style="font-family:Calibri;">
+
+
+                        <!--                        Ministry Header Section-->
+                        <div class="row">
+                            <div class="col-6 text-center">
+                                <p>امارت اسلامی افغانستان</p>
+                                <p>
+                                    <t t-esc="company.name"/>
+                                </p>
+                            </div>
+                            <div class="col-6 text-center">
+                                <p>د افغانستان اسلامي امارت</p>
+                                <p>
+                                    <t t-esc="company.name"/>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Logo and Title Section -->
+                        <div class="row" style="margin-top:15px;">
+                            <div class="col-2" style="margin-left: 10px; margin-top: 10px;">
+                                <img src="egp_hr_recruitment/static/description/MCIT_logo.png" height="150"
+                                     width="200"/>
+                            </div>
+                            <div class="col-8 text-center">
+                                <p>Islamic Emirate of Afghanistan</p>
+                                <p>
+                                    <t t-esc="company.name"/>
+                                </p>
+                                <p>Human Resource Department</p>
+                                <p>Recruitment Office</p>
+                                <p>Un Allocated Seats</p>
+                            </div>
+                            <div class="col-2">
+                                <img src="egp_hr_recruitment/static/description/eia.png" height="100" width="100"
+                                     style="margin-top: 10px;"/>
+                            </div>
+                        </div>
+                        <div>
+                            Report Date:
+                            <t t-esc="create_date"/>
+                        </div>
+
+                        <!-- Table for Applicant Information -->
+                        <table class="table table-bordered"
+                               style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+
+                            <!--Table Headers for Applicant Details-->
+                            <tr>
+                                <th style="padding: 8px; text-align: center; border: 1px solid #000;">No.
+                                </th>
+                                <th style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                    Department
+                                </th>
+                                <th style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                    Position Title
+                                </th>
+                                <th style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                    Position Rank
+                                </th>
+                                <th style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                    Total Seats
+
+                                </th>
+                                <th style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                    Un Allocated Seats
+                                </th>
+                                <th colspan="2" style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                    Notes
+                                </th>
+                                <!--                                <th colspan="2" style="padding: 8px; text-align: center; border: 1px solid #000;">-->
+                                <!--                                    Hired-->
+                                <!--                                </th>-->
+
+                            </tr>
+                            <!-- Applicant Data Rows -->
+                            <t t-set="position_no" t-value="1"/>
+                            <t t-foreach="datas" t-as="data">
+                                <tr>
+                                    <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                        <t t-esc="position_no"/>
+                                    </td>
+                                    <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                        <t t-esc="data['department']"/>
+                                    </td>
+                                    <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                        <t t-esc="data['position_title']"/>
+                                    </td>
+                                    <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                        <t t-esc="data['position_rank']"/>
+                                    </td>
+                                    <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                        <t t-esc="data['no_of_recruitment']"/>
+                                    </td>
+                                    <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                        <t t-esc="data['unallocated_count']"/>
+                                    </td>
+                                    <!--                                    <td style="padding: 8px; text-align: center; border: 1px solid #000;">-->
+                                    <!--                                       <t t-esc="data['hired']"/>-->
+                                    <!--                                    </td>-->
+                                    <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                    </td>
+                                </tr>
+                                <t t-set="position_no" t-value="position_no + 1"/>
+                            </t>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+
+</odoo>
