@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <template id="egp_hr_recruitment_written_test">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-set="company" t-value="docs and docs[0].company_id"/>
+                    <div class="page" style="font-family:Calibri;">
+                        <div class="row">
+                            <div class="col-6 text-center">
+                                <p>امارت اسلامی افغانستان</p>
+                                <!--                                <p>وزارت مخابرات و تکنالوژی معلوماتی</p>-->
+                                <p>
+                                    <t t-esc="company.name"/>
+                                </p>
+                            </div>
+                            <div class="col-6 text-center">
+                                <p>د افغانستان اسلامي امارت</p>
+                                <p>
+                                    <t t-esc="company.name"/>
+                                </p>
+                            </div>
+                        </div>
+                        <!--                        Logo and Title Section-->
+                        <div class="row" style="margin-top:15px;">
+                            <div class="col-2" style="margin-left: 10px; margin-top: 10px;">
+                                <img src="egp_hr_recruitment/static/description/MCIT_logo.png" height="150"
+                                     width="200"/>
+                            </div>
+                            <div class="col-8 text-center">
+                                <p>Islamic Emirate of Afghanistan</p>
+                                <p>
+                                    <t t-esc="company.name"/>
+                                </p>
+                                <p>Human Resource Department</p>
+                                <p>Recruitment Office</p>
+                                <p>Stages of Applicant</p>
+                            </div>
+                            <div class="col-2">
+                                <img src="egp_hr_recruitment/static/description/eia.png" height="100" width="100"
+                                     style="margin-top: 10px;"/>
+                            </div>
+                        </div>
+                        <!-- Table for Applicant Information -->
+                        <table class="table table-bordered"
+                               style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                            <!--                            <tr>-->
+                            <!--                                <td colspan="10" style="border: none; text-align: center; font-weight: bold;">-->
+                            <!--                                    <h4 style="margin: 0;">Result of Written Test (Computer) for the ( )-->
+                            <!--                                        Positions of the Directorate of Digital Governance-->
+                            <!--                                    </h4>-->
+                            <!--                                </td>-->
+                            <!--                            </tr>-->
+
+                            <!--                              <t t-foreach="docs" t-as="doc">-->
+                            <!--                                <tr t-if="doc.stage_id.sequence == 3">-->
+                            <!--                                    <td colspan="10"-->
+                            <!--                                        style="text-align: center; font-weight: bold; padding: 10px; border: none;">-->
+                            <!--                                       The successful <t t-esc= "doc.stage_id.name" /> applicants tree.-->
+                            <!--                                    </td>-->
+                            <!--                                </tr>-->
+                            <!--                              </t>-->
+                            <t t-set="message_displayed" t-value="False"/>
+                            <t t-foreach="docs" t-as="doc">
+                                <tr t-if="doc.stage_id.sequence == 3 and not message_displayed">
+                                    <td colspan="10"
+                                        style="text-align: center; font-weight: bold; padding: 10px; border: none;">
+                                        The
+                                        <t t-esc="doc.stage_id.name"/>
+                                        applicants List.
+                                    </td>
+                                    <t t-set="message_displayed" t-value="True"/>
+                                </tr>
+                            </t>
+                            <tr>
+                                <th style="padding: 8px; text-align: center; border: 1px solid #000;">No.</th>
+                                <th colspan="2" style="padding: 8px; text-align: center; border: 1px solid #000;">Name
+                                </th>
+                                <th style="padding: 8px; text-align: center; border: 1px solid #000;">F/Name</th>
+                                <th style="padding: 8px; text-align: center; border: 1px solid #000;">Phone#</th>
+                                <th colspan="2" style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                    Position Title
+                                </th>
+                                <th style="padding: 8px; text-align: center; border: 1px solid #000;">Written Test
+                                    Marks
+                                </th>
+
+
+                                <th colspan="2"
+                                    style="padding: 8px; text-align: center; border: 1px solid #000;  width:500px;">
+                                    Notes
+                                </th>
+                            </tr>
+
+                            <!-- Applicant Data Rows -->
+                            <t t-set="position_no" t-value="1"/>
+                            <t t-foreach="docs" t-as="doc">
+                                <t t-if="doc.sequence_number == 3">
+                                    <tr>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                            <t t-esc="position_no"/>
+                                        </td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                            <t t-esc="doc.partner_name"/>
+                                        </td>
+                                        <td colspan="2"
+                                            style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                            <t t-esc="doc.father_name"/>
+                                        </td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                            <t t-esc="doc.partner_phone"/>
+                                        </td>
+                                        <td colspan="2"
+                                            style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                            <t t-esc="doc.job_id.name"/>
+                                        </td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                            <t t-esc="doc.written_test_marks"/>
+                                        </td>
+
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                            <t t-esc="doc.comment"/>
+                                        </td>
+                                    </tr>
+                                    <t t-set="position_no" t-value="position_no + 1"/>
+                                </t>
+                            </t>
+                        </table>
+
+                        <!-- Committee Section -->
+                        <t t-if="docs and docs[0].committee_team_id and docs[0].committee_team_id.member_ids">
+                            <h4 class="text-center" style="margin-top: 20px;">Committee Members</h4>
+                            <table class="table table-bordered" style="width: 100%; border-collapse: collapse;">
+                                <tr>
+                                    <th style="padding: 8px; text-align: center; border: 1px solid #000; background-color: #D3D3D3;">
+                                        Number
+                                    </th>
+                                    <th style="padding: 8px; text-align: center; border: 1px solid #000; background-color: #D3D3D3;">
+                                        Member Name
+                                    </th>
+                                    <th style="padding: 8px; text-align: center; border: 1px solid #000; background-color: #D3D3D3;">
+                                        Role in committee
+                                    </th>
+                                    <th style="padding: 8px; text-align: center; border: 1px solid #000; background-color: #D3D3D3;">
+                                        Position
+                                    </th>
+                                    <th style="padding: 8px; text-align: center; border: 1px solid #000; width: 100px; background-color: #D3D3D3;">
+                                        Sign
+                                    </th>
+                                </tr>
+
+                                <t t-set="index" t-value="1"/>
+                                <t t-foreach="docs[0].committee_team_id.member_ids" t-as="member">
+                                    <tr>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                            <t t-esc="index"/>
+                                        </td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                            <t t-if="member.agent_type == 'employee'">
+                                                <t t-esc="member.employee_id.name"/>
+                                            </t>
+                                            <t t-if="member.agent_type == 'external'">
+                                                <t t-esc="member.agent_name"/>
+                                            </t>
+                                        </td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                            <t t-esc="member.tag.name"/>
+                                        </td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                            <t t-esc="member.agent_position_title"/>
+                                        </td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #000;">
+                                        </td>
+
+                                    </tr>
+                                    <t t-set="index" t-value="index+1"/>
+                                </t>
+                            </table>
+                        </t>
+
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
