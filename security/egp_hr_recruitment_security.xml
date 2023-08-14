@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Recruitment don't need to create hr_resume_line -->
+
+        <record id="hr_resume_line_rule_recruitment_amir" model="ir.rule">
+            <field name="name">manager can create resume_line_record</field>
+            <field name="model_id" ref="hr_skills.model_hr_resume_line"/>
+            <field name="groups"
+                   eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="egp_hr_recruitment_recruitment_job_kanban_view" model="ir.ui.view">
+            <field name="name">egp_hr_recruitment_hr.job.kanban.view</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr_recruitment.view_hr_job_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='kanban_boxes']" position="attributes">
+                    <attribute name="groups"
+                               add="egp_hr_recruitment.group_recruitment_amir,base.group_erp_manager,egp_hr_recruitment.group_recruitment_expert"
+                               separator=","/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="egp_hr_recruitment_recruitment_job_kanban_view12" model="ir.ui.view">
+            <field name="name">egp_hr_recruitment_hr.job.kanban.view12</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="website_hr_recruitment.hr_job_website_inherit"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//div[hasclass('o_kanban_card_header')]" position="attributes">
+                    <attribute name="groups"
+                               add="egp_hr_recruitment.group_recruitment_amir,base.group_erp_manager,egp_hr_recruitment.group_recruitment_expert"
+                               separator=","/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- make hr.job tree view readonly -->
+        <!--        <record id="hr_job_readonly" model="ir.model.access">-->
+        <!--            <field name="name">hr.job readonly access</field>-->
+        <!--            <field name="model_id" ref="hr.model_hr_job"/>-->
+        <!--            <field name="group_id" ref="egp_hr_recruitment.group_recruitment_amir"/> &lt;!&ndash; Specify the group of users &ndash;&gt;-->
+        <!--            <field name="perm_read" eval="True"/>-->
+        <!--            <field name="perm_write" eval="False"/>-->
+        <!--            <field name="perm_create" eval="False"/>-->
+        <!--            <field name="perm_unlink" eval="False"/>-->
+        <!--        </record>-->
+
+        <!--        <record id="hr_job_no_write_rule" model="ir.rule">-->
+        <!--            <field name="name">Prevent Write on hr.job for Recruitment Users</field>-->
+        <!--            <field name="model_id" ref="hr.model_hr_job"/>-->
+        <!--            <field name="groups" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>-->
+        <!--            <field name="domain_force">[]</field>-->
+        <!--            <field name="perm_write" eval="False"/>-->
+        <!--        </record>-->
+
+
+        <!-- Record rules for website.contact -->
+        <record id="website_contact_comp_rule" model="ir.rule">
+            <field name="name">Website Contact: Multi-Company</field>
+            <field name="model_id" ref="model_website_contact"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+
+    </data>
+</odoo>
+
