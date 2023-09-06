@@ -1,0 +1,720 @@
+<odoo>
+
+    <template id="arcs_employee_card">
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="employee">
+
+                <t t-call="web.basic_layout">
+
+                    <div class="page">
+
+                        <div style="
+    position:relative;
+    width:85.6mm;
+    height:54mm;
+    overflow:hidden;
+    margin:0;
+    padding:0;
+">
+
+    <!-- ===================================================== -->
+    <!-- BACKGROUND IMAGE                                       -->
+    <!-- ===================================================== -->
+
+    <img
+        src="/egp_hr_recruitment/static/img/ARCS_employee_card.png"
+        style="
+            position:absolute;
+            top:0;
+            left:0;
+            width:85.6mm;
+            height:54mm;
+            z-index:0;
+            display:block;
+        "
+    />
+
+
+    <!-- ===================================================== -->
+    <!-- MAIN CONTENT                                           -->
+    <!-- ===================================================== -->
+
+    <table style="
+        position:absolute;
+        top:16mm;
+        left:2mm;
+        width:81.6mm;
+        height:30mm;
+        border-collapse:collapse;
+        border-spacing:0;
+        z-index:10;
+        font-family:Calibri, Arial, sans-serif;
+        table-layout:fixed;
+    ">
+
+        <tr>
+
+            <!-- ================================================= -->
+            <!-- PHOTO - LEFT                                      -->
+            <!-- ================================================= -->
+
+            <td style="
+                width:22mm;
+                padding:0;
+                margin:0;
+                vertical-align:top;
+                text-align:center;
+            ">
+
+<t t-if="employee.avatar_1920">
+
+    <img
+        t-att-src="image_data_uri(employee.avatar_1920)"
+        style="
+            width:18mm;
+            height:22mm;
+            display:block;
+            margin-left:3mm;
+            margin-top:4mm;
+
+            border-radius:50%;
+            object-fit:cover;
+            box-sizing:border-box;
+        "
+        alt="Employee Photo"
+    />
+
+</t>
+
+
+
+            </td>
+
+
+            <!-- ================================================= -->
+            <!-- ENGLISH INFORMATION - MIDDLE                      -->
+            <!-- ================================================= -->
+
+            <td style="
+                width:28mm;
+                padding:0;
+                margin:0;
+                vertical-align:top;
+                direction:ltr;
+                text-align:left;
+            ">
+
+                <!-- NAME -->
+
+                <div style="
+                    margin:0 0 2.2mm 0;
+                    padding:0;
+                    line-height:1;
+                ">
+
+                    <div style="
+                        font-size:6.5px;
+                        font-weight:normal;
+                        margin-bottom:0.6mm;
+                    ">
+                        FULL NAME
+                    </div>
+
+                    <div style="
+                        font-size:8.5px;
+                        font-weight:bold;
+                        line-height:1.1;
+                        white-space:nowrap;
+                        overflow:hidden;
+                    ">
+                        <span t-field="employee.english_name"/>
+                    </div>
+
+                </div>
+
+
+                <!-- POSITION -->
+
+                <div style="
+                    margin:0 0 2.2mm 0;
+                    padding:0;
+                    line-height:1;
+                    width:100%;
+                    box-sizing:border-box;
+                ">
+
+                    <div style="
+                        font-size:6.5px;
+                        font-weight:normal;
+                        margin-bottom:0.6mm;
+                    ">
+                        Position
+                    </div>
+
+                    <div style="
+                        font-size:8.5px;
+                        font-weight:bold;
+                        line-height:1.1;
+                        width:100%;
+                        max-width:100%;
+                        white-space:normal;
+                        overflow:hidden;
+                        overflow-wrap:anywhere;
+                        word-wrap:break-word;
+                        word-break:normal;
+                        box-sizing:border-box;
+                        padding-right:1.5mm;
+                    ">
+                        <span t-field="employee.english_job_position"/>
+                    </div>
+
+                </div>
+
+
+
+                <!-- Department -->
+
+
+<!-- Department -->
+
+<div style="
+    margin:0 0 2.2mm 0;
+    padding:0;
+    line-height:1;
+">
+
+    <div style="
+        font-size:6.5px;
+        font-weight:normal;
+        margin-bottom:0.6mm;
+    ">
+        Department
+    </div>
+
+    <div style="
+        font-size:8.5px;
+        font-weight:bold;
+        line-height:1.1;
+        width:100%;
+        max-width:100%;
+        white-space:normal;
+        overflow-wrap:break-word;
+        word-wrap:break-word;
+        word-break:normal;
+        padding-right:1.5mm;
+        box-sizing:border-box;
+    ">
+        <span t-field="employee.english_department"/>
+    </div>
+
+</div>
+
+
+
+
+                <!-- EXPIRY DATE -->
+
+                <div style="
+                    margin:0;
+                    padding:0;
+                    line-height:1;
+                ">
+
+                    <div style="
+                        font-size:6.5px;
+                        font-weight:normal;
+                        margin-bottom:0.6mm;
+                    ">
+                        EXPIRY DATE
+                    </div>
+
+                    <div style="
+                        font-size:8px;
+                        font-weight:bold;
+                        line-height:1.1;
+                    ">
+                        <span t-field="employee.identification_expiry_date"/>
+                    </div>
+
+                </div>
+
+            </td>
+
+
+            <!-- ================================================= -->
+            <!-- DARI / PASHTO INFORMATION - RIGHT                 -->
+            <!-- ================================================= -->
+
+            <td style="
+                width:31.6mm;
+                padding:0;
+                margin:0;
+                vertical-align:top;
+                direction:rtl;
+                text-align:right;
+            ">
+
+                <!-- NAME -->
+
+                <div style="
+                    margin:0 0 2.2mm 0;
+                    padding:0;
+                    line-height:1;
+                ">
+
+                    <div style="
+                        font-size:6.5px;
+                        font-weight:normal;
+                        margin-bottom:0.6mm;
+                    ">
+                        نوم او تخلص:
+                    </div>
+
+                    <div style="
+                        font-size:9px;
+                        font-weight:bold;
+                        line-height:1.1;
+                        white-space:nowrap;
+                        overflow:hidden;
+                    ">
+                        <span t-field="employee.name"/>
+                    </div>
+
+                </div>
+
+                <!-- JOB -->
+
+
+                <!-- Job Position -->
+
+                <div style="
+                    margin:0 0 2.2mm 0;
+                    padding:0;
+                    line-height:1;
+                ">
+
+                    <div style="
+                        font-size:6.5px;
+                        font-weight:normal;
+                        margin-bottom:0.6mm;
+                    ">
+                        دنده / وظیفه:
+                    </div>
+
+                    <div style="
+                        font-size:9px;
+                        font-weight:bold;
+                        line-height:1.1;
+                        width:100%;
+                        max-width:100%;
+                        white-space:normal;
+                        overflow-wrap:break-word;
+                        word-wrap:break-word;
+                        word-break:normal;
+                        padding-right:1.5mm;
+                        box-sizing:border-box;
+                    ">
+                        <span t-field="employee.job_id.name"/>
+                    </div>
+
+                </div>
+
+
+
+
+                <!-- Department -->
+
+                <div style="
+                    margin:0 0 2.2mm 0;
+                    padding:0;
+                    line-height:1;
+                ">
+
+                    <div style="
+                        font-size:6.5px;
+                        font-weight:normal;
+                        margin-bottom:0.6mm;
+                    ">
+                        ریاست:
+                    </div>
+
+                    <div style="
+                        font-size:9px;
+                        font-weight:bold;
+                        line-height:1.1;
+                        width:100%;
+                        max-width:100%;
+                        white-space:normal;
+                        overflow-wrap:break-word;
+                        word-wrap:break-word;
+                        word-break:normal;
+                        padding-right:1.5mm;
+                        box-sizing:border-box;
+                    ">
+                        <span t-field="employee.department_id.name"/>
+                    </div>
+
+                </div>
+
+
+
+
+                <!-- EXPIRY DATE -->
+
+                <div style="
+                    margin:0;
+                    padding:0;
+                    line-height:1;
+                ">
+
+                    <div style="
+                        font-size:6.5px;
+                        font-weight:normal;
+                        margin-bottom:0.6mm;
+                    ">
+                        د کارت ګڼه / شمیره:
+                    </div>
+
+                    <div style="
+                        font-size:8.5px;
+                        font-weight:bold;
+                        line-height:1.1;
+                    ">
+                        <span t-field="employee.identification_expiry_date"/>
+                    </div>
+
+                </div>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
+                        <!--                End of the first Page. -->
+
+                        <!-- ========================================================= -->
+<!-- START OF SECOND PAGE - ARCS EMPLOYEE CARD BACK           -->
+<!-- ========================================================= -->
+
+<div style="
+    position:relative;
+    width:85.6mm;
+    height:54mm;
+    margin:0;
+    margin-top:20mm;
+    padding:0;
+    overflow:hidden;
+    font-family:Calibri, Arial, sans-serif;
+    background:#fff;
+">
+
+    <!-- ===================================================== -->
+    <!-- BACKGROUND IMAGE - ARCS EMPLOYEE CARD                 -->
+    <!-- ===================================================== -->
+
+    <img
+        src="/egp_hr_recruitment/static/img/ARCS_employee_card_2.png"
+        style="
+            position:absolute;
+            top:0;
+            left:0;
+            width:85.6mm;
+            height:54mm;
+            margin:0;
+            padding:0;
+            display:block;
+            z-index:0;
+        "
+    />
+
+
+    <!-- ===================================================== -->
+    <!-- ENGLISH BLOOD GROUP LABEL                             -->
+    <!-- ===================================================== -->
+
+    <div style="
+        position:absolute;
+        top:5.8mm;
+        left:6mm;
+        width:35mm;
+        font-size:8.5px;
+        font-weight:normal;
+        color:#000;
+        text-align:left;
+        line-height:4mm;
+        white-space:nowrap;
+        z-index:10;
+    ">
+        BLOOD GROUP
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- ENGLISH BLOOD GROUP VALUE                             -->
+    <!-- ===================================================== -->
+
+    <div style="
+        position:absolute;
+        top:9.5mm;
+        left:6mm;
+        width:30mm;
+        font-size:9px;
+        font-weight:normal;
+        color:#c00000;
+        text-align:left;
+        line-height:4mm;
+        white-space:nowrap;
+        z-index:10;
+    ">
+        <span t-field="employee.blood_group"/>
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- PASHTO/DARI BLOOD GROUP LABEL                         -->
+    <!-- ===================================================== -->
+
+    <div style="
+        position:absolute;
+        top:5.8mm;
+        right:6mm;
+        width:40mm;
+        font-size:8.5px;
+        font-weight:normal;
+        color:#000;
+        text-align:right;
+        direction:rtl;
+        line-height:4mm;
+        white-space:nowrap;
+        z-index:10;
+    ">
+        د وینې ګروپ / ګروپ خون
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- PASHTO/DARI BLOOD GROUP VALUE                         -->
+    <!-- ===================================================== -->
+
+    <div style="
+        position:absolute;
+        top:9.5mm;
+        right:6mm;
+        width:30mm;
+        font-size:9px;
+        font-weight:normal;
+        color:#c00000;
+        text-align:right;
+        direction:rtl;
+        line-height:4mm;
+        white-space:nowrap;
+        z-index:10;
+    ">
+        <span t-field="employee.blood_group"/>
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- ENGLISH EXPIRY DATE LABEL                             -->
+    <!-- ===================================================== -->
+
+    <div style="
+        position:absolute;
+        top:13.8mm;
+        left:6mm;
+        width:35mm;
+        font-size:8.5px;
+        font-weight:normal;
+        color:#000;
+        text-align:left;
+        line-height:4mm;
+        white-space:nowrap;
+        z-index:10;
+    ">
+        Expiry Date
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- ENGLISH EXPIRY DATE VALUE                             -->
+    <!-- ===================================================== -->
+
+    <div style="
+        position:absolute;
+        top:17.4mm;
+        left:6mm;
+        width:35mm;
+        font-size:9px;
+        font-weight:normal;
+        color:#000;
+        text-align:left;
+        direction:ltr;
+        line-height:4mm;
+        white-space:nowrap;
+        z-index:10;
+    ">
+        <span t-field="employee.identification_expiry_date"/>
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- PASHTO/DARI EXPIRY DATE LABEL                         -->
+    <!-- ===================================================== -->
+
+    <div style="
+        position:absolute;
+        top:13.8mm;
+        right:6mm;
+        width:42mm;
+        font-size:8.5px;
+        font-weight:normal;
+        color:#000;
+        text-align:right;
+        direction:rtl;
+        line-height:4mm;
+        white-space:nowrap;
+        z-index:10;
+    ">
+        د پای نېټه / تاریخ انقضاء
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- PASHTO/DARI EXPIRY DATE VALUE                         -->
+    <!-- ===================================================== -->
+
+    <div style="
+        position:absolute;
+        top:17.4mm;
+        right:6mm;
+        width:35mm;
+        font-size:9px;
+        font-weight:normal;
+        color:#000;
+        text-align:right;
+        direction:rtl;
+        line-height:4mm;
+        white-space:nowrap;
+        z-index:10;
+    ">
+        <span t-field="employee.identification_expiry_date"/>
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- CENTER FIXED PASHTO TEXT                              -->
+    <!-- ===================================================== -->
+
+    <div style="
+        position:absolute;
+        top:23.0mm;
+        left:8mm;
+        width:69.6mm;
+        font-size:8px;
+        font-weight:bold;
+        color:#111;
+
+        direction:rtl;
+        line-height:4mm;
+        z-index:10;
+    ">
+        ددې کارت درلودونکی د افغاني سرې میاشتې رسمي کارکوونکی دی؛
+    </div>
+
+
+    <div style="
+        position:absolute;
+        top:27.0mm;
+        left:8mm;
+        width:69.6mm;
+        font-size:8px;
+        font-weight:bold;
+        color:#111;
+
+        direction:rtl;
+        line-height:4mm;
+        z-index:10;
+    ">
+        له اړوندو ادارو هیله کیږي؛ چې د اړتیا پر مهال ورسره مرسته وکړي.
+    </div>
+
+
+
+
+
+
+
+
+    <!-- ===================================================== -->
+    <!-- QR CODE                                               -->
+    <!-- ===================================================== -->
+
+    <t t-if="employee.qr_code">
+
+        <div style="
+            position:absolute;
+            top:37.2mm;
+            right:6.5mm;
+            width:14.5mm;
+            height:14.5mm;
+            z-index:10;
+            overflow:hidden;
+        ">
+
+            <img
+                t-att-src="
+                    '/web/image/hr.employee/'
+                    + str(employee.id)
+                    + '/qr_code'
+                "
+                style="
+                    width:14.5mm;
+                    height:14.5mm;
+                    margin:0;
+                    padding:0;
+                    display:block;
+                    border:0;
+                "
+            />
+
+        </div>
+
+    </t>
+
+
+    <!-- ===================================================== -->
+    <!-- BOTTOM RED BORDER                                    -->
+    <!-- ===================================================== -->
+
+    <div style="
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:85.6mm;
+        height:2mm;
+        background:#d00000;
+        z-index:5;
+    "></div>
+
+
+</div>
+
+<!-- ========================================================= -->
+<!-- END OF SECOND PAGE                                       -->
+<!-- ========================================================= -->
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+
+    </template>
+
+</odoo>
