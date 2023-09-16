@@ -1,0 +1,2430 @@
+<!--&lt;!&ndash;<odoo>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <template id="military_employee_card">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        &lt;!&ndash; ========================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash; FRONT SIDE                                                &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash; ========================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <t t-call="web.html_container">&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <t t-foreach="docs" t-as="employee">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <t t-call="web.basic_layout">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <div class="page"&ndash;&gt;-->
+<!--&lt;!&ndash;                         style="&ndash;&gt;-->
+<!--&lt;!&ndash;                            width:54mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                            height:87.2mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                            margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                            padding:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                            overflow:hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;                        ">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                        <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                            position:relative;&ndash;&gt;-->
+<!--&lt;!&ndash;                            width:54mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                            height:87.2mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                            overflow:hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;                            margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                            padding:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                        ">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; BACKGROUND &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <img&ndash;&gt;-->
+<!--&lt;!&ndash;                                src="/egp_hr_recruitment/static/img/court_employee_military_card.png"&ndash;&gt;-->
+<!--&lt;!&ndash;                                style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                    position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    top:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    left:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    width:54mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    height:87.2mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    z-index:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    display:block;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    padding:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    border:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                "&ndash;&gt;-->
+<!--&lt;!&ndash;                            />&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; EMPLOYEE NAME &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:43.2mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:7mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:32mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:5mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:11px;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-weight:bold;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:rtl;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:right;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+<!--&lt;!&ndash;                                overflow:hidden;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:10;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span t-field="employee.name"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; FATHER NAME &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:48.5mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:10mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:29mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:5mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:10px;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-weight:bold;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:rtl;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:right;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+<!--&lt;!&ndash;                                overflow:hidden;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:10;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span t-field="employee.father_name"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; JOB / POSITION &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:53.3mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:5mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:43mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:7mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:8.5px;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-weight:bold;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:rtl;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:right;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                line-height:4mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                overflow:hidden;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:10;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span t-field="employee.job_id.name"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; CARD NUMBER &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:60.5mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:7mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:40mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:6mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:9px;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-weight:bold;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:rtl;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:right;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+<!--&lt;!&ndash;                                overflow:hidden;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:15;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span t-field="employee.barcode"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; BLOOD GROUP &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:65.2mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:20mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:20mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:5mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:10px;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-weight:bold;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:ltr;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:center;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:15;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span&ndash;&gt;-->
+<!--&lt;!&ndash;                                    t-if="employee.blood_group"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    t-field="employee.blood_group"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; EMPLOYEE PHOTO &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <t t-if="employee.avatar_1920">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                    position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    top:62mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    left:11mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    width:18mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    height:17mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    overflow:hidden;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    z-index:20;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    padding:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                ">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    <img&ndash;&gt;-->
+<!--&lt;!&ndash;                                        t-att-src="image_data_uri(employee.avatar_1920)"&ndash;&gt;-->
+<!--&lt;!&ndash;                                        style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                            width:18mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                            height:17mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            display:block;&ndash;&gt;-->
+<!--&lt;!&ndash;                                            margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                            padding:0;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            border:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                            border-radius:0;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            object-fit:cover;&ndash;&gt;-->
+<!--&lt;!&ndash;                                        "&ndash;&gt;-->
+<!--&lt;!&ndash;                                        alt="Employee Photo"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            </t>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ISSUE DATE &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:70.0mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:16mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:25mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:4mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:8.5px;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-weight:bold;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:ltr;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:center;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:15;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span t-field="employee.identification_print_date"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; EXPIRY DATE &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:74.0mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:16mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:25mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:4mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:8.5px;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-weight:bold;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:ltr;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:center;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:15;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span t-field="employee.identification_expiry_date"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; BARCODE &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <t t-if="employee.barcode">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                    position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    top:77.5mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    left:21mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    width:27mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    height:6mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    overflow:hidden;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    z-index:20;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    padding:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                ">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    <img&ndash;&gt;-->
+<!--&lt;!&ndash;                                        t-att-src="'/report/barcode/Code128/' + employee.barcode"&ndash;&gt;-->
+<!--&lt;!&ndash;                                        style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                            width:27mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                            height:5mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            display:block;&ndash;&gt;-->
+<!--&lt;!&ndash;                                            margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                            padding:0;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            border:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                        "&ndash;&gt;-->
+<!--&lt;!&ndash;                                        alt="Barcode"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            </t>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                </t>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            </t>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </t>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        &lt;!&ndash; ========================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash; BACK SIDE                                                  &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash; ========================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <t t-call="web.html_container">&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <t t-foreach="docs" t-as="employee">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <t t-call="web.basic_layout">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <div class="page"&ndash;&gt;-->
+<!--&lt;!&ndash;                         style="&ndash;&gt;-->
+<!--&lt;!&ndash;                            width:54mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                            height:87.2mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                            margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                            padding:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                            overflow:hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;                        ">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                        <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                            position:relative;&ndash;&gt;-->
+<!--&lt;!&ndash;                            width:54mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                            height:87.2mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                            overflow:hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;                            margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                            padding:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                        ">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; BACKGROUND &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <img&ndash;&gt;-->
+<!--&lt;!&ndash;                                src="/egp_hr_recruitment/static/img/court_employee_military_card_2.png"&ndash;&gt;-->
+<!--&lt;!&ndash;                                style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                    position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    top:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    left:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    width:54mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    height:87.2mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    z-index:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    display:block;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    padding:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    border:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                "&ndash;&gt;-->
+<!--&lt;!&ndash;                            />&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ENGLISH NAME &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:27mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:6mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:32mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:5mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:8.5px;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-weight:bold;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:ltr;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:left;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+<!--&lt;!&ndash;                                overflow:hidden;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:10;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span t-field="employee.english_name"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ENGLISH FATHER NAME &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:32mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:6mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:32mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:5mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:8.5px;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-weight:bold;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:ltr;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:left;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+<!--&lt;!&ndash;                                overflow:hidden;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:10;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span t-field="employee.english_father_name"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ENGLISH POSITION &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:37mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:6mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:40mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:5mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:7.5px;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-weight:bold;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:ltr;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:left;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+<!--&lt;!&ndash;                                overflow:hidden;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:10;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span t-field="employee.english_job_position"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ISSUE DATE &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:42mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:6mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:30mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:4mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:8px;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-weight:bold;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:ltr;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:left;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:10;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span t-field="employee.identification_print_date"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; EXPIRY DATE &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:47mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:6mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:30mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:4mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:8px;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-weight:bold;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:ltr;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:left;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:10;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span t-field="employee.identification_expiry_date"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; QR CODE &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <t t-if="employee.qr_code">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                    position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    top:25mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    right:5mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    width:18mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    height:18mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    overflow:hidden;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    z-index:20;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    padding:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                ">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    <img&ndash;&gt;-->
+<!--&lt;!&ndash;                                        t-att-src="'/web/image/hr.employee/' + str(employee.id) + '/qr_code'"&ndash;&gt;-->
+<!--&lt;!&ndash;                                        style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                            width:18mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                            height:18mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            display:block;&ndash;&gt;-->
+<!--&lt;!&ndash;                                            margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                            padding:0;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            border:0;&ndash;&gt;-->
+<!--&lt;!&ndash;                                        "&ndash;&gt;-->
+<!--&lt;!&ndash;                                        alt="QR Code"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            </t>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; PHONE &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:70mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:10mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:22mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:4mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:8px;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:ltr;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:left;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+<!--&lt;!&ndash;                                overflow:hidden;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:10;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; OFFICE &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash; ================================================= &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div style="&ndash;&gt;-->
+<!--&lt;!&ndash;                                position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                                top:70mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                left:34mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                width:17mm;&ndash;&gt;-->
+<!--&lt;!&ndash;                                height:4mm;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                font-family:'Calibri', Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;                                font-size:8px;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                direction:ltr;&ndash;&gt;-->
+<!--&lt;!&ndash;                                text-align:left;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                white-space:nowrap;&ndash;&gt;-->
+<!--&lt;!&ndash;                                overflow:hidden;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                z-index:10;&ndash;&gt;-->
+<!--&lt;!&ndash;                            ">&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                </t>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            </t>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </t>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </template>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</odoo>&ndash;&gt;-->
+
+
+<!--<odoo>-->
+
+<!--    &lt;!&ndash; ============================================================= &ndash;&gt;-->
+<!--    &lt;!&ndash; MILITARY EMPLOYEE CARD                                        &ndash;&gt;-->
+<!--    &lt;!&ndash; CARD SIZE: 54mm x 87.2mm                                    &ndash;&gt;-->
+<!--    &lt;!&ndash; ============================================================= &ndash;&gt;-->
+
+<!--    <template id="military_employee_card">-->
+
+<!--        &lt;!&ndash; ========================================================= &ndash;&gt;-->
+<!--        &lt;!&ndash; FRONT SIDE                                                &ndash;&gt;-->
+<!--        &lt;!&ndash; ========================================================= &ndash;&gt;-->
+
+<!--        <t t-call="web.html_container">-->
+
+<!--            <t t-foreach="docs" t-as="employee">-->
+
+<!--                <t t-call="web.basic_layout">-->
+
+<!--                    <div class="page"-->
+<!--                         style="-->
+<!--                            width:54mm;-->
+<!--                            height:87.2mm;-->
+<!--                            margin:0;-->
+<!--                            padding:0;-->
+<!--                            overflow:hidden;-->
+<!--                            position:relative;-->
+<!--                         ">-->
+
+<!--                        <div style="-->
+<!--                            position:relative;-->
+<!--                            width:54mm;-->
+<!--                            height:87.2mm;-->
+<!--                            margin:0;-->
+<!--                            padding:0;-->
+<!--                            overflow:hidden;-->
+<!--                        ">-->
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; FRONT BACKGROUND &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <img-->
+<!--                                    src="/egp_hr_recruitment/static/img/court_employee_military_card.png"-->
+<!--                                    alt="Military Employee Card"-->
+<!--                                    style="-->
+<!--                                    position:absolute;-->
+<!--                                    top:0;-->
+<!--                                    left:0;-->
+
+<!--                                    width:54mm;-->
+<!--                                    height:87.2mm;-->
+
+<!--                                    margin:0;-->
+<!--                                    padding:0;-->
+<!--                                    border:0;-->
+
+<!--                                    display:block;-->
+
+<!--                                    z-index:1;-->
+<!--                                "-->
+<!--                            />-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; EMPLOYEE PHOTO &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <t t-if="employee.avatar_1920">-->
+
+<!--                                <div style="-->
+<!--                                    position:absolute;-->
+
+<!--                                    top:18.4mm;-->
+<!--                                    left:36.5mm;-->
+
+<!--                                    width:17.5mm;-->
+<!--                                    height:23.3mm;-->
+
+<!--                                    margin:0;-->
+<!--                                    padding:0;-->
+
+<!--                                    overflow:hidden;-->
+
+<!--                                    z-index:10;-->
+<!--                                ">-->
+
+<!--                                    <img-->
+<!--                                            t-att-src="image_data_uri(employee.avatar_1920)"-->
+<!--                                            alt="Employee Photo"-->
+<!--                                            style="-->
+<!--                                            width:17.5mm;-->
+<!--                                            height:23.3mm;-->
+
+<!--                                            display:block;-->
+
+<!--                                            margin:0;-->
+<!--                                            padding:0;-->
+<!--                                            border:0;-->
+
+<!--                                            object-fit:cover;-->
+<!--                                        "-->
+<!--                                    />-->
+
+<!--                                </div>-->
+
+<!--                            </t>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; EMPLOYEE NAME &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="background-color: red;-->
+<!--                                position:absolute;-->
+
+<!--                                top:42.7mm;-->
+<!--                                left:6.5mm;-->
+
+<!--                                width:30mm;-->
+<!--                                height:6mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:11px;-->
+<!--                                font-weight:bold;-->
+
+<!--                                direction:rtl;-->
+<!--                                text-align:right;-->
+
+<!--                                line-height:6mm;-->
+
+<!--                                white-space:nowrap;-->
+<!--                                overflow:hidden;-->
+
+<!--                                color:#000000;-->
+
+
+<!--                            ">-->
+<!--                                نوم او تخلص:-->
+<!--                                <span t-if="employee.name"-->
+<!--                                      t-field="employee.name"/>-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; FATHER NAME &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:47.4mm;-->
+<!--                                left:9.5mm;-->
+
+<!--                                width:29mm;-->
+<!--                                height:6mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:10.5px;-->
+<!--                                font-weight:bold;-->
+
+<!--                                direction:rtl;-->
+<!--                                text-align:right;-->
+
+<!--                                line-height:6mm;-->
+
+<!--                                white-space:nowrap;-->
+<!--                                overflow:hidden;-->
+
+<!--                                color:#000000;-->
+
+<!--                                z-index:20;-->
+<!--                            ">-->
+<!--                                د پلار نوم:-->
+<!--                                <span t-if="employee.father_name"-->
+<!--                                      t-field="employee.father_name"/>-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; JOB / POSITION &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:52.3mm;-->
+<!--                                left:4.5mm;-->
+
+<!--                                width:34mm;-->
+<!--                                height:8mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:8.5px;-->
+<!--                                font-weight:bold;-->
+
+<!--                                direction:rtl;-->
+<!--                                text-align:right;-->
+
+<!--                                line-height:4mm;-->
+
+<!--                                overflow:hidden;-->
+
+<!--                                color:#000000;-->
+
+<!--                                z-index:20;-->
+<!--                            ">-->
+
+<!--                                <span t-if="employee.job_id"-->
+<!--                                      t-field="employee.job_id.name"/>-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; CARD NUMBER &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:59.8mm;-->
+<!--                                left:7mm;-->
+
+<!--                                width:40mm;-->
+<!--                                height:6mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:10px;-->
+<!--                                font-weight:bold;-->
+
+<!--                                direction:rtl;-->
+<!--                                text-align:right;-->
+
+<!--                                line-height:6mm;-->
+
+<!--                                white-space:nowrap;-->
+<!--                                overflow:hidden;-->
+
+<!--                                color:#ff0000;-->
+
+<!--                                z-index:25;-->
+<!--                            ">-->
+
+<!--                                <span t-if="employee.barcode"-->
+<!--                                      t-field="employee.barcode"/>-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; BLOOD GROUP &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:64.3mm;-->
+<!--                                left:20mm;-->
+
+<!--                                width:20mm;-->
+<!--                                height:5mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:10px;-->
+<!--                                font-weight:bold;-->
+
+<!--                                direction:ltr;-->
+<!--                                text-align:center;-->
+
+<!--                                line-height:5mm;-->
+
+<!--                                white-space:nowrap;-->
+
+<!--                                color:#ff0000;-->
+
+<!--                                z-index:25;-->
+<!--                            ">-->
+
+<!--                                <span t-if="employee.blood_group"-->
+<!--                                      t-field="employee.blood_group"/>-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; ISSUE DATE &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:67.8mm;-->
+<!--                                left:15.5mm;-->
+
+<!--                                width:25mm;-->
+<!--                                height:5mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:10px;-->
+<!--                                font-weight:bold;-->
+
+<!--                                direction:ltr;-->
+<!--                                text-align:center;-->
+
+<!--                                line-height:5mm;-->
+
+<!--                                white-space:nowrap;-->
+
+<!--                                color:#000000;-->
+
+<!--                                z-index:30;-->
+<!--                            ">-->
+
+<!--                                <span t-if="employee.identification_print_date"-->
+<!--                                      t-esc="employee.identification_print_date.strftime('%Y-%m-%d')"/>-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; EXPIRY DATE &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:72.0mm;-->
+<!--                                left:15.5mm;-->
+
+<!--                                width:25mm;-->
+<!--                                height:5mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:10px;-->
+<!--                                font-weight:bold;-->
+
+<!--                                direction:ltr;-->
+<!--                                text-align:center;-->
+
+<!--                                line-height:5mm;-->
+
+<!--                                white-space:nowrap;-->
+
+<!--                                color:#000000;-->
+
+<!--                                z-index:30;-->
+<!--                            ">-->
+
+<!--                                <span t-if="employee.identification_expiry_date"-->
+<!--                                      t-esc="employee.identification_expiry_date.strftime('%Y-%m-%d')"/>-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; BARCODE &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <t t-if="employee.barcode">-->
+
+<!--                                <div style="-->
+<!--                                    position:absolute;-->
+
+<!--                                    top:76.3mm;-->
+<!--                                    left:21mm;-->
+
+<!--                                    width:27mm;-->
+<!--                                    height:6mm;-->
+
+<!--                                    margin:0;-->
+<!--                                    padding:0;-->
+
+<!--                                    overflow:hidden;-->
+
+<!--                                    z-index:30;-->
+<!--                                ">-->
+
+<!--                                    <img-->
+<!--                                            t-att-src="'/report/barcode/Code128/' + employee.barcode"-->
+<!--                                            alt="Barcode"-->
+<!--                                            style="-->
+<!--                                            width:27mm;-->
+<!--                                            height:5mm;-->
+
+<!--                                            display:block;-->
+
+<!--                                            margin:0;-->
+<!--                                            padding:0;-->
+<!--                                            border:0;-->
+<!--                                        "-->
+<!--                                    />-->
+
+<!--                                </div>-->
+
+<!--                            </t>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </t>-->
+
+<!--            </t>-->
+
+<!--        </t>-->
+
+
+<!--        &lt;!&ndash; ========================================================= &ndash;&gt;-->
+<!--        &lt;!&ndash; BACK SIDE                                                 &ndash;&gt;-->
+<!--        &lt;!&ndash; ========================================================= &ndash;&gt;-->
+
+<!--        <t t-call="web.html_container">-->
+
+<!--            <t t-foreach="docs" t-as="employee">-->
+
+<!--                <t t-call="web.basic_layout">-->
+
+<!--                    <div class="page"-->
+<!--                         style="-->
+<!--                            width:54mm;-->
+<!--                            height:87.2mm;-->
+<!--                            margin:0;-->
+<!--                            padding:0;-->
+<!--                            overflow:hidden;-->
+<!--                            position:relative;-->
+<!--                         ">-->
+
+<!--                        <div style="-->
+<!--                            position:relative;-->
+<!--                            width:54mm;-->
+<!--                            height:87.2mm;-->
+<!--                            margin:0;-->
+<!--                            padding:0;-->
+<!--                            overflow:hidden;-->
+<!--                        ">-->
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; BACK BACKGROUND &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <img-->
+<!--                                    src="/egp_hr_recruitment/static/img/court_employee_military_card_2.png"-->
+<!--                                    alt="Military Employee Card Back"-->
+<!--                                    style="-->
+<!--                                    position:absolute;-->
+<!--                                    top:0;-->
+<!--                                    left:0;-->
+
+<!--                                    width:54mm;-->
+<!--                                    height:87.2mm;-->
+
+<!--                                    margin:0;-->
+<!--                                    padding:0;-->
+<!--                                    border:0;-->
+
+<!--                                    display:block;-->
+
+<!--                                    z-index:1;-->
+<!--                                "-->
+<!--                            />-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; ENGLISH NAME &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:26.5mm;-->
+<!--                                left:6mm;-->
+
+<!--                                width:31mm;-->
+<!--                                height:5mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:8.5px;-->
+<!--                                font-weight:bold;-->
+
+<!--                                direction:ltr;-->
+<!--                                text-align:left;-->
+
+<!--                                line-height:5mm;-->
+
+<!--                                white-space:nowrap;-->
+<!--                                overflow:hidden;-->
+
+<!--                                color:#000000;-->
+
+<!--                                z-index:20;-->
+<!--                            ">-->
+
+<!--                                <span t-if="employee.english_name"-->
+<!--                                      t-field="employee.english_name"/>-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; ENGLISH FATHER NAME &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:31.3mm;-->
+<!--                                left:6mm;-->
+
+<!--                                width:31mm;-->
+<!--                                height:5mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:8.5px;-->
+<!--                                font-weight:bold;-->
+
+<!--                                direction:ltr;-->
+<!--                                text-align:left;-->
+
+<!--                                line-height:5mm;-->
+
+<!--                                white-space:nowrap;-->
+<!--                                overflow:hidden;-->
+
+<!--                                color:#000000;-->
+
+<!--                                z-index:20;-->
+<!--                            ">-->
+
+<!--                                <span t-if="employee.english_father_name"-->
+<!--                                      t-field="employee.english_father_name"/>-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; ENGLISH POSITION &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:36.0mm;-->
+<!--                                left:6mm;-->
+
+<!--                                width:41mm;-->
+<!--                                height:6mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:7.5px;-->
+<!--                                font-weight:bold;-->
+
+<!--                                direction:ltr;-->
+<!--                                text-align:left;-->
+
+<!--                                line-height:5mm;-->
+
+<!--                                white-space:nowrap;-->
+<!--                                overflow:hidden;-->
+
+<!--                                color:#000000;-->
+
+<!--                                z-index:20;-->
+<!--                            ">-->
+
+<!--                                <span t-if="employee.english_job_position"-->
+<!--                                      t-field="employee.english_job_position"/>-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; ISSUE DATE - BACK &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:40.8mm;-->
+<!--                                left:6mm;-->
+
+<!--                                width:30mm;-->
+<!--                                height:5mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:8px;-->
+<!--                                font-weight:bold;-->
+
+<!--                                direction:ltr;-->
+<!--                                text-align:left;-->
+
+<!--                                line-height:5mm;-->
+
+<!--                                white-space:nowrap;-->
+<!--                                overflow:hidden;-->
+
+<!--                                color:#000000;-->
+
+<!--                                z-index:20;-->
+<!--                            ">-->
+
+<!--                                <span t-if="employee.identification_print_date"-->
+<!--                                      t-esc="employee.identification_print_date.strftime('%Y-%m-%d')"/>-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; EXPIRY DATE - BACK &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:45.3mm;-->
+<!--                                left:6mm;-->
+
+<!--                                width:30mm;-->
+<!--                                height:5mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:8px;-->
+<!--                                font-weight:bold;-->
+
+<!--                                direction:ltr;-->
+<!--                                text-align:left;-->
+
+<!--                                line-height:5mm;-->
+
+<!--                                white-space:nowrap;-->
+<!--                                overflow:hidden;-->
+
+<!--                                color:#000000;-->
+
+<!--                                z-index:20;-->
+<!--                            ">-->
+
+<!--                                <span t-if="employee.identification_expiry_date"-->
+<!--                                      t-esc="employee.identification_expiry_date.strftime('%Y-%m-%d')"/>-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; QR CODE &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <t t-if="employee.qr_code">-->
+
+<!--                                <div style="-->
+<!--                                    position:absolute;-->
+
+<!--                                    top:24mm;-->
+<!--                                    right:5mm;-->
+
+<!--                                    width:18mm;-->
+<!--                                    height:18mm;-->
+
+<!--                                    margin:0;-->
+<!--                                    padding:0;-->
+
+<!--                                    overflow:hidden;-->
+
+<!--                                    z-index:25;-->
+<!--                                ">-->
+
+<!--                                    <img-->
+<!--                                            t-att-src="'/web/image/hr.employee/' + str(employee.id) + '/qr_code'"-->
+<!--                                            alt="QR Code"-->
+<!--                                            style="-->
+<!--                                            width:18mm;-->
+<!--                                            height:18mm;-->
+
+<!--                                            display:block;-->
+
+<!--                                            margin:0;-->
+<!--                                            padding:0;-->
+<!--                                            border:0;-->
+<!--                                        "-->
+<!--                                    />-->
+
+<!--                                </div>-->
+
+<!--                            </t>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; PHONE &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:68mm;-->
+<!--                                left:9mm;-->
+
+<!--                                width:22mm;-->
+<!--                                height:4mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:8px;-->
+
+<!--                                direction:ltr;-->
+<!--                                text-align:left;-->
+
+<!--                                white-space:nowrap;-->
+<!--                                overflow:hidden;-->
+
+<!--                                color:#000000;-->
+
+<!--                                z-index:20;-->
+<!--                            ">-->
+
+<!--                                &lt;!&ndash;-->
+<!--                                <span t-if="employee.work_phone"-->
+<!--                                      t-field="employee.work_phone"/>-->
+<!--                                &ndash;&gt;-->
+
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+<!--                            &lt;!&ndash; OFFICE &ndash;&gt;-->
+<!--                            &lt;!&ndash; ================================================= &ndash;&gt;-->
+
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+
+<!--                                top:68mm;-->
+<!--                                left:34mm;-->
+
+<!--                                width:17mm;-->
+<!--                                height:4mm;-->
+
+<!--                                margin:0;-->
+<!--                                padding:0;-->
+
+<!--                                font-family:'Arial', sans-serif;-->
+<!--                                font-size:8px;-->
+
+<!--                                direction:ltr;-->
+<!--                                text-align:left;-->
+
+<!--                                white-space:nowrap;-->
+<!--                                overflow:hidden;-->
+
+<!--                                color:#000000;-->
+
+<!--                                z-index:20;-->
+<!--                            ">-->
+
+<!--                                &lt;!&ndash;-->
+<!--                                <span t-if="employee.department_id"-->
+<!--                                      t-field="employee.department_id.name"/>-->
+<!--                                &ndash;&gt;-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </t>-->
+
+<!--            </t>-->
+
+<!--        </t>-->
+
+<!--    </template>-->
+
+<!--</odoo>-->
+
+
+<!-- ============================================================= -->
+<!-- FRONT SIDE                                                    -->
+<!-- ============================================================= -->
+<odoo>
+    <template id="military_employee_card">
+
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="employee">
+
+                <t t-call="web.basic_layout">
+
+                    <div class="page"
+                         style="
+                    width:54mm;
+                    height:87.2mm;
+                    margin:0;
+                    padding:0;
+                    overflow:hidden;
+                    position:relative;
+                 ">
+
+                        <div style="
+                    position:relative;
+                    width:54mm;
+                    height:87.2mm;
+                    margin:0;
+                    padding:0;
+                    overflow:hidden;
+                ">
+
+
+                            <!-- ================================================= -->
+                            <!-- CARD BACKGROUND                                    -->
+                            <!-- ================================================= -->
+
+                            <img
+                                    src="/egp_hr_recruitment/static/img/court_employee_military_card.png"
+                                    alt="Military Employee Card"
+                                    style="
+                            position:absolute;
+                            top:0;
+                            left:0;
+
+                            width:54mm;
+                            height:87.2mm;
+
+                            margin:0;
+                            padding:0;
+                            border:0;
+
+                            display:block;
+
+                            z-index:1;
+                        "
+                            />
+
+
+                            <!-- ================================================= -->
+                            <!-- EMPLOYEE PHOTO                                    -->
+                            <!-- ================================================= -->
+
+                            <t t-if="employee.avatar_1920">
+
+                                <div style="
+                            position:absolute;
+
+                            top:18.3mm;
+                            right:0.2mm;
+
+                            width:17.5mm;
+                            height:23.2mm;
+
+                            margin:0;
+                            padding:0;
+
+                            overflow:hidden;
+
+                            z-index:10;
+                        ">
+
+                                    <img
+                                            t-att-src="image_data_uri(employee.avatar_1920)"
+                                            alt="Employee Photo"
+                                            style="
+                                    width:17.5mm;
+                                    height:23.2mm;
+
+                                    display:block;
+
+                                    margin:0;
+                                    padding:0;
+
+                                    border:0;
+
+                                    object-fit:cover;
+                                "
+                                    />
+
+                                </div>
+
+                            </t>
+
+
+                            <!-- ================================================= -->
+                            <!-- EMPLOYEE INFORMATION TABLE                        -->
+                            <!-- ================================================= -->
+
+                            <table style="
+                        position:absolute;
+
+                        top:42.5mm;
+                        left:2mm;
+
+                        width:50mm;
+
+                        margin:0;
+                        padding:0;
+
+                        border-collapse:collapse;
+                        border-spacing:0;
+
+                        font-family:'Calibri', Arial, sans-serif;
+                        font-size:9px;
+                        font-weight:bold;
+
+                        direction:rtl;
+
+                        z-index:20;
+                    ">
+
+                                <!-- ============================================= -->
+                                <!-- NAME                                           -->
+                                <!-- ============================================= -->
+
+                                <tr>
+
+                                    <td style="
+                                width:19mm;
+
+                                padding:0.7mm 0.5mm;
+
+                                text-align:right;
+                                vertical-align:middle;
+
+                                white-space:nowrap;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+                                        نوم او تخلص:
+                                    </td>
+
+                                    <td style="
+                                width:31mm;
+
+                                padding:0.7mm 0.5mm;
+
+                                text-align:right;
+                                vertical-align:middle;
+
+                                white-space:nowrap;
+                                overflow:hidden;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+                                        <span t-if="employee.name"
+                                              t-field="employee.name"/>
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- ============================================= -->
+                                <!-- FATHER NAME                                    -->
+                                <!-- ============================================= -->
+
+                                <tr>
+
+                                    <td style="
+                                width:19mm;
+
+                                padding:0.7mm 0.5mm;
+
+                                text-align:right;
+                                vertical-align:middle;
+
+                                white-space:nowrap;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+                                        د پلار نوم:
+                                    </td>
+
+                                    <td style="
+                                width:31mm;
+
+                                padding:0.7mm 0.5mm;
+
+                                text-align:right;
+                                vertical-align:middle;
+
+                                white-space:nowrap;
+                                overflow:hidden;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+                                        <span t-if="employee.father_name"
+                                              t-field="employee.father_name"/>
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- ============================================= -->
+                                <!-- JOB                                             -->
+                                <!-- ============================================= -->
+
+                                <tr>
+
+                                    <td style="
+                                width:19mm;
+
+                                padding:0.7mm 0.5mm;
+
+                                text-align:right;
+                                vertical-align:middle;
+
+                                white-space:nowrap;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+                                        دنده:
+                                    </td>
+
+                                    <td style="
+                                width:31mm;
+
+                                padding:0.7mm 0.5mm;
+
+                                text-align:right;
+                                vertical-align:middle;
+
+                                font-weight:bold;
+                                color:#000000;
+
+                                line-height:3.5mm;
+                            ">
+                                        <span t-if="employee.job_id"
+                                              t-field="employee.job_id.name"/>
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- ============================================= -->
+                                <!-- ISSUE DATE                                     -->
+                                <!-- ============================================= -->
+
+                                <tr>
+
+                                    <td style="
+                                width:19mm;
+
+                                padding:0.7mm 0.5mm;
+
+                                text-align:right;
+                                vertical-align:middle;
+
+                                white-space:nowrap;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+                                        د صدور نیټه:
+                                    </td>
+
+                                    <td style="
+                                width:31mm;
+
+                                padding:0.7mm 0.5mm;
+
+                                text-align:right;
+                                vertical-align:middle;
+
+                                direction:ltr;
+
+                                white-space:nowrap;
+
+                                font-family:'Arial', sans-serif;
+                                font-size:9px;
+                                font-weight:bold;
+
+                                color:#000000;
+                            ">
+
+                                        <span t-if="employee.identification_print_date"
+                                              t-esc="employee.identification_print_date.strftime('%Y-%m-%d')"/>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- ============================================= -->
+                                <!-- EXPIRY DATE                                    -->
+                                <!-- ============================================= -->
+
+                                <tr>
+
+                                    <td style="
+                                width:19mm;
+
+                                padding:0.7mm 0.5mm;
+
+                                text-align:right;
+                                vertical-align:middle;
+
+                                white-space:nowrap;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+                                        د پای ته رسیدو نیټه:
+                                    </td>
+
+                                    <td style="
+                                width:31mm;
+
+                                padding:0.7mm 0.5mm;
+
+                                text-align:right;
+                                vertical-align:middle;
+
+                                direction:ltr;
+
+                                white-space:nowrap;
+
+                                font-family:'Arial', sans-serif;
+                                font-size:9px;
+                                font-weight:bold;
+
+                                color:#000000;
+                            ">
+
+                                        <span t-if="employee.identification_expiry_date"
+                                              t-esc="employee.identification_expiry_date.strftime('%Y-%m-%d')"/>
+
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+
+                            <!-- ================================================= -->
+                            <!-- CARD NUMBER                                       -->
+                            <!-- ================================================= -->
+
+                            <div style="
+                        position:absolute;
+
+                        top:59.8mm;
+                        left:7mm;
+
+                        width:40mm;
+                        height:5mm;
+
+                        margin:0;
+                        padding:0;
+
+                        font-family:'Arial', sans-serif;
+                        font-size:10px;
+                        font-weight:bold;
+
+                        direction:rtl;
+                        text-align:right;
+
+                        white-space:nowrap;
+                        overflow:hidden;
+
+                        color:#ff0000;
+
+                        z-index:25;
+                    ">
+
+                                <span t-if="employee.barcode"
+                                      t-field="employee.barcode"/>
+
+                            </div>
+
+
+                            <!-- ================================================= -->
+                            <!-- BLOOD GROUP                                       -->
+                            <!-- ================================================= -->
+
+                            <div style="
+                        position:absolute;
+
+                        top:64.2mm;
+                        left:20mm;
+
+                        width:20mm;
+                        height:5mm;
+
+                        margin:0;
+                        padding:0;
+
+                        font-family:'Arial', sans-serif;
+                        font-size:10px;
+                        font-weight:bold;
+
+                        direction:ltr;
+                        text-align:center;
+
+                        white-space:nowrap;
+
+                        color:#ff0000;
+
+                        z-index:25;
+                    ">
+
+                                <span t-if="employee.blood_group"
+                                      t-field="employee.blood_group"/>
+
+                            </div>
+
+
+                            <!-- ================================================= -->
+                            <!-- BARCODE                                            -->
+                            <!-- ================================================= -->
+
+                            <t t-if="employee.barcode">
+
+                                <div style="
+                            position:absolute;
+
+                            top:76.5mm;
+                            left:21mm;
+
+                            width:27mm;
+                            height:6mm;
+
+                            margin:0;
+                            padding:0;
+
+                            overflow:hidden;
+
+                            z-index:30;
+                        ">
+
+                                    <img
+                                            t-att-src="'/report/barcode/Code128/' + employee.barcode"
+                                            alt="Barcode"
+                                            style="
+                                    width:27mm;
+                                    height:5mm;
+
+                                    display:block;
+
+                                    margin:0;
+                                    padding:0;
+
+                                    border:0;
+                                "
+                                    />
+
+                                </div>
+
+                            </t>
+
+
+                        </div>
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+
+
+        <!-- ============================================================= -->
+        <!-- BACK SIDE OF MILITARY EMPLOYEE CARD                           -->
+        <!-- ============================================================= -->
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="employee">
+
+                <t t-call="web.basic_layout">
+
+                    <div class="page"
+                         style="
+                    width:54mm;
+                    height:87.2mm;
+                    margin:0;
+                    padding:0;
+                    overflow:hidden;
+                    position:relative;
+                 ">
+
+                        <div style="
+                    position:relative;
+                    width:54mm;
+                    height:87.2mm;
+                    margin:0;
+                    padding:0;
+                    overflow:hidden;
+                ">
+
+
+                            <!-- ================================================= -->
+                            <!-- BACKGROUND                                         -->
+                            <!-- ================================================= -->
+
+                            <img
+                                    src="/egp_hr_recruitment/static/img/court_employee_military_card_2.png"
+                                    alt="Military Employee Card Back"
+                                    style="
+                            position:absolute;
+
+                            top:0;
+                            left:0;
+
+                            width:54mm;
+                            height:87.2mm;
+
+                            margin:0;
+                            padding:0;
+                            border:0;
+
+                            display:block;
+
+                            z-index:1;
+                        "
+                            />
+
+
+                            <!-- ================================================= -->
+                            <!-- EMPLOYEE PHOTO                                    -->
+                            <!-- ================================================= -->
+
+                            <t t-if="employee.avatar_1920">
+
+                                <div style="
+                            position:absolute;
+
+                            top:2.8mm;
+                            left:2.5mm;
+
+                            width:8mm;
+                            height:10mm;
+
+                            margin:0;
+                            padding:0;
+
+                            overflow:hidden;
+
+                            z-index:10;
+                        ">
+
+                                    <img
+                                            t-att-src="image_data_uri(employee.avatar_1920)"
+                                            alt="Employee Photo"
+                                            style="
+                                    width:8mm;
+                                    height:10mm;
+
+                                    display:block;
+
+                                    margin:0;
+                                    padding:0;
+
+                                    border:0;
+
+                                    object-fit:cover;
+                                "
+                                    />
+
+                                </div>
+
+                            </t>
+
+
+                            <!-- ================================================= -->
+                            <!-- EMPLOYEE NUMBER                                   -->
+                            <!-- ================================================= -->
+
+                            <div style="
+                        position:absolute;
+
+                        top:10.7mm;
+                        left:3mm;
+
+                        width:7mm;
+                        height:4mm;
+
+                        margin:0;
+                        padding:0;
+
+                        font-family:'Arial', sans-serif;
+                        font-size:8px;
+                        font-weight:bold;
+
+                        direction:ltr;
+                        text-align:center;
+
+                        white-space:nowrap;
+
+                        color:#000000;
+
+                        z-index:20;
+                    ">
+
+                                <span t-if="employee.barcode"
+                                      t-field="employee.barcode"/>
+
+                            </div>
+
+
+                            <!-- ================================================= -->
+                            <!-- ENGLISH INFORMATION TABLE                         -->
+                            <!-- ================================================= -->
+
+                            <table style="
+                        position:absolute;
+
+                        top:15.5mm;
+                        left:2.5mm;
+
+                        width:49mm;
+
+                        margin:0;
+                        padding:0;
+
+                        border-collapse:collapse;
+                        border-spacing:0;
+
+                        font-family:'Calibri', Arial, sans-serif;
+                        font-size:8.5px;
+                        font-weight:bold;
+
+                        direction:ltr;
+
+                        z-index:20;
+                    ">
+
+
+                                <!-- ============================================= -->
+                                <!-- NAME                                           -->
+                                <!-- ============================================= -->
+
+                                <tr>
+
+                                    <td style="
+                                width:15mm;
+
+                                padding:0.6mm 0.5mm;
+
+                                text-align:left;
+                                vertical-align:middle;
+
+                                white-space:nowrap;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+                                        Name:
+                                    </td>
+
+                                    <td style="
+                                width:34mm;
+
+                                padding:0.6mm 0.5mm;
+
+                                text-align:left;
+                                vertical-align:middle;
+
+                                direction:ltr;
+
+                                white-space:nowrap;
+                                overflow:hidden;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+
+                                        <span t-if="employee.english_name"
+                                              t-field="employee.english_name"/>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- ============================================= -->
+                                <!-- FATHER NAME                                    -->
+                                <!-- ============================================= -->
+
+                                <tr>
+
+                                    <td style="
+                                width:15mm;
+
+                                padding:0.6mm 0.5mm;
+
+                                text-align:left;
+                                vertical-align:middle;
+
+                                white-space:nowrap;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+                                        F/Name:
+                                    </td>
+
+                                    <td style="
+                                width:34mm;
+
+                                padding:0.6mm 0.5mm;
+
+                                text-align:left;
+                                vertical-align:middle;
+
+                                direction:ltr;
+
+                                white-space:nowrap;
+                                overflow:hidden;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+
+                                        <span t-if="employee.english_father_name"
+                                              t-field="employee.english_father_name"/>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <!-- ============================================= -->
+                                <!-- POSITION                                       -->
+                                <!-- ============================================= -->
+
+                                <tr>
+
+                                    <td style="
+                                width:15mm;
+
+                                padding:0.6mm 0.5mm;
+
+                                text-align:left;
+                                vertical-align:middle;
+
+                                white-space:nowrap;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+                                        Position:
+                                    </td>
+
+                                    <td style="
+                                width:34mm;
+
+
+
+                                text-align:left;
+                                vertical-align:middle;
+
+                                direction:ltr;
+
+                                white-space:nowrap;
+                                overflow:hidden;
+
+                                font-weight:bold;
+                                color:#000000;
+                            ">
+
+                                        <span t-if="employee.english_job_position"
+                                              t-field="employee.english_job_position"/>
+
+                                    </td>
+
+                                </tr>
+
+
+                            </table>
+
+
+                            <!-- ================================================= -->
+                            <!-- COURT LOGO                                        -->
+                            <!-- ================================================= -->
+
+                            <div style="
+                        position:absolute;
+
+                        top:28mm;
+                        left:15mm;
+
+                        width:24mm;
+                        height:24mm;
+
+                        margin:0;
+                        padding:0;
+
+                        overflow:hidden;
+
+                        z-index:10;
+                    ">
+
+                                <img
+                                        src="/egp_hr_recruitment/static/img/court_logo.png"
+                                        alt="Supreme Court Logo"
+                                        style="
+                                width:24mm;
+                                height:24mm;
+
+                                display:block;
+
+                                margin:0;
+                                padding:0;
+
+                                border:0;
+
+                                object-fit:contain;
+                            "
+                                />
+
+                            </div>
+
+
+                            <!-- ================================================= -->
+                            <!-- QR CODE                                            -->
+                            <!-- ================================================= -->
+
+                            <t t-if="employee.qr_code">
+
+                                <div style="
+                            position:absolute;
+
+                            top:52.5mm;
+                            left:15mm;
+
+                            width:24mm;
+                            height:24mm;
+
+                            margin:0;
+                            padding:0;
+
+                            overflow:hidden;
+
+                            z-index:20;
+                        ">
+
+                                    <img
+                                            t-att-src="'/web/image/hr.employee/' + str(employee.id) + '/qr_code'"
+                                            alt="QR Code"
+                                            style="
+                                    width:24mm;
+                                    height:24mm;
+
+                                    display:block;
+
+                                    margin:0;
+                                    padding:0;
+
+                                    border:0;
+
+                                    object-fit:contain;
+                                "
+                                    />
+
+                                </div>
+
+                            </t>
+
+
+                            <!-- ================================================= -->
+                            <!-- CARD NUMBER / INSTRUCTION                         -->
+                            <!-- ================================================= -->
+
+                            <div style="
+                        position:absolute;
+
+                        top:76.5mm;
+                        left:3mm;
+
+                        width:48mm;
+                        height:7mm;
+
+                        margin:0;
+                        padding:0;
+
+                        font-family:'Calibri', Arial, sans-serif;
+                        font-size:7.5px;
+                        font-weight:bold;
+
+                        direction:rtl;
+                        text-align:center;
+
+                        line-height:3.5mm;
+
+                        overflow:hidden;
+
+                        color:#000000;
+
+                        z-index:25;
+                    ">
+
+                                دکارت مونږ له پروخت مهرباني وکړئ
+                                په لاندې پته یې را ولیږئ
+
+                            </div>
+
+
+                            <!-- ================================================= -->
+                            <!-- FOOTER / CONTACT                                  -->
+                            <!-- ================================================= -->
+
+                            <div style="
+                        position:absolute;
+
+                        bottom:0;
+                        left:0;
+
+                        width:54mm;
+                        height:8.5mm;
+
+                        margin:0;
+                        padding:0;
+
+                        background:#000000;
+
+                        font-family:'Calibri', Arial, sans-serif;
+                        font-size:7.5px;
+                        font-weight:bold;
+
+                        direction:rtl;
+                        text-align:center;
+
+                        line-height:3.5mm;
+
+                        color:#ffffff;
+
+                        z-index:30;
+                    ">
+
+                                <div style="
+                            margin:0;
+                            padding:0;
+                        ">
+
+                                    پته: د قصبي سرک د کابل پوسټ ۱۵ حوزه / کابل افغانستان
+
+                                </div>
+
+                                <div style="
+                            margin:0;
+                            padding:0;
+                        ">
+
+                                    د اړیکې شمیره:
+                                    <span dir="ltr">
+                                        0791507696
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+    </template>
+</odoo>
