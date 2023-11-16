@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="degree_high_school" model="hr.recruitment.degree">
+        <field name="name">High School</field>
+    </record>
+    <record id="degree_bachelor" model="hr.recruitment.degree">
+        <field name="name">Bachelor</field>
+    </record>
+    <record id="degree_master" model="hr.recruitment.degree">
+        <field name="name">Master</field>
+    </record>
+    <record id="degree_phd" model="hr.recruitment.degree">
+        <field name="name">Ph.D Holder</field>
+    </record>
+    <record id="demo_refuse_reason_1" model="hr.applicant.refuse.reason">
+        <field name="name">You are not eligible for this position</field>
+    </record>
+    <record id="demo_refuse_reason_2" model="hr.applicant.refuse.reason">
+        <field name="name">Your work experience documents were not complete</field>
+    </record>
+    <record id="demo_refuse_reason_3" model="hr.applicant.refuse.reason">
+        <field name="name">You could not get a passing score</field>
+    </record>
+    <record id="demo_mail_activity_type_phone_call" model="mail.activity.type">
+        <field name="name">phone call</field>
+    </record>
+    <record id="demo_mail_activity_type_meeting" model="mail.activity.type">
+        <field name="name">Meeting with colleagues</field>
+    </record>
+    <record id="demo_mail_activity_type_email" model="mail.activity.type">
+        <field name="name">Send an email</field>
+    </record>
+    <record id="demo_mail_activity_type_follow_up" model="mail.activity.type">
+        <field name="name">Conducting work visits</field>
+    </record>
+    <record id="demo_facebook_id" model="utm.source">
+        <field name="name">Facebook account</field>
+    </record>
+    <record id="demo_twitter_id" model="utm.source">
+        <field name="name">X</field>
+    </record>
+    <record id="demo_linkdin_id" model="utm.source">
+        <field name="name">Linkdin profile</field>
+    </record>
+    <record id="demo_search_engine" model="utm.source">
+        <field name="name">Search Engine</field>
+    </record>
+    <record id="demo_manager" model="hr.applicant.category">
+        <field name="name">Dean of the system Directorate</field>
+    </record>
+    <record id="demo_it" model="hr.applicant.category">
+        <field name="name">IT expert</field>
+    </record>
+    <record id="recruitment_dpt_res_country_state_default_data" model="res.country.state">
+        <field name="name">Nangarahar</field>
+        <field name="code">NGR</field>
+        <field name="country_id" ref="base.af"/>
+    </record>
+</odoo>
