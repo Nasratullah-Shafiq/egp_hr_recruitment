@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree/List View -->
+    <record id="view_website_contact_tree" model="ir.ui.view">
+        <field name="name">website.contact.tree</field>
+        <field name="model">website.contact</field>
+        <field name="arch" type="xml">
+            <tree string="Website Contacts" default_order="create_date desc"
+                  decoration-info="status == 'new'"
+                  decoration-warning="status == 'in_progress'"
+                  decoration-success="status == 'replied'"
+                  decoration-muted="status == 'closed'">
+                <field name="create_date" string="Date"/>
+                <field name="priority" string="!" widget="priority"/>
+                <field name="name" string="Name"/>
+                <field name="email" string="Email"/>
+                <field name="subject" string="Subject" limit="30"/>
+                <field name="phone" string="Phone"/>
+                <field name="status" string="Status" widget="badge"
+                       decoration-success="status == 'replied'"
+                       decoration-danger="status == 'closed'"
+                       decoration-warning="status == 'in_progress'"
+                       decoration-info="status == 'new'"/>
+                <field name="company" string="Company"/>
+                <field name="confirmation_sent" string="Confirmed" widget="boolean"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_website_contact_form" model="ir.ui.view">
+        <field name="name">website.contact.form</field>
+        <field name="model">website.contact</field>
+        <field name="arch" type="xml">
+            <form string="Contact Message">
+                <header>
+                    <button name="action_mark_in_progress" type="object"
+                            status="new"
+                            string="Mark In Progress" class="btn btn-warning"
+                            invisible="status in ['closed', 'replied']"
+                            confirm="Mark this inquiry as in progress?"/>
+                    <button name="action_send_reply" type="object"
+                            string="Send Reply" class="btn btn-primary"
+                            groups="base.group_user"
+                            invisible="status in ['replied', 'closed']"/>
+                    <button name="action_mark_replied" type="object"
+                            string="Mark Replied" class="btn btn-success"
+                            status="new,in_progress"
+                            invisible="status in ['replied', 'closed']"
+                            confirm="Mark as replied?"/>
+                    <button name="action_mark_closed" type="object"
+                            string="Close" class="btn btn-secondary"
+                            invisible="status in ['new','in_progress','replied']"
+                            confirm="Close this inquiry?"/>
+                    <button name="action_send_confirmation" type="object"
+                            invisible="status in ['replied', 'closed']"
+                            string="Resend Confirmation" class="btn btn-info"
+                            groups="base.group_user"
+                            confirm="Resend confirmation email to customer?"/>
+                    <field name="status" widget="statusbar" statusbar_visible="new,in_progress,replied,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_send_reply" type="object"
+                                class="oe_stat_button" icon="fa-envelope"
+                                status="new,in_progress"
+                                string="Send Reply" groups="base.group_user"/>
+                        <button name="action_send_confirmation" type="object"
+                                class="oe_stat_button" icon="fa-repeat"
+                                invisible="status in ['replied', 'closed']"
+                                string="Resend Confirmation" groups="base.group_user"/>
+                    </div>
+
+                    <field name="company_id" invisible="1"/>
+
+                    <group name="main_group">
+                        <group name="sender_info" string="Sender Information">
+                            <field name="create_date" string="Received On"/>
+                            <field name="name" string="Full Name" required="1"/>
+                            <field name="email" string="Email Address" required="1"/>
+                            <field name="phone" string="Phone Number" widget="phone"/>
+                            <field name="company" string="Company Name"/>
+                        </group>
+                        <group name="message_info" string="Message Details">
+                            <field name="subject" string="Subject" required="1"/>
+                            <field name="status" string="Status"/>
+                            <field name="priority" string="Priority" widget="priority"/>
+                            <field name="confirmation_sent" string="Confirmation Sent"/>
+                            <field name="confirmation_sent_date" string="Confirmation Date"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Customer Message">
+                            <field name="message" string="Message" nolabel="1"
+                                   placeholder="Customer's message will appear here..."/>
+                        </page>
+                        <page string="Reply" invisible="reply_message == False">
+                            <group string="Reply Information">
+                                <field name="reply_date" string="Reply Date"/>
+                                <field name="replied_by" string="Replied By"/>
+                                <field name="reply_message" string="Reply Content" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_website_contact_search" model="ir.ui.view">
+        <field name="name">website.contact.search</field>
+        <field name="model">website.contact</field>
+        <field name="arch" type="xml">
+            <search string="Search Contacts">
+                <!-- Search Fields -->
+                <field name="name"/>
+                <field name="email"/>
+                <field name="subject"/>
+                <field name="message"/>
+                <field name="company"/>
+                <field name="phone"/>
+
+                <!-- Filters -->
+                <filter name="new" string="New" domain="[('status', '=', 'new')]"/>
+                <filter name="in_progress" string="In Progress" domain="[('status', '=', 'in_progress')]"/>
+                <filter name="replied" string="Replied" domain="[('status', '=', 'replied')]"/>
+                <filter name="closed" string="Closed" domain="[('status', '=', 'closed')]"/>
+                <separator/>
+                <filter name="high_priority" string="High Priority" domain="[('priority', 'in', ['2', '3'])]"/>
+                <filter name="no_reply" string="Not Replied Yet" domain="[('status', 'in', ['new', 'in_progress'])]"/>
+                <filter name="confirmed" string="Confirmation Sent" domain="[('confirmation_sent', '=', True)]"/>
+                <filter name="unconfirmed" string="No Confirmation" domain="[('confirmation_sent', '=', False)]"/>
+                <separator/>
+                <filter name="today" string="Today" domain="[('create_date', '>=', context_today)]"/>
+                <filter name="week" string="This Week" domain="[('create_date', '>=', (context_today - 7))]"/>
+                <filter name="month" string="This Month" domain="[('create_date', '>=', (context_today - 30))]"/>
+
+                <!-- Group By -->
+                <group expand="0" string="Group By">
+                    <filter name="group_by_status" string="Status" context="{'group_by': 'status'}"/>
+                    <filter name="group_by_priority" string="Priority" context="{'group_by': 'priority'}"/>
+                    <filter name="group_by_date" string="Date" context="{'group_by': 'create_date:day'}"/>
+                    <filter name="group_by_week" string="Week" context="{'group_by': 'create_date:week'}"/>
+                    <filter name="group_by_month" string="Month" context="{'group_by': 'create_date:month'}"/>
+                    <filter name="group_by_company" string="Company" context="{'group_by': 'company'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_website_contact_kanban" model="ir.ui.view">
+        <field name="name">website.contact.kanban</field>
+        <field name="model">website.contact</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="email"/>
+                <field name="subject"/>
+                <field name="status"/>
+                <field name="priority"/>
+                <field name="create_date"/>
+                <field name="company"/>
+                <field name="message"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click oe_kanban_global_click_edit">
+                            <!-- Priority Badge -->
+                            <div class="o_kanban_priority"
+                                 t-attf-class="o_kanban_priority_#{record.priority.raw_value}">
+                                <span class="fa fa-star" t-if="record.priority.raw_value >= 1"/>
+                                <span class="fa fa-star" t-if="record.priority.raw_value >= 2"/>
+                                <span class="fa fa-star" t-if="record.priority.raw_value >= 3"/>
+                            </div>
+
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('res.partner', 'avatar_128', False)"
+                                     alt="Contact" class="o_image_64_cover"/>
+                            </div>
+
+                            <div class="oe_kanban_details">
+                                <!-- Name and Subject -->
+                                <div class="o_kanban_record_top">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="name"/>
+                                    </strong>
+                                    <div class="o_kanban_record_subtitle">
+                                        <field name="subject"/>
+                                    </div>
+                                </div>
+
+                                <!-- Contact Info -->
+                                <div class="text-muted o_kanban_record_subtitle">
+                                    <div>
+                                        <i class="fa fa-envelope fa-fw"/>
+                                        <small>
+                                            <field name="email"/>
+                                        </small>
+                                    </div>
+                                    <div t-if="record.phone.raw_value">
+                                        <i class="fa fa-phone fa-fw"/>
+                                        <small>
+                                            <field name="phone"/>
+                                        </small>
+                                    </div>
+                                    <div t-if="record.company.raw_value">
+                                        <i class="fa fa-building fa-fw"/>
+                                        <small>
+                                            <field name="company"/>
+                                        </small>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-calendar fa-fw"/>
+                                        <small>
+                                            <field name="create_date"/>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <!-- Message Preview -->
+                                <div class="mt-1 text-truncate" style="max-width: 200px;">
+                                    <i class="fa fa-comment fa-fw"/>
+                                    <small>
+                                        <field name="message"/>
+                                    </small>
+                                </div>
+
+                                <!-- Status Badge -->
+                                <div class="o_kanban_record_bottom mt-2">
+                                    <t t-if="record.status.raw_value == 'new'">
+                                        <span class="badge badge-info">New</span>
+                                    </t>
+                                    <t t-if="record.status.raw_value == 'in_progress'">
+                                        <span class="badge badge-warning">In Progress</span>
+                                    </t>
+                                    <t t-if="record.status.raw_value == 'replied'">
+                                        <span class="badge badge-success">Replied</span>
+                                    </t>
+                                    <t t-if="record.status.raw_value == 'closed'">
+                                        <span class="badge badge-secondary">Closed</span>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action: All Contacts -->
+    <record id="action_website_contact_all" model="ir.actions.act_window">
+        <field name="name">All Contacts</field>
+        <field name="res_model">website.contact</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="view_website_contact_search"/>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No website contacts yet. When someone submits the contact form, they will appear here.
+            </p>
+        </field>
+    </record>
+
+    <!-- Action: New Contacts (Not Replied) -->
+    <record id="action_website_contact_new" model="ir.actions.act_window">
+        <field name="name">New Contacts</field>
+        <field name="res_model">website.contact</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="view_website_contact_search"/>
+        <field name="domain">[('status', '=', 'new')]</field>
+        <field name="context">{'search_default_new': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No new contacts. All inquiries have been processed.
+            </p>
+        </field>
+    </record>
+
+    <!-- Action: Pending Replies (New + In Progress) -->
+    <record id="action_website_contact_pending" model="ir.actions.act_window">
+        <field name="name">Pending Replies</field>
+        <field name="res_model">website.contact</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="view_website_contact_search"/>
+        <field name="domain">[('status', 'in', ['new', 'in_progress'])]</field>
+        <field name="context">{'search_default_no_reply': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No pending replies. All inquiries have been replied to or closed.
+            </p>
+        </field>
+    </record>
+
+    <!-- Action: In Progress -->
+    <record id="action_website_contact_in_progress" model="ir.actions.act_window">
+        <field name="name">In Progress</field>
+        <field name="res_model">website.contact</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="view_website_contact_search"/>
+        <field name="domain">[('status', '=', 'in_progress')]</field>
+        <field name="context">{'search_default_in_progress': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No inquiries in progress.
+            </p>
+        </field>
+    </record>
+
+    <!-- Action: Replied -->
+    <record id="action_website_contact_replied" model="ir.actions.act_window">
+        <field name="name">Replied</field>
+        <field name="res_model">website.contact</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="view_website_contact_search"/>
+        <field name="domain">[('status', '=', 'replied')]</field>
+        <field name="context">{'search_default_replied': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No replied inquiries.
+            </p>
+        </field>
+    </record>
+
+    <!-- Action: Closed -->
+    <record id="action_website_contact_closed" model="ir.actions.act_window">
+        <field name="name">Closed</field>
+        <field name="res_model">website.contact</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="view_website_contact_search"/>
+        <field name="domain">[('status', '=', 'closed')]</field>
+        <field name="context">{'search_default_closed': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No closed inquiries.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_website_contact_root"
+              name="Website Contacts"
+              parent="hr_recruitment.menu_hr_recruitment_root"
+              sequence="10"
+              groups="egp_hr_recruitment.group_recruitment_amir"/>
+
+    <menuitem id="menu_website_contact_all"
+              name="All Contacts"
+              parent="menu_website_contact_root"
+              action="action_website_contact_all"
+              sequence="15"
+              groups="egp_hr_recruitment.group_recruitment_amir"/>
+
+    <menuitem id="menu_website_contact_new_items"
+              name="New Contacts"
+              parent="menu_website_contact_root"
+              action="action_website_contact_new"
+              sequence="20"
+              groups="egp_hr_recruitment.group_recruitment_amir"/>
+
+    <menuitem id="menu_website_contact_pending_items"
+              name="Pending Replies"
+              parent="menu_website_contact_root"
+              action="action_website_contact_pending"
+              sequence="30"
+              groups="egp_hr_recruitment.group_recruitment_amir"/>
+
+    <menuitem id="menu_website_contact_in_progress_items"
+              name="In Progress"
+              parent="menu_website_contact_root"
+              action="action_website_contact_in_progress"
+              sequence="40"
+              groups="egp_hr_recruitment.group_recruitment_amir"/>
+
+    <menuitem id="menu_website_contact_replied_items"
+              name="Replied"
+              parent="menu_website_contact_root"
+              action="action_website_contact_replied"
+              sequence="50"
+              groups="egp_hr_recruitment.group_recruitment_amir"/>
+
+    <menuitem id="menu_website_contact_closed_items"
+              name="Closed"
+              parent="menu_website_contact_root"
+              action="action_website_contact_closed"
+              sequence="60"
+              groups="egp_hr_recruitment.group_recruitment_amir"/>
+
+</odoo>
