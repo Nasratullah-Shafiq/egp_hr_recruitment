@@ -1,0 +1,443 @@
+
+<odoo>
+
+    <template id="arcs_temporary_employee_card">
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="employee">
+
+                <t t-call="web.basic_layout">
+
+                    <!-- ================================================= -->
+                    <!-- FRONT SIDE                                       -->
+                    <!-- ================================================= -->
+
+                    <div class="page"
+                         style="
+                            width:54mm;
+                            height:87.2mm;
+                            margin:0;
+                            padding:0;
+                            overflow:hidden;
+                            position:relative;
+                            page-break-after:always;
+                         ">
+
+                        <div style="
+                            position:relative;
+                            width:54mm;
+                            height:87.2mm;
+                            overflow:hidden;
+                        ">
+
+                            <!-- FRONT BACKGROUND -->
+
+                            <img
+                                src="/egp_hr_recruitment/static/img/arcs_temporary_card_first_page.png"
+                                style="
+                                    position:absolute;
+                                    top:0;
+                                    left:0;
+                                    width:54mm;
+                                    height:87.2mm;
+                                    z-index:1;
+                                "
+                            />
+
+                            <!-- EMPLOYEE PHOTO -->
+
+                            <t t-if="employee.avatar_1920">
+                                <div style="
+                                    position:absolute;
+                                    top:13.5mm;
+                                    left:17mm;
+                                    width:20mm;
+                                    height:23mm;
+                                    overflow:hidden;
+                                    z-index:10;
+                                ">
+                                    <img
+                                        t-att-src="image_data_uri(employee.avatar_1920)"
+                                        style="
+                                            width:20mm;
+                                            height:23mm;
+                                            object-fit:cover;
+                                            display:block;
+                                        "
+                                    />
+                                </div>
+                            </t>
+
+                            <!-- EMPLOYEE NAME -->
+
+                            <div style="
+                                position:absolute;
+                                top:38mm;
+                                left:1mm;
+                                width:28mm;
+                                height:3.5mm;
+                                font-family:Arial,sans-serif;
+                                font-size:8px;
+                                font-weight:bold;
+                                direction:rtl;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:20;
+                            ">
+                                <span t-if="employee.name"
+                                      t-field="employee.name"/>
+                            </div>
+
+                            <!-- FATHER NAME -->
+
+                            <div style="
+                                position:absolute;
+                                top:41.5mm;
+                                left:1mm;
+                                width:28mm;
+                                height:3.5mm;
+                                font-family:Arial,sans-serif;
+                                font-size:8px;
+                                font-weight:bold;
+                                direction:rtl;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:20;
+                            ">
+                                <span t-if="employee.father_name"
+                                      t-field="employee.father_name"/>
+                            </div>
+
+                            <!-- POSITION -->
+
+                            <div style="
+                                position:absolute;
+                                top:45mm;
+                                left:1mm;
+                                width:28mm;
+                                height:3.5mm;
+                                font-family:Arial,sans-serif;
+                                font-size:8px;
+                                font-weight:bold;
+                                direction:rtl;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:20;
+                            ">
+                                <span t-if="employee.job_id"
+                                      t-field="employee.job_id.name"/>
+                            </div>
+
+                            <!-- DEPARTMENT -->
+
+                            <div style="
+                                position:absolute;
+                                top:48.5mm;
+                                left:1mm;
+                                width:28mm;
+                                height:3.5mm;
+                                font-family:Arial,sans-serif;
+                                font-size:8px;
+                                font-weight:bold;
+                                direction:rtl;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:20;
+                            ">
+                                <span t-if="employee.department_id"
+                                      t-field="employee.department_id.name"/>
+                            </div>
+
+                            <!-- BLOOD GROUP -->
+
+                            <div style="
+                                position:absolute;
+                                top:52mm;
+                                left:1mm;
+                                width:28mm;
+                                height:3.5mm;
+                                font-family:Arial,sans-serif;
+                                font-size:8px;
+                                font-weight:bold;
+                                direction:ltr;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:20;
+                            ">
+                                <span t-if="employee.blood_group"
+                                      t-field="employee.blood_group"/>
+                            </div>
+
+                            <!-- EXPIRY DATE -->
+
+                            <div style="
+                                position:absolute;
+                                top:55.5mm;
+                                left:1mm;
+                                width:28mm;
+                                height:3.5mm;
+                                font-family:Arial,sans-serif;
+                                font-size:8px;
+                                font-weight:bold;
+                                direction:ltr;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:20;
+                            ">
+                                <span t-if="employee.identification_expiry_date"
+                                      t-esc="employee.identification_expiry_date.strftime('%Y-%m-%d')"/>
+                            </div>
+
+                            <!-- EMPLOYEE ID NUMBER -->
+
+                            <div style="
+                                position:absolute;
+                                top:82mm;
+                                left:2mm;
+                                width:50mm;
+                                height:4mm;
+                                font-family:Arial,sans-serif;
+                                font-size:11px;
+                                font-weight:bold;
+                                color:#ffffff;
+                                direction:ltr;
+                                text-align:center;
+                                white-space:nowrap;
+                                z-index:30;
+                            ">
+                                <span t-if="employee.barcode"
+                                      t-field="employee.barcode"/>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- BACK SIDE                                        -->
+                    <!-- ================================================= -->
+
+                    <div class="page"
+                         style="
+                            width:54mm;
+                            height:87.2mm;
+                            margin:0;
+                            padding:0;
+                            overflow:hidden;
+                            position:relative;
+                         ">
+
+                        <div style="
+                            position:relative;
+                            width:54mm;
+                            height:87.2mm;
+                            overflow:hidden;
+                        ">
+
+                            <!-- BACKGROUND IMAGE -->
+
+                            <img
+                                src="/egp_hr_recruitment/static/img/arcs_temporary_card_second_page.png"
+                                style="
+                                    position:absolute;
+                                    top:0;
+                                    left:0;
+                                    width:54mm;
+                                    height:87.2mm;
+                                    z-index:1;
+                                "
+                            />
+
+                            <!-- EMPLOYEE PHOTO -->
+
+                            <t t-if="employee.avatar_1920">
+                                <div style="
+                                    position:absolute;
+                                    top:13.2mm;
+                                    left:16.5mm;
+                                    width:19mm;
+                                    height:23mm;
+                                    overflow:hidden;
+                                    z-index:10;
+                                ">
+                                    <img
+                                        t-att-src="image_data_uri(employee.avatar_1920)"
+                                        style="
+                                            width:19mm;
+                                            height:23mm;
+                                            object-fit:cover;
+                                            display:block;
+                                        "
+                                    />
+                                </div>
+                            </t>
+
+                            <!-- NAME -->
+
+                            <div style="
+                                position:absolute;
+                                top:38.2mm;
+                                left:1mm;
+                                width:17mm;
+                                height:3.5mm;
+                                font-family:Arial,sans-serif;
+                                font-size:8px;
+                                font-weight:bold;
+                                direction:rtl;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:20;
+                            ">
+                                <span t-if="employee.name"
+                                      t-field="employee.name"/>
+                            </div>
+
+                            <!-- FATHER NAME -->
+
+                            <div style="
+                                position:absolute;
+                                top:41.4mm;
+                                left:1mm;
+                                width:17mm;
+                                height:3.5mm;
+                                font-family:Arial,sans-serif;
+                                font-size:8px;
+                                font-weight:bold;
+                                direction:rtl;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:20;
+                            ">
+                                <span t-if="employee.father_name"
+                                      t-field="employee.father_name"/>
+                            </div>
+
+                            <!-- POSITION -->
+
+                            <div style="
+                                position:absolute;
+                                top:44.6mm;
+                                left:1mm;
+                                width:17mm;
+                                height:3.5mm;
+                                font-family:Arial,sans-serif;
+                                font-size:8px;
+                                font-weight:bold;
+                                direction:rtl;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:20;
+                            ">
+                                <span t-if="employee.job_id"
+                                      t-field="employee.job_id.name"/>
+                            </div>
+
+                            <!-- DEPARTMENT -->
+
+                            <div style="
+                                position:absolute;
+                                top:47.8mm;
+                                left:1mm;
+                                width:17mm;
+                                height:3.5mm;
+                                font-family:Arial,sans-serif;
+                                font-size:8px;
+                                font-weight:bold;
+                                direction:rtl;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:20;
+                            ">
+                                <span t-if="employee.department_id"
+                                      t-field="employee.department_id.name"/>
+                            </div>
+
+                            <!-- BLOOD GROUP -->
+
+                            <div style="
+                                position:absolute;
+                                top:51mm;
+                                left:1mm;
+                                width:16.5mm;
+                                height:3.5mm;
+                                font-family:Arial,sans-serif;
+                                font-size:8px;
+                                font-weight:bold;
+                                direction:ltr;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:20;
+                            ">
+                                <span t-if="employee.blood_group"
+                                      t-field="employee.blood_group"/>
+                            </div>
+
+                            <!-- EXPIRY DATE -->
+
+                            <div style="
+                                position:absolute;
+                                top:54.2mm;
+                                left:1mm;
+                                width:17mm;
+                                height:3.5mm;
+                                font-family:Arial,sans-serif;
+                                font-size:8px;
+                                font-weight:bold;
+                                direction:ltr;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:20;
+                            ">
+                                <span t-if="employee.identification_expiry_date"
+                                      t-esc="employee.identification_expiry_date.strftime('%Y-%m-%d')"/>
+                            </div>
+
+                            <!-- EMPLOYEE ID NUMBER -->
+
+                            <div style="
+                                position:absolute;
+                                top:81.5mm;
+                                left:1mm;
+                                width:17mm;
+                                height:4mm;
+                                font-family:Arial,sans-serif;
+                                font-size:9px;
+                                font-weight:bold;
+                                color:#ffffff;
+                                direction:ltr;
+                                text-align:right;
+                                white-space:nowrap;
+                                overflow:hidden;
+                                z-index:30;
+                            ">
+                                <span t-if="employee.barcode"
+                                      t-field="employee.barcode"/>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+
+    </template>
+
+</odoo>
