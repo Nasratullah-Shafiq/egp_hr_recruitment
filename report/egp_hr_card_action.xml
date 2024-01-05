@@ -78,8 +78,7 @@
         <field name="report_name">egp_hr_recruitment.arcs_temporary_employee_card</field>
         <field name="report_file">egp_hr_recruitment.arcs_temporary_employee_card</field>
         <field name="binding_model_id" ref="hr.model_hr_employee"/>
-        <field name="paperformat_id"
-           ref="egp_hr_recruitment.paperformat_temporary_employee_card"/>
+        <field name="paperformat_id" ref="egp_hr_recruitment.paperformat_temporary_employee_card"/>
         <field name="binding_type">report</field>
     </record>
 </odoo>
