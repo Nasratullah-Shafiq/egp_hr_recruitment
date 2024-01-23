@@ -28,6 +28,7 @@
                 </xpath>
             </field>
         </record>
+        
 
         <record id="egp_hr_recruitment_recruitment_job_kanban_view12" model="ir.ui.view">
             <field name="name">egp_hr_recruitment_hr.job.kanban.view12</field>
