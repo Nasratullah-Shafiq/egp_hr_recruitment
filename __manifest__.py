@@ -41,6 +41,9 @@
         # Paper formats must be loaded before report actions
         'report/egp_hr_recruitment_report_paper_format.xml',
 
+        # Paper formats
+        'report/paperformat_temporary_employee_card.xml',
+
         # Report actions
         'report/egp_hr_card_action.xml',
 
@@ -51,9 +54,7 @@
         'report/egp_hr_military_card_template.xml',
         'report/egp_hr_judical_card_template.xml',
         'report/egp_hr_arcs_card_template.xml',
-
         'report/egp_hr_recruitment_arcs_temporary_employee_card.xml',
-        'report/paperformat_temporary_employee_card.xml',
 
         # Recruitment View files
         'views/egp_hr_recruitment_applicant_view.xml',
