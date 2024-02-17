@@ -16,6 +16,7 @@
                                          t-att-src="image_data_uri(env.company.logo)"
                                          style="max-height:120px; max-width:100px;"/>
                                 </div>
+                                
                                 <div class="col-4 text-center">
                                     <h5 class="mb 0">Islamic Emirates of Afghanistan</h5>
                                     <p class="mb 0" t-esc="env.user.company_id.name"/>
