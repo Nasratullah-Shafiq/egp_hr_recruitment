@@ -1,0 +1,255 @@
+<odoo>
+
+    <!--  INTERVIEW EMAIL TEMPLATE -->
+    <record id="email_template_interview" model="mail.template">
+        <field name="name">Interview Invitation</field>
+        <field name="model_id" ref="egp_hr_recruitment.model_hr_applicant"/>
+
+        <!-- EMAIL SETTINGS -->
+        <field name="email_to">${object.email_from}</field>
+        <field name="email_from">${(object.company_id.email or user.email) | safe}</field>
+
+        <field name="subject">
+            Interview Invitation - ${object.job_id.name}
+        </field>
+
+        <!-- EMAIL BODY -->
+        <field name="body_html">
+            <![CDATA[
+        <div style="font-family: Arial, sans-serif; font-size:14px;">
+
+            <!-- HEADER -->
+            <h2 style="color:#2E86C1;">
+                ${object.company_id.name}
+            </h2>
+
+            <p>
+                ${object.company_id.street or ''} <br/>
+                ${object.company_id.city or ''} <br/>
+                ${object.company_id.country_id.name or ''}
+            </p>
+
+            <hr/>
+
+            <!-- GREETING -->
+            <p>Dear <strong>${object.partner_name}</strong>,</p>
+
+            <p>
+                We are pleased to invite you for the next stage of recruitment.
+            </p>
+
+            <!-- INFO TABLE -->
+            <table style="border-collapse: collapse; width:100%;" border="1" cellpadding="6">
+
+                <tr>
+                    <td><strong>Applicant Name</strong></td>
+                    <td>${object.partner_name}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Email</strong></td>
+                    <td>${object.email_from}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Phone</strong></td>
+                    <td>${object.partner_phone}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Job Position</strong></td>
+                    <td>${object.job_id.name}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Job Code</strong></td>
+                    <td>${object.position_code}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Department</strong></td>
+                    <td>${object.job_department_id.name}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Work Location</strong></td>
+                    <td>${object.work_location_id.name}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Position Rank</strong></td>
+                    <td>${object.position_rank_id}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Committee</strong></td>
+                    <td>${object.committee_team_id.name}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Recruitment Date</strong></td>
+                    <td>${object.recruitment_date}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Current Stage (Sequence)</strong></td>
+                    <td>${object.stage_id.sequence}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Interview Date</strong></td>
+                    <td>${object.interview_date}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Written Test Marks</strong></td>
+                    <td>${object.written_test_marks}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Interview Marks</strong></td>
+                    <td>${object.interview_marks}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Total Marks</strong></td>
+                    <td>${object.total_marks}</td>
+                </tr>
+
+            </table>
+
+            <br/>
+
+            <!-- FOOTER -->
+            <p>
+                Please attend the interview on the scheduled date.
+            </p>
+
+            <p>
+                Best Regards,<br/>
+                ${object.company_id.name}
+            </p>
+
+        </div>
+        ]]>
+        </field>
+    </record>
+
+
+    <!-- HIRED EMAIL TEMPLATE -->
+    <record id="email_template_hired" model="mail.template">
+        <field name="name">Hired Email (Advanced)</field>
+        <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
+
+        <!-- EMAIL SETTINGS -->
+        <field name="email_to">${object.email_from}</field>
+        <field name="email_from">${(object.company_id.email or user.email) | safe}</field>
+
+        <field name="subject">
+            Congratulations - ${object.job_id.name}
+        </field>
+
+        <field name="body_html">
+            <![CDATA[
+        <div style="font-family: Arial, sans-serif; font-size:14px;">
+
+            <h2 style="color:green;">
+                🎉 Congratulations!
+            </h2>
+
+            <p>Dear <strong>${object.partner_name}</strong>,</p>
+
+            <p>
+                We are pleased to inform you that you have been selected for the position.
+            </p>
+
+            <table style="border-collapse: collapse; width:100%;" border="1" cellpadding="6">
+
+                <tr>
+                    <td><strong>Job Position</strong></td>
+                    <td>${object.job_id.name}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Department</strong></td>
+                    <td>${object.job_department_id.name}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Work Location</strong></td>
+                    <td>${object.work_location_id.name}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Stage (Sequence)</strong></td>
+                    <td>${object.stage_id.sequence}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Total Marks</strong></td>
+                    <td>${object.total_marks}</td>
+                </tr>
+
+            </table>
+
+            <br/>
+
+            <p>
+                Our HR team will contact you soon for further process.
+            </p>
+
+            <p>
+                Best Regards,<br/>
+                ${object.company_id.name}
+            </p>
+
+        </div>
+        ]]>
+        </field>
+    </record>
+
+    <!-- Contact Confirmation Email Template for Website Contact -->
+    <record id="contact_confirmation_email_template_contact" model="mail.template">
+        <field name="name">Contact Form Confirmation (Website Contact)</field>
+        <field name="model_id" ref="egp_hr_recruitment.model_website_contact"/>
+        <field name="subject">Thank you for contacting us - ${object.subject}</field>
+        <field name="email_from">${object.company_id.email or 'info@yourcompany.com'}</field>
+        <field name="email_to">${object.email}</field>
+        <field name="body_html" type="html">
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                <div style="background-color: #f8f9fa; padding: 20px; text-align: center;">
+                    <h2 style="color: #004085;">Thank You for Contacting Us</h2>
+                </div>
+                <div style="padding: 20px;">
+                    <p>Dear <strong>${object.name}</strong>,
+                    </p>
+                    <p>Thank you for reaching out to us. We have received your inquiry and our team will respond
+                        within 24 hours.
+                    </p>
+
+                    <h3 style="color: #004085; margin-top: 20px;">Your Inquiry Details:</h3>
+                    <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px;">
+                        <p>
+                            <strong>Subject:</strong>
+                            ${object.subject}
+                        </p>
+                        <p>
+                            <strong>Message:</strong>
+                        </p>
+                        <p style="margin-left: 20px;">${object.message or ''}</p>
+                    </div>
+
+                    <p style="margin-top: 30px;">Best regards,
+                        <br/>
+                        <strong>${object.company_id.name or 'HR Team'}</strong>
+                    </p>
+                </div>
+                <div style="background-color: #004085; color: white; padding: 10px; text-align: center; font-size: 12px;">
+                    <p>c; ${object.company_id.name or 'Company'} - All Rights Reserved</p>
+                </div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="False"/>
+    </record>
+
+</odoo>
