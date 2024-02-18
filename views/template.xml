@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="subjects">
+        <!--  this one t-call="website.layout" is for including website -->
+        <t t-call="website.layout">
+            <title>Passing Subject names into Template</title>
+            <ul>
+                <t t-foreach="subjects" t-as="subject">
+                    <li>
+                        <t t-esc="subject"/>
+                    </li>
+                </t>
+            </ul>
+        </t>
+    </template>
+
+
+    <template id="courses">
+        <t t-call="website.layout">
+            <title>Job Details</title>
+            <div class="oe_structure"/>
+            <div class="oe_structure">
+                <div class="container">
+                    <t t-foreach="courses" t-as="course">
+                        <p>
+                            <a t-attf-href="/academy/{{ slug(course)}}"> <t t-esc="job.name"/> </a>
+                        </p>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- display model data -->
+    <template id="course_detail">
+        <t t-call="website.layout">
+            <title>Job Details</title>
+            <div class="oe_structure"/>
+            <div class="oe_structure">
+                <div class="container">
+                    <h3>
+                        <t t-esc="course.name"/>
+                        <t t-esc="course.name"/>
+                    </h3>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- add new entry in my account to display total vacancies -->
+    <template id="portal_all_jobs" name="Show jobs / available vacancies" customize_show="True" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="before">
+            <t t-set="portal_client_category_enable" t-value="True"/>
+            <t t-set="portal_alert_category_enable" t-value="True"/>
+        </xpath>
+        <div id="portal_alert_category" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="bg_color" t-value="'alert alert-success'"/>
+                <t t-set="placeholder_count" t-value="'vacancies'"/>
+                <t t-set="title">Available Vacancies</t>
+                <t t-set="url" t-value="'/jobs/'"/>
+                <t t-set="show_count" t-value="True"/>
+            </t>
+        </div>
+<!--        <div id="portal_client_category" position="inside">-->
+<!--            <t t-call="portal.portal_docs_entry">-->
+<!--                <t t-set="icon" t-value="'/sale/static/src/img/bag.svg'"/>-->
+<!--                <t t-set="title">Sales Orders</t>-->
+<!--                <t t-set="url" t-value="'/my/orders'"/>-->
+<!--                <t t-set="text">Follow, view or pay your orders</t>-->
+<!--                <t t-set="placeholder_count" t-value="'order_count'"/>-->
+<!--            </t>-->
+<!--        </div>-->
+    </template>
+
+</odoo>
