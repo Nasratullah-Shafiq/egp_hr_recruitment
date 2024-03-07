@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_website_contact_reply_wizard" model="ir.ui.view">
+        <field name="name">website.contact.reply.wizard.form</field>
+        <field name="model">website.contact.reply.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Send Reply">
+                <group>
+                    <group>
+                        <field name="email" string="To"/>
+                        <field name="name" string="Customer"/>
+                        <field name="subject" string="Subject"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="reply_message" string="Message"
+                           placeholder="Type your reply here..."/>
+                </group>
+                <group>
+                    <field name="send_copy"/>
+                    <field name="attach_log"/>
+                </group>
+                <footer>
+                    <button name="action_send_reply" string="Send Reply"
+                            type="object" class="btn btn-primary"/>
+                    <button string="Cancel" class="btn btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
