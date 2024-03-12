@@ -25,7 +25,7 @@
         'data/skill_data.xml',
 
         # Report PDF files
-        'report/hr_recruitment_job_summary_paper_format.xml',
+        'report/egp_hr_recruitment_job_summary_paper_format.xml',
         'report/egp_hr_recruitment_employee_badge_card.xml',
         'report/egp_hr_recruitment_long_list.xml',
         'report/egp_hr_recruitment_short_list.xml',
@@ -36,11 +36,10 @@
         'report/egp_hr_recruitment_un_allocated_seats.xml',
 
         # Employee Card Report files
-
-        'report/hr_applicant_report.xml',
+        'report/egp_hr_recruitment_applicant_report.xml',
 
         # Paper formats must be loaded before report actions
-        'report/egp_hr_report_paper_format.xml',
+        'report/egp_hr_recruitment_report_paper_format.xml',
 
         # Report actions
         'report/egp_hr_card_action.xml',
@@ -52,6 +51,9 @@
         'report/egp_hr_military_card_template.xml',
         'report/egp_hr_judical_card_template.xml',
         'report/egp_hr_arcs_card_template.xml',
+
+        'report/egp_hr_recruitment_arcs_temporary_employee_card.xml',
+        'report/paperformat_temporary_employee_card.xml',
 
         # Recruitment View files
         'views/egp_hr_recruitment_applicant_view.xml',
