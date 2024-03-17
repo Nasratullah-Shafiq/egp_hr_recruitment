@@ -16,6 +16,7 @@
             <field name="domain_force">[(1,'=',1)]</field>
         </record>
 
+
         <record id="egp_hr_recruitment_recruitment_job_kanban_view" model="ir.ui.view">
             <field name="name">egp_hr_recruitment_hr.job.kanban.view</field>
             <field name="model">hr.job</field>
