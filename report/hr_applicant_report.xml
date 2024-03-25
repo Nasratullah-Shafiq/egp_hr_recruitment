@@ -32,6 +32,7 @@
                                          t-att-style="'float: right;' if not is_rtl_lang else 'float: left;'"
                                          height="120" width="100"/>
                                 </div>
+                                
                             </div>
 
                             <!-- Main Table -->
