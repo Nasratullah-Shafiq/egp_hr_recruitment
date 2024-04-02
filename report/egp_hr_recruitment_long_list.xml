@@ -20,9 +20,8 @@
 <!--                                    </t>-->
                                 </p>
                             </div>
-                            
-                            
-                            <div class="col-6 text-center">
+
+                                                        <div class="col-6 text-center">
                                 <p>د افغانستان اسلامي امارت</p>
                                 <p>
                                     <t t-esc="company.name"/>
