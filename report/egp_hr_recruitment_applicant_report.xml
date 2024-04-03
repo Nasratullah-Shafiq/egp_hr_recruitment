@@ -16,7 +16,7 @@
                                          t-att-src="image_data_uri(env.company.logo)"
                                          style="max-height:120px; max-width:100px;"/>
                                 </div>
-                                
+
                                 <div class="col-4 text-center">
                                     <h5 class="mb 0">Islamic Emirates of Afghanistan</h5>
                                     <p class="mb 0" t-esc="env.user.company_id.name"/>
@@ -33,8 +33,7 @@
                                          t-att-style="'float: right;' if not is_rtl_lang else 'float: left;'"
                                          height="120" width="100"/>
                                 </div>
-                                
-                            </div>
+                                                            </div>
 
                             <!-- Main Table -->
                             <table class="table table-bordered table-responsive-md table-md"
