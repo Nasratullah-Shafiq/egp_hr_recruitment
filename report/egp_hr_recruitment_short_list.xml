@@ -11,6 +11,7 @@
                             <div class="col-6 text-center">
                                 <p>امارت اسلامی افغانستان</p>
                                 <p>
+
                                     <t t-esc="company.name"/>
                                 </p>
                             </div>
