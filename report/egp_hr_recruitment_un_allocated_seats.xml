@@ -16,6 +16,7 @@
             <field name="paperformat_id" ref="egp_hr_org_structure.report_paperformat_a4"/>
         </record>
 
+
         <template id="un_allocated_seat_template">
             <t t-call="web.html_container">
                 <t t-call="web.internal_layout">
