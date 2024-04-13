@@ -15,7 +15,6 @@
             <field name="dpi">97</field>
         </record>
 
-
         <record id="hr_applicant_registrationـreport_paperـformat" model="report.paperformat">
             <field name="name">Job Summary Report Format</field>
             <field name="format">A4</field>
