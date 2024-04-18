@@ -27,6 +27,7 @@
                 <div style="text-align: center; font-size: 15pt; margin-top: 20px;">
                     <span t-out="employee.english_position_title"/>
                 </div>
+                
                 <div style="text-align: center; font-size: 15pt;">
                     <span t-out="employee.job_id.name"/>
                 </div>
