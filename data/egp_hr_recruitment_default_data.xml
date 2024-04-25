@@ -18,6 +18,7 @@
     <record id="demo_refuse_reason_2" model="hr.applicant.refuse.reason">
         <field name="name">Your work experience documents were not complete</field>
     </record>
+    
     <record id="demo_refuse_reason_3" model="hr.applicant.refuse.reason">
         <field name="name">You could not get a passing score</field>
     </record>
