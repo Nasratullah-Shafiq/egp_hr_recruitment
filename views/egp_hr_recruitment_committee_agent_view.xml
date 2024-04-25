@@ -22,7 +22,6 @@
                 <field name="agent_name"/>
                 <field name="agent_mail"/>
                 <field name="agent_phone"/>
-
                 <!-- Add group filter -->
                 <group expand="0" string="Group By">
                     <filter string="Agent Type" name="group_by_agent_type" context="{'group_by': 'agent_type'}"/>
