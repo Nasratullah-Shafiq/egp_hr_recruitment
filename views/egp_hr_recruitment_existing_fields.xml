@@ -6,6 +6,7 @@
     <field name="model">hr.applicant</field>
     <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
     <field name="arch" type="xml">
+    
         <!-- Modify the fields using the xpath method -->
 <!--        <xpath expr="//field[@name='interviewer_ids']" position="attributes">-->
 <!--            <attribute name="groups">hr_recruitment.group_hr_recruitment_manager</attribute>-->
