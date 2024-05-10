@@ -6,7 +6,6 @@
             <field name="model">hr.applicant</field>
             <field name="inherit_id" ref="hr_recruitment.crm_case_tree_view_job"/>
             <field name="arch" type="xml">
-
                 <!-- Move fields to arrange in the desired order -->
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="partner_name" position="move" readonly="True"/>
