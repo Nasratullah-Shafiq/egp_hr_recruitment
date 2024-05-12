@@ -6,3 +6,4 @@ class ResCompany(models.Model):
 
     # company's description
     about = fields.Html(string='About the Company', help='A detailed description of the company.')
+
