@@ -11,6 +11,7 @@ def _get_default_color(self):
     return randint(1, 11)
 
 
+
 class AgentView(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'agent.view'
