@@ -1,6 +1,7 @@
 from odoo import api, fields, models, _
 
 
+
 class RecruitmentCommitteeTeam(models.Model):
     _name = 'egp.recruitment.committee'
     _description = 'EGP recruitment committee'
