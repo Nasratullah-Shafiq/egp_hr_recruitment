@@ -23,6 +23,7 @@
                 ${object.company_id.name}
             </h2>
 
+
             <p>
                 ${object.company_id.street or ''} <br/>
                 ${object.company_id.city or ''} <br/>
