@@ -21,6 +21,7 @@ class WebsiteContact(models.Model):
     subject = fields.Char(string='Subject', required=True, tracking=True)
     message = fields.Text(string='Message', required=True, tracking=True)
 
+
     # Status with colors
     status = fields.Selection([
         ('new', 'New'),
