@@ -19,6 +19,7 @@
                 <field name="user_id"/>
                 <field name="application_count"/>
                 <templates>
+                
                     <t t-name="kanban-menu" groups="egp_hr_recruitment.group_hr_recruitment_user">
                         <div class="container">
                             <div class="row">
