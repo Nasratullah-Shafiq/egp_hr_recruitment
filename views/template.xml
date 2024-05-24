@@ -15,7 +15,6 @@
         </t>
     </template>
 
-
     <template id="courses">
         <t t-call="website.layout">
             <title>Job Details</title>
