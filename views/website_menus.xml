@@ -25,6 +25,4 @@
         <field name="website_id" ref="website.default_website"/>
     </record>
 
-
-
 </odoo>
