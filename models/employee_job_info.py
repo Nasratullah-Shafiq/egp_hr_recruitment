@@ -30,6 +30,7 @@ class EmployeeJobInformation(models.Model):
         ].selection,
         string='Execution Type'
     )
+    
 
     p2_form_no = fields.Char(
         string='P2 Form No'
