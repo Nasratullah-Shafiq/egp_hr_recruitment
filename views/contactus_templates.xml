@@ -6,7 +6,6 @@
               name="Custom Contact Us"
               inherit_id="website.contactus"
               priority="99">
-
         <!-- Replace static company info with dynamic data -->
         <xpath expr="//div[@class='col-lg-4 mt-4 mt-lg-0']" position="replace">
             <div class="col-lg-4 mt-4 mt-lg-0">
