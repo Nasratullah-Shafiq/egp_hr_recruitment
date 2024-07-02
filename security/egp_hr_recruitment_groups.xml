@@ -17,6 +17,7 @@
             <field name="name">Expert/expert</field>
             <field name="category_id" ref="egp_hr_recruitment_category"/>
         </record>
+        
         <record id="group_recruitment_id_card_manager" model="res.groups">
             <field name="name">ID Card Manager</field>
             <field name="category_id" ref="egp_hr_recruitment_category"/>
