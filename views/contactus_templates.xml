@@ -21,6 +21,7 @@
 
                             <!-- Company Name -->
                             <li>
+                            
                                 <t t-esc="company.name"/>
                             </li>
 
