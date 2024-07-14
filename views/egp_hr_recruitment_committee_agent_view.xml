@@ -26,6 +26,7 @@
                 <group expand="0" string="Group By">
                     <filter string="Agent Type" name="group_by_agent_type" context="{'group_by': 'agent_type'}"/>
                 </group>
+                
                 <!-- add a search panel  -->
                 <searchpanel>
                     <field name="agent_type" string="Agent Type" icon="fa-users" enable_counters="1" select="multi"/>
