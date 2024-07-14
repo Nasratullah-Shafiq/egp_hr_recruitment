@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="egp_recruitment_view_language_tree" model="ir.ui.view">
+        <field name="name">egp.recruitment.committee.team.language.tree</field>
+        <field name="model">egp.recruitment.committee.team.language</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+
+                <field name="language"/>
+                <field name="color" widget="color_picker"/>
+                <field name="active"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="egp_recruitment_view_property_tag_form" model="ir.ui.view">
+        <field name="name">egp.recruitment.committee.team.language.form</field>
+        <field name="model">egp.recruitment.committee.team.language</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="language"/>
+                        </group>
+                        <group>
+                            <field name="color" widget="color_picker"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="egp_recruitment_action_agent_language" model="ir.actions.act_window">
+        <field name="name">Committee Team Languages</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">egp.recruitment.committee.team.language</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                There is no Language!!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="egp_recruitment_committee_language_menu"
+              name="Language"
+              action="egp_recruitment_action_agent_language"
+              parent="egp_recruitment_committee_label"
+              sequence="40"
+              groups="egp_hr_recruitment.group_recruitment_amir,base.group_erp_manager,egp_hr_recruitment.group_recruitment_expert"
+        />
+
+</odoo>
