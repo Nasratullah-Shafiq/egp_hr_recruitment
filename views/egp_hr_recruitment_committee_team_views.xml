@@ -30,6 +30,7 @@
                         </h1>
                     </div>
                     <group>
+                    
                         <group>
                             <field name="active" invisible="1"/>
                             <field name="member_ids" widget="many2many_tags"
