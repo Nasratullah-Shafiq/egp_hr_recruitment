@@ -1,0 +1,422 @@
+<odoo>
+    <data>
+        <template id="footer_custom_mcit" inherit_id="website.layout" name="Custom Footer">
+            <xpath expr="//div[@id='footer']" position="replace">
+
+                <t t-set="company" t-value="website.company_id"/>
+
+                <div id="footer"
+                     class="oe_structure oe_structure_solo"
+                     style="background-color:#2d3674; color:white;"
+                     t-ignore="true" t-if="not no_footer">
+
+                    <section class="s_text_block pt40 pb16">
+                        <div class="container">
+
+                            <div class="row">
+
+                                <div class="col-lg-3 pt24 pb24">
+                                    <h5 class="mb-3">Company Links</h5>
+                                    <ul class="tree-unstyled">
+                                        <li>
+                                            <a href="/" class="text-white">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-white">About Us</a>
+                                        </li>
+                                        <li>
+                                            <a href="/jobs" class="text-white">Vacancies</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-white">Services</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-white">Legal</a>
+                                        </li>
+                                        <li>
+                                            <a href="/contactus" class="text-white">Contact Us</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- ABOUT + LOGO -->
+                                <div class="col-lg-5 pt24 pb24">
+
+                                    <!-- Logo -->
+                                    <div class="mb-3">
+                                        <img t-if="company.id"
+                                             t-att-src="'/web/image/res.company/%s/logo' % company.id"
+                                             style="max-height:60px;"
+                                             alt="Company Logo"/>
+                                    </div>
+
+                                    <h5 class="mb-3">
+                                        About
+                                        <t t-esc="company.name"/>
+                                    </h5>
+
+                                    <p class="mb-3" t-if="company.about">
+                                        <t t-esc="company.about" t-options="{'widget': 'html', 'sanitize': False}"/>
+                                    </p>
+
+                                    <!-- If the about field is empty -->
+                                    <p class="text-muted" t-else="">
+                                        This company has not yet added a description.
+                                    </p>
+
+                                </div>
+
+                                <!--  CONTACT + SOCIAL -->
+                                <div class="col-lg-4 pt24 pb24">
+                                    <h5 class="mb-3">Get in Touch</h5>
+
+                                    <ul class="tree-unstyled">
+                                        <li>
+                                            <i class="fa fa-envelope me-2"/>
+                                            <a t-if="company.email"
+                                               t-att-href="'mailto:%s' % company.email"
+                                               class="text-white">
+                                                <t t-esc="company.email"/>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <i class="fa fa-whatsapp me-2"/>
+                                            <a t-if="company.phone"
+                                               t-att-href="'https://wa.me/%s' % company.phone.replace(' ', '').replace('+', '')"
+                                               target="_blank"
+                                               class="text-white">
+                                                <t t-esc="company.phone"/>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <i class="fa fa-phone me-2"/>
+                                            <a t-if="company.mobile"
+                                               t-att-href="'tel:%s' % company.mobile.replace(' ', '')"
+                                               class="text-white">
+                                                <t t-esc="company.mobile"/>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <!--  SOCIAL MEDIA -->
+                                    <div class="s_social_media mt-3">
+
+                                        <t t-if="company.social_facebook">
+                                            <a t-att-href="company.social_facebook" target="_blank"
+                                               class="text-white me-2">
+                                                <i class="fa fa-facebook"/>
+                                            </a>
+                                        </t>
+
+                                        <t t-if="company.social_twitter">
+                                            <a t-att-href="company.social_twitter" target="_blank"
+                                               class="text-white me-2">
+                                                <i class="fa fa-twitter"/>
+                                            </a>
+                                        </t>
+
+                                        <t t-if="company.social_linkedin">
+                                            <a t-att-href="company.social_linkedin" target="_blank"
+                                               class="text-white me-2">
+                                                <i class="fa fa-linkedin"/>
+                                            </a>
+                                        </t>
+
+                                        <t t-if="company.social_youtube">
+                                            <a t-att-href="company.social_youtube" target="_blank"
+                                               class="text-white me-2">
+                                                <i class="fa fa-youtube"/>
+                                            </a>
+                                        </t>
+
+                                        <t t-if="company.social_github">
+                                            <a t-att-href="company.social_github" target="_blank"
+                                               class="text-white me-2">
+                                                <i class="fa fa-github"/>
+                                            </a>
+                                        </t>
+
+                                        <t t-if="company.social_instagram">
+                                            <a t-att-href="company.social_instagram" target="_blank"
+                                               class="text-white me-2">
+                                                <i class="fa fa-instagram"/>
+                                            </a>
+                                        </t>
+
+                                        <t t-if="company.social_tiktok">
+                                            <a t-att-href="company.social_tiktok" target="_blank"
+                                               class="text-white">
+                                                <i class="fa fa-music"/>
+                                            </a>
+                                        </t>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--  ADDRESS + MAP -->
+                            <div class="row pt-4 pb-4">
+
+                                <div class="col-lg-6">
+                                    <h5>Contact Information</h5>
+                                    <ul class="tree-unstyled">
+                                        <li>
+                                            <strong>Address:</strong>
+
+                                            <t t-set="p" t-value="company.partner_id.sudo()"/>
+
+                                            <t t-esc="p.street"/>
+                                            <t t-if="p.street2">,
+                                                <t t-esc="p.street2"/>
+                                            </t>
+                                            <t t-if="p.city">,
+                                                <t t-esc="p.city"/>
+                                            </t>
+                                            <t t-if="p.state_id">,
+                                                <t t-esc="p.state_id.name"/>
+                                            </t>
+                                            <t t-if="p.country_id">,
+                                                <t t-esc="p.country_id.name"/>
+                                            </t>
+                                            <t t-if="p.zip">
+                                                <t t-esc="p.zip"/>
+                                            </t>
+                                        </li>
+
+                                        <li>
+                                            <strong>WhatsApp:</strong>
+                                            <t t-esc="company.phone"/>
+                                        </li>
+
+                                        <li>
+                                            <strong>Mobile:</strong>
+                                            <t t-esc="company.mobile"/>
+                                        </li>
+
+                                        <li>
+                                            <strong>Email:</strong>
+                                            <t t-esc="company.email"/>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <h5>Location</h5>
+
+                                    <t t-set="p" t-value="company.partner_id.sudo()"/>
+
+                                    <iframe width="100%" height="200" style="border:0"
+                                            t-att-src="'https://www.google.com/maps?q=%s&amp;output=embed' % p.contact_address">
+                                    </iframe>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+            </xpath>
+        </template>
+
+        <!-- copyright section of footer -->
+        <template id="footer_copyright_company_name" inherit_id="website.layout">
+
+            <!-- Change background of bottom footer -->
+            <xpath expr="//footer" position="attributes">
+                <attribute name="style">background-color: #002366; color: white;</attribute>
+            </xpath>
+
+            <!-- Replace text -->
+            <xpath expr="//footer//span[hasclass('o_footer_copyright_name')]" position="replace">
+                <span class="o_footer_copyright_name me-2 text-white">
+                    Copyright &amp;copy;
+                    <t t-esc="time.strftime('%Y')"/>
+                    <t t-esc="website.company_id.name"/>
+                </span>
+            </xpath>
+
+        </template>
+    </data>
+</odoo>
+
+        <!-- Old code -->
+
+        <!--<odoo>-->
+        <!--    <data>-->
+        <!--        <template id="footer_custom_mcit" inherit_id="website.layout" name="Custom Footer">-->
+        <!--            <xpath expr="//div[@id='footer']" position="replace">-->
+        <!--                <div id="footer" class="oe_structure oe_structure_solo bg-primary" t-ignore="true" t-if="not no_footer">-->
+        <!--                    <section class="s_text_block pt40 pb16" data-snippet="s_text_block" data-name="Custom Text">-->
+        <!--                        <div class="container">-->
+        <!--                            <div class="row">-->
+        <!--                                <div class="col-lg-3 pt24 pb24">-->
+        <!--                                    <h5 class="mb-3">Company Links</h5>-->
+        <!--                                    <ul class="tree-unstyled">-->
+        <!--                                        <li>-->
+        <!--                                            <a href="/">Home</a>-->
+        <!--                                        </li>-->
+        <!--                                        <li>-->
+        <!--                                            <a href="#">About Us</a>-->
+        <!--                                        </li>-->
+        <!--                                        <li>-->
+        <!--                                            <a href="/jobs">Vacancies</a>-->
+        <!--                                        </li>-->
+        <!--                                        <li>-->
+        <!--                                            <a href="#">Services</a>-->
+        <!--                                        </li>-->
+        <!--                                        <li>-->
+        <!--                                            <a href="#">Legal</a>-->
+        <!--                                        </li>-->
+        <!--                                        <li>-->
+        <!--                                            <a href="/contactus">Contact Us</a>-->
+        <!--                                        </li>-->
+        <!--                                    </ul>-->
+        <!--                                </div>-->
+
+        <!--                                <div class="col-lg-5 pt24 pb24">-->
+        <!--                                    <h5 class="mb-3">About-->
+        <!--                                        <t t-esc="website.company_id.name"/>-->
+        <!--                                    </h5>-->
+        <!--                                    <p>We are a dedicated team, providing top-quality solutions to help businesses-->
+        <!--                                        thrive with our innovative products.-->
+        <!--                                    </p>-->
+        <!--                                </div>-->
+
+        <!--                                <div class="col-lg-4 pt24 pb24">-->
+        <!--                                    <h5 class="mb-3">Get in Touch</h5>-->
+        <!--                                    <ul class="tree-unstyled">-->
+        <!--                                        <li>-->
+        <!--                                            <i class="fa fa-envelope fa-fw me-2"/>-->
+        <!--                                            <span>-->
+        <!--                                                <a t-att-href="'mailto:%s' % request.env.company.email">-->
+        <!--                                                    <t t-esc="request.env.company.email"/>-->
+        <!--                                                </a>-->
+        <!--                                            </span>-->
+        <!--                                        </li>-->
+
+        <!--                                        <li>-->
+        <!--                                            <i class="fa fa-phone fa-fw me-2"/>-->
+        <!--                                            <span>-->
+        <!--                                                <a t-att-href="'tel:%s' % request.env.company.phone">-->
+        <!--                                                    <t t-esc="request.env.company.phone"/>-->
+
+        <!--                                                </a>-->
+        <!--                                            </span>-->
+        <!--                                        </li>-->
+        <!--                                    </ul>-->
+
+        <!--                                    <t t-set="company" t-value="website.company_id"/>-->
+        <!--                                    <div class="s_social_media text-start">-->
+        <!--                                        <h5 class="s_social_media_title d-none">Follow Us</h5>-->
+        <!--                                        &lt;!&ndash; Facebook &ndash;&gt;-->
+        <!--                                        <t t-if="company.social_facebook">-->
+        <!--                                            <a t-att-href="company.social_facebook" target="_blank"-->
+        <!--                                               class="s_social_media_facebook">-->
+        <!--                                                <i class="fa fa-facebook rounded-circle shadow-sm"/>-->
+        <!--                                            </a>-->
+        <!--                                        </t>-->
+
+        <!--                                        &lt;!&ndash; Twitter &ndash;&gt;-->
+        <!--                                        <t t-if="company.social_twitter">-->
+        <!--                                            <a t-att-href="company.social_twitter" target="_blank"-->
+        <!--                                               class="s_social_media_twitter">-->
+        <!--                                                <i class="fa fa-twitter rounded-circle shadow-sm"/>-->
+        <!--                                            </a>-->
+        <!--                                        </t>-->
+
+        <!--                                        &lt;!&ndash; LinkedIn &ndash;&gt;-->
+        <!--                                        <t t-if="company.social_linkedin">-->
+        <!--                                            <a t-att-href="company.social_linkedin" target="_blank"-->
+        <!--                                               class="s_social_media_linkedin">-->
+        <!--                                                <i class="fa fa-linkedin rounded-circle shadow-sm"/>-->
+        <!--                                            </a>-->
+        <!--                                        </t>-->
+
+        <!--                                        &lt;!&ndash; YouTube &ndash;&gt;-->
+        <!--                                        <t t-if="company.social_youtube">-->
+        <!--                                            <a t-att-href="company.social_youtube" target="_blank">-->
+        <!--                                                <i class="fa fa-youtube rounded-circle shadow-sm"/>-->
+        <!--                                            </a>-->
+        <!--                                        </t>-->
+
+        <!--                                        &lt;!&ndash; GitHub &ndash;&gt;-->
+        <!--                                        <t t-if="company.social_github">-->
+        <!--                                            <a t-att-href="company.social_github" target="_blank">-->
+        <!--                                                <i class="fa fa-github rounded-circle shadow-sm"/>-->
+        <!--                                            </a>-->
+        <!--                                        </t>-->
+
+        <!--                                        &lt;!&ndash; TikTok &ndash;&gt;-->
+        <!--                                        <t t-if="company.social_tiktok">-->
+        <!--                                            <a t-att-href="company.social_tiktok" target="_blank">-->
+        <!--                                                <i class="fa fa-music rounded-circle shadow-sm"/>-->
+        <!--                                            </a>-->
+        <!--                                        </t>-->
+
+        <!--                                        &lt;!&ndash; Instagram &ndash;&gt;-->
+        <!--                                        <t t-if="company.social_instagram">-->
+        <!--                                            <a t-att-href="company.social_instagram" target="_blank">-->
+        <!--                                                <i class="fa fa-instagram rounded-circle shadow-sm"/>-->
+        <!--                                            </a>-->
+        <!--                                        </t>-->
+
+        <!--                                    </div>-->
+
+        <!--                                </div>-->
+        <!--                            </div>-->
+
+        <!--                            <div class="row pt-4 pb-4">-->
+        <!--                                <div class="col-lg-6">-->
+        <!--                                    <h5>Contact Information</h5>-->
+        <!--                                    <ul class="tree-unstyled">-->
+        <!--                                        <li>-->
+        <!--                                            <strong>Address:</strong>-->
+        <!--                                            <t t-esc="request.env.company.partner_id.contact_address"/>-->
+        <!--                                        </li>-->
+        <!--                                        <li>-->
+        <!--                                            <strong>Contact No:</strong>-->
+        <!--                                            <t t-esc="request.env.company.phone"/>-->
+        <!--                                        </li>-->
+        <!--                                        <li>-->
+        <!--                                            <strong>Email:</strong>-->
+        <!--                                            <a t-att-href="'mailto:%s' % request.env.company.email">-->
+        <!--                                                <t t-esc="request.env.company.email"/>-->
+        <!--                                            </a>-->
+        <!--                                        </li>-->
+        <!--                                    </ul>-->
+        <!--                                </div>-->
+
+        <!--                                <div class="col-lg-6">-->
+        <!--                                    <h5>Working Hours</h5>-->
+        <!--                                    <ul class="tree-unstyled">-->
+        <!--                                        <li>-->
+        <!--                                            <strong>Sat - Wed:</strong>-->
+        <!--                                            08:00 AM to 04:00 PM-->
+        <!--                                        </li>-->
+        <!--                                        <li>-->
+        <!--                                            <strong>Thu:</strong>-->
+        <!--                                            08:30 AM to 01:00 PM-->
+        <!--                                        </li>-->
+        <!--                                    </ul>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </section>-->
+        <!--                </div>-->
+        <!--            </xpath>-->
+        <!--        </template>-->
+
+        <!--        &lt;!&ndash; Modify the copyright section of footer &ndash;&gt;-->
+        <!--        <template id="footer_copyright_company_name" inherit_id="website.layout">-->
+        <!--            <xpath expr="//footer//span[hasclass('o_footer_copyright_name')]" position="replace">-->
+        <!--                <span class="o_footer_copyright_name me-2">-->
+        <!--                    Copyright &amp;copy-->
+        <!--                    <t t-esc="time.strftime('%Y')"/>-->
+        <!--                    Ministry of Communication and IT-->
+        <!--                </span>-->
+        <!--            </xpath>-->
+        <!--        </template>-->
+        <!--    </data>-->
+        <!--</odoo>-->
