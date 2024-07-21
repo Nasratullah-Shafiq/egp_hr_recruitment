@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- create Employee button code-->
+        <record id="egp_hr_recruitment_applicant_create_profile_button" model="ir.ui.view">
+            <field name="name">employee_profile_create_button</field>
+            <field name="model">hr.applicant</field>
+            <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='create_employee_from_applicant']" position="attributes">
+                    <attribute name="groups" add="egp_hr_recruitment.group_recruitment_amir"
+                               separater=","/>
+                    <!-- egp_hr_recruitment.group_recruitment_id_card_manager -->
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
