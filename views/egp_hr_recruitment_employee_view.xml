@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="egp_hr_recruitment_badge_inherited_form_id" model="ir.ui.view">
+        <field name="name">egp_hr_recruitment_badge.inherited.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pin']" position="before">
+                <field name="issue_date" widget="hijri_date"/>
+                <field name="expire_date" widget="hijri_date"/>
+            </xpath>
+            <xpath expr="//page[@name='hr_settings']" position="attributes">
+                <attribute name="groups">egp_hr_recruitment.group_recruitment_id_card_manager</attribute>
+            </xpath>
+        </field>
+    </record>
+    <!-- get print of Employee Badge or Card only for ID Card Manager -->
+    <record id="hr.hr_employee_print_badge" model="ir.actions.report">
+        <field name="groups_id"
+               eval="[(4, ref('egp_hr_recruitment.group_recruitment_id_card_manager'))]"/>
+    </record>
+</odoo>
