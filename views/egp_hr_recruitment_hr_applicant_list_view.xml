@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="hr_recruitment_hr_applicant_tree_view" model="ir.ui.view">
+            <field name="name">hr_applicant_tree.inherited</field>
+            <field name="model">hr.applicant</field>
+            <field name="inherit_id" ref="hr_recruitment.crm_case_tree_view_job"/>
+            <field name="arch" type="xml">
+
+                <!-- Move fields to arrange in the desired order -->
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="partner_name" position="move" readonly="True"/>
+                    <field name="partner_phone" position="move"/>
+                    <field name="email_from" position="move"/>
+                </xpath>
+                <!--                make the name field editable-->
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_name']" position="after">
+                    <field name="father_name" readonly="True"/>
+                    <field name="gender" readonly="True"/>
+                </xpath>
+                <xpath expr="//field[@name='father_name']" position="after">
+                    <field name="applicant_faculty_name"/>
+                </xpath>
+                <xpath expr="//field[@name='email_from']" position="after">
+                    <field name="written_test_marks"/>
+                    <field name="interview_marks"/>
+                    <field name="total_marks"/>
+                </xpath>
+                <xpath expr="//field[@name='total_marks']" position="after">
+                    <field name="comment" placeholder="Add a comment"/>
+                </xpath>
+
+                <!-- Set the tree view to allow editing only at the bottom of the view -->
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="editable">bottom</attribute>
+                </xpath>
+
+                <!-- Add navigation buttons in the header -->
+                <xpath expr="//tree" position="inside">
+                    <header>
+                        <button name="action_move_to_next_stage"
+                                string="Next"
+                                type="object"
+                                confirm="Are you sure you want to move to the next stage?"
+                                class="btn-secondary"/>
+                        <button name="action_move_to_previous_stage"
+                                string="Previous"
+                                type="object"
+                                confirm="Are you sure you want to move to the previous stage?"
+                                class="btn-secondary"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>
