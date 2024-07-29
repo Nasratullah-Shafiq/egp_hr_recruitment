@@ -1,0 +1,37 @@
+<odoo>
+
+    <record id="view_hr_job_form_inherit_egp" model="ir.ui.view">
+        <field name="name">hr.job.form.inherit.egp</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr.view_hr_job_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Recruitment Stage -->
+            <xpath expr="//field[@name='name']" position="after">
+
+<!--                <field name="stage_id"/>-->
+
+                <field name="employee_id"/>
+
+<!--                <field name="hired_employee_names"-->
+<!--                       readonly="1"/>-->
+
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_hr_job_tree_inherit_egp" model="ir.ui.view">
+        <field name="name">hr.job.tree.inherit.egp</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr.view_hr_job_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="employee_id" readonly="1"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
