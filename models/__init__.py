@@ -7,4 +7,5 @@ from . import egp_hr_website_contact
 from . import egp_hr_base_res_company
 from . import employee_job_info
 from . import res_country
+from . import egp_hr_card
 
