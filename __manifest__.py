@@ -50,6 +50,7 @@
         # Report templates
         'report/egp_hr_card_template.xml',
         'report/egp_hr_service_card_template.xml',
+        'report/egp_hr_recruitment_administrative_paper_format.xml',
         'report/egp_hr_administrative_card_template.xml',
         'report/egp_hr_military_card_template.xml',
         'report/egp_hr_judical_card_template.xml',
