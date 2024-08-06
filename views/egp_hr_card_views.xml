@@ -110,7 +110,7 @@
                     </div>
 
                     <!-- Employee Information and Photo -->
-                    <group string="Employee Information">
+                    <group string="Employee Information" col="3">
 
                         <group>
                             <field name="father_names"/>
@@ -118,6 +118,12 @@
                             <field name="job_id"/>
                             <field name="department_id"/>
                             <field name="category"/>
+
+                        </group>
+                        <group>
+                            <field name="english_name"/>
+                            <field name="english_father_name"/>
+                            <field name="english_job_position"/>
                             <field name="identification_no"/>
                             <field name="job_status"/>
                         </group>
