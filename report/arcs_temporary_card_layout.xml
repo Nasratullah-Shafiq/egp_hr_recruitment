@@ -11,6 +11,7 @@
                         size: 54mm 87mm;
                         margin: 0;
                     }
+                    
 
                     html, body {
                         width: 54mm !important;
