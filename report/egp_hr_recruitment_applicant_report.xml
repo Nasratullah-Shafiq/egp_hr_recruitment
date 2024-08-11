@@ -25,6 +25,7 @@
                                     <p class="mb-0">Recruitment Office</p>
                                     <p class="mb 0">Applicant Registration Form</p>
                                 </div>
+                                
                                 <div class="col-4">
                                     <t t-set="current_lang" t-value="env.lang or 'en_US'"/>
                                     <t t-set="is_rtl_lang"
