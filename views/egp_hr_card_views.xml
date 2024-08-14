@@ -20,7 +20,7 @@
                 <field name="expire_date"/>
                 <field name="card_status"
                        widget="badge"
-                       decoration-success="card_status == 'active'"
+                       decoration-success="card_status == 'printed'"
                        decoration-danger="card_status == 'expired'"
                        decoration-warning="card_status == 'draft'"
                        decoration-muted="card_status == 'cancelled'"/>
@@ -45,6 +45,16 @@
                             class="btn-primary"
                             icon="fa-print"
                             invisible="card_status == 'cancelled'"/>
+
+                    <!-- Print ARCS Employee Card Button -->
+                    <button
+                            name="action_print_arcs_employee_card"
+                            type="object"
+                            string="Print Employee Card"
+                            class="btn-primary"
+                            icon="fa-print"
+                            groups="egp_hr.group_arcs_employee_officers"
+                    />
 
                     <!-- Draft Employee Card Button -->
                     <button name="action_reset_to_draft"
