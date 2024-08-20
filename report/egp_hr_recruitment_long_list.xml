@@ -6,6 +6,7 @@
                 <t t-call="web.internal_layout">
                     <t t-set="company" t-value="docs and docs[0].company_id"/>
                     <!--                    <t t-set="company" t-value="docs and docs[0].company_id or False"/>-->
+                    
                     <div class="page" style="font-family:Calibri;">
                         <!--                        Ministry Header Section-->
                         <div class="row">
