@@ -23,6 +23,7 @@
         'data/hr_recruitment_data.xml',
         'data/written_test_email_templates.xml',
         'data/skill_data.xml',
+        'data/egp_hr_employee_card_cron.xml',
 
         # Report PDF files
         'report/egp_hr_recruitment_job_summary_paper_format.xml',
