@@ -20,7 +20,6 @@
                 <xpath expr="//kanban/field[@name='no_of_hired_employee']" position="after">
                     <field name="hired_employee_names"/>
                 </xpath>
-                
 
                 <xpath expr="//div[@class='container o_recruitment_job_container o_kanban_card_content mt-0 mt-sm-3']"
                        position="before">
