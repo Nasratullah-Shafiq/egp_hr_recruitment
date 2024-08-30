@@ -13,8 +13,7 @@
 <!--        </xpath>-->
         <xpath expr="//field[@name='user_id']" position="attributes">
             <attribute name="groups">hr_recruitment.group_hr_recruitment_manager</attribute>
-        </xpath>
-                
+        </xpath>  
             <xpath expr="//field[@name='priority']" position="attributes">
             <attribute name="groups">hr_recruitment.group_hr_recruitment_manager</attribute>
         </xpath>
