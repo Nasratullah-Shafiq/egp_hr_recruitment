@@ -11,5 +11,6 @@
                 <field name="about" placeholder="Tell your company's story, mission, and values..."/>
             </xpath>
         </field>
+        
     </record>
 </odoo>
