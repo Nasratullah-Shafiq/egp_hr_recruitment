@@ -12,6 +12,7 @@
                     <field name="partner_phone" position="move"/>
                     <field name="email_from" position="move"/>
                 </xpath>
+                
                 <!--                make the name field editable-->
                 <xpath expr="//field[@name='name']" position="attributes">
                     <attribute name="readonly">0</attribute>
