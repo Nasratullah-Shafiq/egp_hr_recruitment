@@ -14,6 +14,7 @@
             </xpath>
         </field>
         
+        
     </record>
     <!-- get print of Employee Badge or Card only for ID Card Manager -->
     <record id="hr.hr_employee_print_badge" model="ir.actions.report">
