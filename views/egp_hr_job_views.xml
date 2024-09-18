@@ -16,8 +16,7 @@
 <!--                <field name="hired_employee_names"-->
 <!--                       readonly="1"/>-->
 
-            </xpath>
-            
+            </xpath>            
         </field>
     </record>
 
