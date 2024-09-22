@@ -12,7 +12,7 @@
         <field name="arch" type="xml">
             <tree string="Employee Job Information">
                 <field name="employee_id"/>
-                
+
                 <field name="execution_type"/>
                 <field name="p2_form_no"/>
                 <field name="p2_approval_date"/>
@@ -28,7 +28,6 @@
         </field>
 
     </record>
-
 
     <!-- ========================================================= -->
     <!-- Employee Job Information - Form View                      -->
