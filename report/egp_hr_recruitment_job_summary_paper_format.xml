@@ -13,6 +13,7 @@
             <field name="margin_right">10</field>
             <field name="header_spacing">35</field>
             <field name="dpi">97</field>
+
         </record>
 
         <record id="hr_applicant_registrationـreport_paperـformat" model="report.paperformat">
