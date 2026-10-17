@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="department_demo" model="hr.department">
+            <field name="name">
+                <![CDATA[ سیستم سازي ]]>
+            </field>
+        </record>
+        <!--  Default data for hr.employee model  -->
+        <record id="egp_hr_recruitment_employee_default_records" model="hr.employee">
+            <field name="name">Shafiqullah Hamdard</field>
+            <field name="issue_date">1401/01/01</field>
+            <field name="expire_date">1405/01/30</field>
+            <field name="employee_pashto_name"><![CDATA[ شفیق الله همدرد ]]></field>
+            <field name="pashto_position_title"><![CDATA[ متخصص تلفیق سیستم های معلوماتي ]]></field>
+            <field name="image_1920" type="base64" file="egp_hr_recruitment/static/img/shafiq.JPG"/>
+            <field name="job_id" ref="myfield"/>
+            <field name="department_id" ref="department_demo"/>
+        </record>
+
+
+
+
+    </data>
+</odoo>
+
