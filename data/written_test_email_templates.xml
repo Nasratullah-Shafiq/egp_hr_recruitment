@@ -1,0 +1,38 @@
+<odoo>
+
+    <!-- WRITTEN TEST EMAIL -->
+    <record id="email_template_written_test" model="mail.template">
+        <field name="name">Written Test Email</field>
+        <field name="model_id" ref="egp_hr_recruitment.model_hr_applicant"/>
+
+        <field name="email_to">${object.email_from}</field>
+        <field name="email_from">${(object.company_id.email or user.email)}</field>
+
+        <field name="subject">
+            Written Test Invitation - ${object.job_id.name}
+        </field>
+
+        <field name="body_html">
+            <![CDATA[
+        <p>Dear ${object.partner_name},</p>
+
+        <p>
+            You are shorttreeed for the <strong>Written Test</strong>.
+        </p>
+
+        <p>
+            <strong>Job:</strong> ${object.job_id.name} <br/>
+            <strong>Department:</strong> ${object.job_department_id.name} <br/>
+            <strong>Location:</strong> ${object.work_location_id.name}
+        </p>
+
+        <p>
+            Please be prepared for the test.
+        </p>
+
+        <p>Best Regards,<br/>${object.company_id.name}</p>
+        ]]>
+        </field>
+    </record>
+
+</odoo>
