@@ -1,0 +1,612 @@
+<odoo>
+
+    <template id="judical_employee_card">
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="employee">
+                <t t-call="web.basic_layout">
+
+                    <!-- ===================================================== -->
+                    <!-- PAGE 1 - FRONT SIDE                                  -->
+                    <!-- ===================================================== -->
+
+                    <div class="page"
+                         style="
+                        width:85.6mm;
+                        height:54mm;
+                        margin:0 !important;
+                        padding:0 !important;
+                        position:relative;
+                        overflow:hidden;
+                        background-color: red;
+                    ">
+
+                        <!-- BACKGROUND -->
+                        <img
+                                src="/egp_hr_recruitment/static/img/court_employee_judical_card.png"
+                                style="
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            width:85.6mm;
+                            height:54mm;
+                            margin:0;
+                            padding:0;
+                            display:block;
+                            z-index:0;
+                        "
+                        />
+
+
+                        <!-- ================================================= -->
+                        <!-- PHOTO                                              -->
+                        <!-- ================================================= -->
+
+                        <t t-if="employee.avatar_1920">
+
+                            <img
+                                    t-att-src="image_data_uri(employee.avatar_1920)"
+                                    style="
+                                position:absolute;
+                                top:10mm;
+                                left:1mm;
+                                width:18mm;
+                                height:21mm;
+                                display:block;
+                                margin:0;
+                                padding:0;
+                                border:1px solid #000;
+                                border-radius:50%;
+                                object-fit:cover;
+                                box-sizing:border-box;
+                                z-index:10;
+                            "
+                                    alt="Employee Photo"
+                            />
+
+                        </t>
+
+
+                        <!-- ================================================= -->
+                        <!-- FRONT INFORMATION                                  -->
+                        <!-- ================================================= -->
+
+                        <table style="
+                        position:absolute;
+                        top:15mm;
+                        right:3mm;
+                        width:53mm;
+                        margin:0;
+                        padding:0;
+                        border:0;
+                        border-collapse:collapse;
+                        table-layout:fixed;
+                        font-size:11px;
+                        font-family:Calibri,Arial,sans-serif;
+                        direction:rtl;
+                        line-height:1;
+                        z-index:10;
+                    ">
+
+                            <!-- NAME -->
+                            <tr style="height:4.5mm;">
+
+                                <td style="
+                                width:23mm;
+                                height:4.5mm;
+                                margin:0;
+                                padding:0;
+                                font-weight:bold;
+                                white-space:nowrap;
+                                vertical-align:middle;
+                                line-height:1;
+                            ">
+                                    نوم او تخلص:
+                                </td>
+
+                                <td style="
+                                width:30mm;
+                                height:4.5mm;
+                                margin:0;
+                                padding:0;
+                                white-space:nowrap;
+                                vertical-align:middle;
+                                line-height:1;
+                            ">
+                                    <span t-field="employee.name"/>
+                                </td>
+
+                            </tr>
+
+
+                            <!-- FATHER NAME -->
+                            <tr style="height:4.5mm;">
+
+                                <td style="
+                                height:4.5mm;
+                                margin:0;
+                                padding:0;
+                                font-weight:bold;
+                                white-space:nowrap;
+                                vertical-align:middle;
+                                line-height:1;
+                            ">
+                                    د پلار نوم:
+                                </td>
+
+                                <td style="
+                                height:4.5mm;
+                                margin:0;
+                                padding:0;
+                                white-space:nowrap;
+                                vertical-align:middle;
+                                line-height:1;
+                            ">
+                                    <span t-field="employee.father_name"/>
+                                </td>
+
+                            </tr>
+
+
+                            <!-- JOB -->
+                            <tr style="height:4.5mm;">
+
+                                <td style="
+                                height:4.5mm;
+                                margin:0;
+                                padding:0;
+                                font-weight:bold;
+                                white-space:nowrap;
+                                vertical-align:middle;
+                                line-height:1;
+                            ">
+                                    دنده:
+                                </td>
+
+                                <td style="
+                                height:4.5mm;
+                                margin:0;
+                                padding:0;
+                                white-space:nowrap;
+                                vertical-align:middle;
+                                line-height:1;
+                            ">
+                                    <span t-field="employee.job_id.name"/>
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ISSUE DATE -->
+                            <tr style="height:4.5mm;">
+
+                                <td style="
+                                height:4.5mm;
+                                margin:0;
+                                padding:0;
+                                font-weight:bold;
+                                white-space:nowrap;
+                                vertical-align:middle;
+                                line-height:1;
+                            ">
+                                    د صدور نیټه:
+                                </td>
+
+                                <td style="
+                                height:4.5mm;
+                                margin:0;
+                                padding:0;
+                                white-space:nowrap;
+                                vertical-align:middle;
+                                line-height:1;
+                            ">
+                                    <span t-field="employee.identification_print_date"/>
+                                </td>
+
+                            </tr>
+
+
+                            <!-- EXPIRY DATE -->
+                            <tr style="height:4.5mm;">
+
+                                <td style="
+                                height:4.5mm;
+                                margin:0;
+                                padding:0;
+                                font-weight:bold;
+                                white-space:nowrap;
+                                vertical-align:middle;
+                                line-height:1;
+                            ">
+                                    د پای ته رسیدو نیټه:
+                                </td>
+
+                                <td style="
+                                height:4.5mm;
+                                margin:0;
+                                padding:0;
+                                white-space:nowrap;
+                                vertical-align:middle;
+                                line-height:1;
+                            ">
+                                    <span t-field="employee.identification_expiry_date"/>
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- ===================================================== -->
+                    <!-- PAGE 2 - BACK SIDE                                   -->
+                    <!-- ===================================================== -->
+
+                    <div class="page"
+                         style="
+                        width:85.6mm;
+                        height:54mm;
+                        margin:0 !important;
+                        padding:0 !important;
+                        position:relative;
+                        overflow:hidden;
+                    ">
+
+                        <!-- BACKGROUND -->
+                        <img
+                                src="/egp_hr_recruitment/static/img/court_employee_judical_card_2.png"
+                                style="
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            width:85.6mm;
+                            height:54mm;
+                            margin:0;
+                            padding:0;
+                            display:block;
+                            z-index:0;
+                        "
+                        />
+
+
+                        <!-- ================================================= -->
+                        <!-- BACK TABLE                                         -->
+                        <!-- ================================================= -->
+
+                        <table style="
+                        position:absolute;
+                        top:16mm;
+                        left:5mm;
+                        width:75mm;
+                        margin:0;
+                        padding:0;
+                        border:0.25mm solid #000;
+                        border-collapse:collapse;
+                        table-layout:fixed;
+                        font-size:9px;
+                        font-family:Calibri,Arial,sans-serif;
+                        text-align:left;
+                        direction:ltr;
+                        line-height:1;
+                        z-index:10;
+                    ">
+
+                            <!-- ============================================= -->
+                            <!-- TOP SECTION                                    -->
+                            <!-- ============================================= -->
+
+                            <tr>
+
+                                <!-- LEFT INFORMATION -->
+                                <td style="
+                                width:65%;
+                                margin:0;
+                                padding:0;
+                                vertical-align:top;
+                                border-right:0.25mm solid #000;
+                                line-height:1;
+                            ">
+
+                                    <table style="
+                                    width:100%;
+                                    margin:0;
+                                    padding:0;
+                                    border:0;
+                                    border-collapse:collapse;
+                                    table-layout:fixed;
+                                    line-height:1;
+                                ">
+
+                                        <!-- NAME -->
+                                        <tr style="height:4.5mm;">
+
+                                            <td style="
+                                            width:18mm;
+                                            height:4.5mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            text-align:left;
+                                            vertical-align:middle;
+                                            white-space:nowrap;
+                                            line-height:1;
+                                            border-bottom:0.25mm solid #000;
+                                        ">
+                                                Name:
+                                            </td>
+
+                                            <td style="
+                                            height:4.5mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            text-align:left;
+                                            vertical-align:middle;
+                                            white-space:nowrap;
+                                            line-height:1;
+                                            border-bottom:0.25mm solid #000;
+                                        ">
+                                                <span t-field="employee.english_name"/>
+                                            </td>
+
+                                        </tr>
+
+
+                                        <!-- FATHER NAME -->
+                                        <tr style="height:4.5mm;">
+
+                                            <td style="
+                                            height:4.5mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            border-right:0.25mm solid #000;
+                                            border-bottom:0.25mm solid #000;
+                                            white-space:nowrap;
+                                            vertical-align:middle;
+                                            line-height:1;
+                                        ">
+                                                Father Name:
+                                            </td>
+
+                                            <td style="
+                                            height:4.5mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            border-bottom:0.25mm solid #000;
+                                            white-space:nowrap;
+                                            vertical-align:middle;
+                                            line-height:1;
+                                        ">
+                                                <span t-field="employee.english_father_name"/>
+                                            </td>
+
+                                        </tr>
+
+
+                                        <!-- POSITION -->
+                                        <tr style="height:4.5mm;">
+
+                                            <td style="
+                                            height:4.5mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            border-right:0.25mm solid #000;
+                                            border-bottom:0.25mm solid #000;
+                                            white-space:nowrap;
+                                            vertical-align:middle;
+                                            line-height:1;
+                                        ">
+                                                Position:
+                                            </td>
+
+                                            <td style="
+                                            height:4.5mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            border-bottom:0.25mm solid #000;
+                                            white-space:nowrap;
+                                            vertical-align:middle;
+                                            line-height:1;
+                                        ">
+                                                <span t-field="employee.english_job_position"/>
+                                            </td>
+
+                                        </tr>
+
+
+                                        <!-- ISSUE DATE -->
+                                        <tr style="height:4.5mm;">
+
+                                            <td style="
+                                            height:4.5mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            border-right:0.25mm solid #000;
+                                            border-bottom:0.25mm solid #000;
+                                            white-space:nowrap;
+                                            vertical-align:middle;
+                                            line-height:1;
+                                        ">
+                                                Issue Date:
+                                            </td>
+
+                                            <td style="
+                                            height:4.5mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            border-bottom:0.25mm solid #000;
+                                            white-space:nowrap;
+                                            vertical-align:middle;
+                                            line-height:1;
+                                        ">
+                                                <span t-field="employee.identification_print_date"/>
+                                            </td>
+
+                                        </tr>
+
+
+                                        <!-- EXPIRY DATE -->
+                                        <tr style="height:4.5mm;">
+
+                                            <td style="
+                                            height:4.5mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            border-right:0.25mm solid #000;
+                                            white-space:nowrap;
+                                            vertical-align:middle;
+                                            line-height:1;
+                                        ">
+                                                Exp Date:
+                                            </td>
+
+                                            <td style="
+                                            height:4.5mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            white-space:nowrap;
+                                            vertical-align:middle;
+                                            line-height:1;
+                                        ">
+                                                <span t-field="employee.identification_expiry_date"/>
+                                            </td>
+
+                                        </tr>
+
+                                    </table>
+
+                                </td>
+
+
+                                <!-- ============================================= -->
+                                <!-- QR CODE                                       -->
+                                <!-- ============================================= -->
+
+                                <td style="
+                                width:35%;
+                                height:15mm;
+                                margin:0;
+                                padding:0;
+                                text-align:right;
+                                vertical-align:middle;
+                            ">
+
+                                    <t t-if="employee.qr_code">
+
+                                        <img
+                                                t-att-src="'/web/image/hr.employee/' + str(employee.id) + '/qr_code'"
+                                                style="
+                                            width:15mm;
+                                            height:15mm;
+                                            display:block;
+                                            margin:0 1mm 0 0;
+                                            padding:0;
+                                            border:0;
+                                            float:right;
+                                        "
+                                        />
+
+                                    </t>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ============================================= -->
+                            <!-- BOTTOM SECTION                                 -->
+                            <!-- ============================================= -->
+
+                            <tr>
+
+                                <td colspan="2" style="
+                                margin:0;
+                                padding:0;
+                                border-top:0.25mm solid #000;
+                                line-height:1;
+                            ">
+
+                                    <table style="
+                                    width:100%;
+                                    margin:0;
+                                    padding:0;
+                                    border:0;
+                                    border-collapse:collapse;
+                                    table-layout:fixed;
+                                    line-height:1;
+                                ">
+
+                                        <tr style="
+                                        height:14mm;
+                                        margin:0;
+                                        padding:0;
+                                    ">
+
+                                            <!-- COLUMN 1 -->
+                                            <td style="
+                                            width:20%;
+                                            height:14mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            border-right:0.25mm solid #000;
+                                            vertical-align:middle;
+                                        ">
+                                                S.Phone:
+                                            </td>
+
+
+                                            <!-- COLUMN 2 -->
+                                            <td style="
+                                            width:32%;
+                                            height:14mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            border-right:0.25mm solid #000;
+                                            vertical-align:middle;
+                                        ">
+                                            </td>
+
+
+                                            <!-- COLUMN 3 -->
+                                            <td style="
+                                            width:21%;
+                                            height:14mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            border-right:0.25mm solid #000;
+                                            vertical-align:middle;
+                                        ">
+                                                Office:
+                                            </td>
+
+
+                                            <!-- COLUMN 4 -->
+                                            <td style="
+                                            width:27%;
+                                            height:14mm;
+                                            margin:0;
+                                            padding:0.5mm;
+                                            vertical-align:middle;
+                                        ">
+                                            </td>
+
+                                        </tr>
+
+                                    </table>
+
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </t>
+            </t>
+
+        </t>
+
+    </template>
+
+</odoo>

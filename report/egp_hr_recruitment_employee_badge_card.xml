@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_employee_badge" inherit_id="hr.print_employee_badge">
+        <xpath expr="//div[@class='col-md-6']" position="replace">
+            <!-- Front side of the ID card -->
+            <div style="border-radius: 10px; border: 1px solid black; height: 640px; width: 480px; padding: 15px; display: flex; flex-direction: column; align-items: center; box-sizing: border-box;">
+                <div style="text-align: center; margin-top: 25px;">
+                    <img src="egp_hr_recruitment/static/description/Islami_Emerate_logo.png" height="110px"
+                         width="130px"/>
+                </div>
+                <div style="text-align: center;">
+                    <p>Islamic Emirate of Afghanistan</p>
+                </div>
+                <div style="text-align: center;">
+                    <img t-att-src="image_data_uri(employee.avatar_1920)"
+                         style="height: 165px; width: 160px; border-radius: 100px; margin-top: 15px;"/>
+                </div>
+                <div style="text-align: center; font-size: 18pt; margin-top: 19px;">
+                    <p style="margin-bottom: 0; margin-top: 0;">
+                        <span t-out="employee.employee_english_name"/>
+                    </p>
+                    <p style="margin-bottom: 0; margin-top: 0;">
+                        <span t-out="employee.name"/>
+                    </p>
+                </div>
+                <div style="text-align: center; font-size: 15pt; margin-top: 20px;">
+                    <span t-out="employee.english_position_title"/>
+                </div>
+                <div style="text-align: center; font-size: 15pt;">
+                    <span t-out="employee.job_id.name"/>
+                </div>
+                <div t-if="employee.barcode" t-field="employee.barcode"
+                     style="text-align: center; margin-bottom: 20px;"
+                     t-options="{'widget': 'barcode', 'width': 800, 'height': 120, 'img_style': 'max-height: 50pt; max-width: 100%;', 'img_align': 'center'}">
+                </div>
+            </div>
+            <!-- Back side of the ID card -->
+             <div style="border-radius: 10px; border: 1px solid black; height: 640px; width: 480px; padding: 15px; display: flex; flex-direction: column; align-items: center; box-sizing: border-box; margin-top: 400px; ">
+                <span t-if="employee.company_id.logo">
+                    <img t-att-src="image_data_uri(employee.company_id.logo)"
+                         style="height: 150px; width: 170px; margin: 0 auto; display: block; margin-top: 22px;"/>
+                </span>
+                <div class="text-center" style="text-align: center;">
+                    <p style="font-size: 12px; font-family: calibri;">
+                        د مخابراتو او معلوماتی تکنالوژی وزارت
+                        <br/>
+                        MINISTRY OF COMMUNICATION AND IT
+                    </p>
+                </div>
+                <div style="background-color: rgb(71, 87, 172); color: white; padding: 10px; width: 100%; text-align: center;">
+                    <div style="font-size: 15px;">
+                        <p>Directorate:
+                            <span t-field="employee.department_id.name"/>
+                        </p>
+                    </div>
+                    <div style="font-family: calibri; font-size: 17px; margin-top: 15px;">
+                        <p>
+                            Note: We ask all the respected security officials to cooperate with this card holder. Please
+                            call us at 0202101182 if necessary.
+                        </p>
+                    </div>
+                    <div style="font-family: calibri; font-size: 13pt; margin-top: 20px;">
+                        <p>
+                            <label>Issue Date:</label>
+                            <span t-field="employee.issue_date"/>
+                            <br/>
+                            <label>Expire Date:</label>
+                            <span t-field="employee.expire_date"/>
+                        </p>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <p>
+                            <img src="egp_hr_recruitment/static/description/phone.png" height="15px" width="15px"/>
+                            +93(0)2101182
+                            <br/>
+                            <img src="egp_hr_recruitment/static/description/tap.png" height="20px" width="20px"/>
+                            www.mcit.gov.af
+                            <br/>
+                            <img src="egp_hr_recruitment/static/description/location.png" height="20px" width="20px"/>
+                            Address: Mohammad jan Khan Watt, Kabul-Afghanistan
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

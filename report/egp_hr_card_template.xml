@@ -1,0 +1,242 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+
+<!--    <template id="employee_card">-->
+
+<!--        <t t-call="web.html_container">-->
+
+<!--            <t t-foreach="docs" t-as="employee">-->
+
+<!--                <t t-call="web.basic_layout">-->
+
+<!--                    <div class="page">-->
+
+<!--                        <div style="-->
+<!--                            position:relative;-->
+<!--                            width:85.6mm;-->
+<!--                            height:54mm;-->
+<!--                            overflow:hidden;-->
+<!--                        ">-->
+
+<!--                            &lt;!&ndash; BACKGROUND IMAGE &ndash;&gt;-->
+<!--                            <img-->
+<!--                                src="/egp_hr_recruitment/static/img/employee_card.png"-->
+<!--                                style="-->
+<!--                                    position:absolute;-->
+<!--                                    top:0;-->
+<!--                                    left:0;-->
+<!--                                    width:85.6mm;-->
+<!--                                    height:54mm;-->
+<!--                                    z-index:0;-->
+<!--                                "-->
+<!--                            />-->
+
+
+<!--                            &lt;!&ndash; EMPLOYEE NAME &ndash;&gt;-->
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+<!--                                top:20mm;-->
+<!--                                left:35mm;-->
+<!--                                z-index:10;-->
+<!--                                font-size:14px;-->
+<!--                                font-weight:bold;-->
+<!--                            ">-->
+<!--                                <span t-field="employee.name"/>-->
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; FATHER NAME &ndash;&gt;-->
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+<!--                                top:27mm;-->
+<!--                                left:35mm;-->
+<!--                                z-index:10;-->
+<!--                                font-size:12px;-->
+<!--                            ">-->
+<!--                                <span t-field="employee.father_name"/>-->
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; JOB POSITION &ndash;&gt;-->
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+<!--                                top:34mm;-->
+<!--                                left:35mm;-->
+<!--                                z-index:10;-->
+<!--                                font-size:12px;-->
+<!--                            ">-->
+<!--                                <span t-field="employee.job_id.name"/>-->
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; START DATE &ndash;&gt;-->
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+<!--                                top:41mm;-->
+<!--                                left:35mm;-->
+<!--                                z-index:10;-->
+<!--                                font-size:10px;-->
+<!--                            ">-->
+<!--                                <span t-field="employee.identification_print_date"/>-->
+<!--                            </div>-->
+
+
+<!--                            &lt;!&ndash; END DATE &ndash;&gt;-->
+<!--                            <div style="-->
+<!--                                position:absolute;-->
+<!--                                top:46mm;-->
+<!--                                left:35mm;-->
+<!--                                z-index:10;-->
+<!--                                font-size:10px;-->
+<!--                            ">-->
+<!--                                <span t-field="employee.identification_expiry_date"/>-->
+<!--                            </div>-->
+
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </t>-->
+
+<!--            </t>-->
+
+<!--        </t>-->
+
+<!--    </template>-->
+
+<!--</odoo>-->
+
+<odoo>
+
+    <template id="employee_card">
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="employee">
+
+                <t t-call="web.basic_layout">
+
+                    <div class="page">
+
+                        <div style="
+                            position:relative;
+                            width:85.6mm;
+                            height:54mm;
+                            overflow:hidden;
+                        ">
+
+                            <!-- BACKGROUND IMAGE -->
+                            <img
+                                    src="/egp_hr_recruitment/static/img/employee_card.png"
+                                    style="
+                                    position:absolute;
+                                    top:0;
+                                    left:0;
+                                    width:85.6mm;
+                                    height:54mm;
+                                    z-index:0;
+                                "
+                            />
+
+
+                            <!-- EMPLOYEE INFORMATION TABLE -->
+                            <table style="
+    position:absolute;
+    top:18mm;
+    left:35mm;
+    z-index:10;
+    width:45mm;
+    border-collapse:collapse;
+    font-size:11px;
+    font-family:'Calibri', Arial, sans-serif;
+">
+
+                                <tr>
+                                    <td style="
+                                        font-weight:bold;
+                                        width:18mm;
+                                        padding:1mm;
+                                        font-family: Calibri;
+                                    ">
+                                        نوم او تخلص:
+                                    </td>
+
+                                    <td style="padding:1mm;">
+                                        <span t-field="employee.name"/>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td style="
+                                        font-weight:bold;
+                                        padding:1mm;
+                                    ">
+                                        د پلار نوم:
+                                    </td>
+
+                                    <td style="padding:1mm;">
+                                        <span t-field="employee.father_name"/>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td style="
+                                        font-weight:bold;
+                                        padding:1mm;
+                                    ">
+                                        دنده:
+                                    </td>
+
+                                    <td style="padding:1mm;">
+                                        <span t-field="employee.job_id.name"/>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td style="
+                                        font-weight:bold;
+                                        padding:1mm;
+                                    ">
+                                        د صدور نیټه:
+                                    </td>
+
+                                    <td style="padding:1mm;">
+                                        <span t-field="employee.identification_print_date"/>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td style="
+                                        font-weight:bold;
+                                        padding:1mm;
+                                    ">
+                                        د پای ته رسیدو نیټه:
+                                    </td>
+
+                                    <td style="padding:1mm;">
+                                        <span t-field="employee.identification_expiry_date"/>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+
+
+                        </div>
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+
+    </template>
+
+</odoo>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- egp hr job summary report action -->
+    <record id="action_report_job_summary" model="ir.actions.report">
+        <field name="name">Position</field>
+        <field name="model">hr.job</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_hr_recruitment.report_custom_job_description_template_recruitment</field>
+        <field name="report_file">egp_hr_recruitment.report_custom_job_description_template_recruitment</field>
+        <field name="print_report_name">'Position - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_hr_job"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="egp_hr_org_structure.report_paperformat_a4"/>
+        <field name="groups_id"
+               eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert')),(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+    </record>
+
+    <!-- hr.applicant stages report action -->
+    <record id="action_hr_applicant_long_tree" model="ir.actions.report">
+        <field name="name">long List</field>
+        <field name="model">hr.applicant</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_hr_recruitment.egp_hr_recruitment_print_long_tree</field>
+        <field name="report_file">egp_hr_recruitment.egp_hr_recruitment_print_long_tree</field>
+        <field name="print_report_name">'Applicant Report - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="hr_recruitment.model_hr_applicant"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="egp_hr_org_structure.report_paperformat_a4"/>
+        <!--        <field name="groups_id" eval="[(4, ref('egp_hr_org_structure.group_tashkil_Layha_Wazaif_Karmand'))]"/>-->
+    </record>
+    <!--      Short list-->
+    <record id="action_hr_applicant_short_tree" model="ir.actions.report">
+        <field name="name">Short List</field>
+        <field name="model">hr.applicant</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_hr_recruitment.short_tree</field>
+        <field name="report_file">egp_hr_recruitment.short_tree</field>
+        <field name="print_report_name">'Applicant Report - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="hr_recruitment.model_hr_applicant"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="egp_hr_org_structure.report_paperformat_a4"/>
+        <!--        <field name="groups_id" eval="[(4, ref('egp_hr_org_structure.group_tashkil_Layha_Wazaif_Karmand'))]"/>-->
+    </record>
+
+    <!-- hr.applicant written test report action -->
+    <record id="action_hr_applicant_written_test" model="ir.actions.report">
+        <field name="name">Written Test</field>
+        <field name="model">hr.applicant</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_hr_recruitment.egp_hr_recruitment_written_test</field>
+        <field name="report_file">egp_hr_recruitment.egp_hr_recruitment_written_test</field>
+        <!--        <field name="print_report_name">'Written Test'</field>-->
+        <field name="print_report_name">'Applicant Report - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="hr_recruitment.model_hr_applicant"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="egp_hr_org_structure.report_paperformat_a4"/>
+        <!--        <field name="groups_id" eval="[(4, ref('egp_hr_org_structure.group_tashkil_Layha_Wazaif_Karmand'))]"/>-->
+    </record>
+    <!-- hr.applicant Hired  action -->
+    <record id="action_hr_applicant_hired_stage" model="ir.actions.report">
+        <field name="name">Hired</field>
+        <field name="model">hr.applicant</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_hr_recruitment.egp_hr_recruitment_hired</field>
+        <field name="report_file">egp_hr_recruitment.egp_hr_recruitment_hired</field>
+        <field name="print_report_name">'Hired report'</field>
+        <!--        <field name="print_report_name">'Applicant Report - %s' % (object.name).replace('/', '')</field>-->
+        <field name="binding_model_id" ref="hr_recruitment.model_hr_applicant"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="egp_hr_org_structure.report_paperformat_a4"/>
+        <!--        <field name="groups_id" eval="[(4, ref('egp_hr_org_structure.group_tashkil_Layha_Wazaif_Karmand'))]"/>-->
+    </record>
+
+    <!-- Applicant Registration Form Report Action -->
+    <record id="action_hr_applicant_report" model="ir.actions.report">
+        <field name="name">Applicant Registration Form</field>
+        <field name="model">hr.applicant</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_hr_recruitment.report_hr_applicant_registration</field>
+        <field name="report_file">egp_hr_recruitment.report_hr_applicant_registration</field>
+        <field name="binding_model_id" ref="hr_recruitment.model_hr_applicant"/>
+        <field name="binding_view_types">form</field>
+        <field name="print_report_name">'Applicant_Registration_%s' % (object.name or object.id)
+        </field>
+        <field name="paperformat_id" ref="egp_hr_recruitment.hr_applicant_registrationـreport_paperـformat"/>
+    </record>
+</odoo>
