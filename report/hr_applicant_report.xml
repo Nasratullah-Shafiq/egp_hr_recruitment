@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Main Report Template -->
+        <template id="report_hr_applicant_registration">
+            <link rel="stylesheet" href="/egp_hr_recruitment/static/src/css/rtl_direction.css"/>
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <div class="page"
+                             style="font-family: 'Times New Roman', Arial, sans-serif; padding-top: 0; margin-top: 0; padding-top: 0 !important; margin-top: 0 !important;">
+                            <!-- Header Section -->
+                            <div class="row mb-3" style="margin-top: 0; padding-top: 0;">
+                                <div class="col-4">
+                                    <img t-if="env.company.logo"
+                                         t-att-src="image_data_uri(env.company.logo)"
+                                         style="max-height:120px; max-width:100px;"/>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <h5 class="mb 0">Islamic Emirates of Afghanistan</h5>
+                                    <p class="mb 0" t-esc="env.user.company_id.name"/>
+                                    <!--                                   <t t-esc="res_company.name"/>-->
+                                    <p class="mb 0">Directorate of Human Resource</p>
+                                    <p class="mb-0">Recruitment Office</p>
+                                    <p class="mb 0">Applicant Registration Form</p>
+                                </div>
+                                <div class="col-4">
+                                    <t t-set="current_lang" t-value="env.lang or 'en_US'"/>
+                                    <t t-set="is_rtl_lang"
+                                       t-value="current_lang.startswith(('fa', 'ar', 'ps', 'he', 'ur'))"/>
+                                    <img src="/egp_hr_recruitment/static/description/eia.png"
+                                         t-att-style="'float: right;' if not is_rtl_lang else 'float: left;'"
+                                         height="120" width="100"/>
+                                </div>
+                            </div>
+
+                            <!-- Main Table -->
+                            <table class="table table-bordered table-responsive-md table-md"
+                                   style="width: 100%; border-collapse: collapse; font-size: 12px;">
+
+                                <!-- Row 1: Personal Information Header -->
+                                <tr style="background-color: #f0f0f0;">
+                                    <th colspan="4" style="text-align: center; font-weight: bold;">Personal
+                                        Information
+                                    </th>
+                                </tr>
+
+                                <!-- Row 2: Name and Last Name -->
+                                <tr>
+                                    <td style="width: 25%; background-color: #f9f9f9;">
+                                        <strong>Full Name</strong>
+                                    </td>
+                                    <td style="width: 25%;">
+                                        <t t-esc="o.partner_name or ''"/>
+                                    </td>
+                                    <td style="width: 25%; background-color: #f9f9f9;">
+                                        <strong>Last Name</strong>
+                                    </td>
+                                    <td style="width: 25%;">
+                                        <t t-esc="o.last_name or ''"/>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 3: Father Name and Grand Father Name -->
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Father's Name</strong>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o.father_name or ''"/>
+                                    </td>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Grand Father's Name</strong>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o.grand_father_name or ''"/>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 4: Age and Date of Birth -->
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Date of Birth</strong>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.date_of_birth">
+                                            <t t-esc="o.date_of_birth.strftime('%Y-%m-%d')"/>
+                                        </t>
+                                    </td>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Age</strong>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.date_of_birth">
+                                            <t t-esc="o.get_age()"/>
+                                        </t>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 5: Tazkira Number and Gender -->
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Tazkira Number</strong>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o.tazkira_number or ''"/>
+                                    </td>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Gender</strong>
+                                    </td>
+                                    <td>
+                                        <t t-if="o.gender == 'male'">Male</t>
+                                        <t t-elif="o.gender == 'female'">Female</t>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 6: Contact Information Header -->
+                                <tr style="background-color: #f0f0f0;">
+                                    <th colspan="4" style="text-align: center;">Contact Information</th>
+                                </tr>
+
+                                <!-- Row 7: Phone Numbers -->
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Phone Number</strong>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o.partner_phone or ''"/>
+                                    </td>
+                                    <!--WhatsApp-->
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>WhatsApp Number</strong>
+                                    </td>
+                                    <td colspan="3">
+                                        <t t-esc="o.partner_mobile or ''"/>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 8:  -->
+
+                                <!-- Row 9: Address Header -->
+                                <tr style="background-color: #f0f0f0;">
+                                    <th colspan="4" style="text-align: center;">Residence Address</th>
+                                </tr>
+
+                                <!-- Row 10: Permanent Address -->
+                                <tr>
+                                    <td rowspan="3" style="background-color: #f9f9f9; vertical-align: middle;">
+                                        <strong>Permanent Address</strong>
+                                    </td>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Country</strong>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="o.country_id and o.country_id.name or ''"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Province</strong>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="o.province_id and o.province_id.name or ''"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>District/Village</strong>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="o.district_id and o.district_id.name or ''"/>
+                                        -
+                                        <t t-esc="o.village or ''"/>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 11: Current Address -->
+                                <tr>
+                                    <td rowspan="3" style="background-color: #f9f9f9; vertical-align: middle;">
+                                        <strong>Current Address</strong>
+                                    </td>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Country</strong>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="o.country_id and o.country_id.name or ''"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Province</strong>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="o.current_province_id and o.current_province_id.name or ''"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>District/Village</strong>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="o.current_district_id and o.current_district_id.name or ''"/>
+                                        -
+                                        <t t-esc="o.current_village or ''"/>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 12: Educational Information Header -->
+                                <tr style="background-color: #f0f0f0;">
+                                    <th colspan="4" style="text-align: center;">Educational Information</th>
+                                </tr>
+
+                                <!-- Row 13: Education Level -->
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Education Level</strong>
+                                    </td>
+                                    <td colspan="3">
+                                        <t t-esc="o.type_id.name or ''"/>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 14: Document Verification -->
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Educational Document Information</strong>
+                                    </td>
+                                    <td colspan="3">
+                                        <span>
+                                            <strong>Place of Graduation:</strong>
+                                            <t t-esc="o.education_country.name or ''"/>
+                                        </span>
+                                        <br/>
+                                        <span>
+                                            <strong>University/Collage Name:</strong>
+                                            <t t-esc="o.education_reference or ''"/>
+                                        </span>
+                                        <br/>
+                                        <span>
+                                            <strong>Faculty:</strong>
+                                            <t t-esc="o.applicant_faculty_name or ''"/>
+                                        </span>
+                                        <br/>
+                                        <span>
+                                            <strong>Year of Graduation:</strong>
+                                            <t t-esc="o.graduation_year or ''"/>
+                                        </span>
+                                        <br/>
+                                        <span>
+                                            <strong>Is the document verified by Ministry of Higher Education?</strong>
+                                        </span>
+                                        <br/>
+                                        <!-- Dynamic checkbox for Yes -->
+                                        <span class="me-3">
+                                            <t t-if="o.is_document_approved">
+                                                ✓
+                                                <strong style="color: green;">Yes</strong>
+                                            </t>
+                                            <t t-if="not o.is_document_approved">
+                                                <input type="checkbox" disabled="disabled"/>
+                                                Yes
+                                            </t>
+                                        </span>
+                                        <!-- Static No checkbox -->
+                                        <span>
+                                            <t t-if="not o.is_document_approved">
+                                                ✓
+                                                <strong style="color: green;">No</strong>
+                                            </t>
+                                            <t t-if="o.is_document_approved">
+                                                <input type="checkbox" disabled="disabled"/>
+                                                No
+                                            </t>
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 15: Bachelor Degree -->
+                                <!--                                <tr>-->
+                                <!--                                    <td style="background-color: #f9f9f9;">-->
+                                <!--                                        <strong>Bachelor's Degree</strong>-->
+                                <!--                                    </td>-->
+                                <!--                                    <td colspan="3">-->
+                                <!--                                        <span>-->
+                                <!--                                            <strong>Minor Course:</strong>-->
+                                <!--                                            __________________-->
+                                <!--                                        </span>-->
+                                <!--                                        <br/>-->
+                                <!--                                        <span>-->
+                                <!--                                            <strong>Major Course:</strong>-->
+                                <!--                                            __________________-->
+                                <!--                                        </span>-->
+                                <!--                                        <br/>-->
+                                <!--                                        <span>-->
+                                <!--                                            <strong>Specialization:</strong>-->
+                                <!--                                            __________________-->
+                                <!--                                        </span>-->
+                                <!--                                    </td>-->
+                                <!--                                </tr>-->
+
+                                <!-- Row 16: Master Degree -->
+                                <!--                                <tr>-->
+                                <!--                                    <td style="background-color: #f9f9f9;">-->
+                                <!--                                        <strong>Master's Degree</strong>-->
+                                <!--                                    </td>-->
+                                <!--                                    <td colspan="3">-->
+                                <!--                                        <span>-->
+                                <!--                                            <strong>Minor Course:</strong>-->
+                                <!--                                            __________________-->
+                                <!--                                        </span>-->
+                                <!--                                        <br/>-->
+                                <!--                                        <span>-->
+                                <!--                                            <strong>Major Course:</strong>-->
+                                <!--                                            __________________-->
+                                <!--                                        </span>-->
+                                <!--                                        <br/>-->
+                                <!--                                        <span>-->
+                                <!--                                            <strong>Specialization:</strong>-->
+                                <!--                                            __________________-->
+                                <!--                                        </span>-->
+                                <!--                                    </td>-->
+                                <!--                                </tr>-->
+
+                                <!-- Row 17: Doctorate Degree -->
+                                <!--                                <tr>-->
+                                <!--                                    <td style="background-color: #f9f9f9;">-->
+                                <!--                                        <strong>Doctorate Degree</strong>-->
+                                <!--                                    </td>-->
+                                <!--                                    <td colspan="3">-->
+                                <!--                                        <span>-->
+                                <!--                                            <strong>Minor Course:</strong>-->
+                                <!--                                            __________________-->
+                                <!--                                        </span>-->
+                                <!--                                        <br/>-->
+                                <!--                                        <span>-->
+                                <!--                                            <strong>Major Course:</strong>-->
+                                <!--                                            __________________-->
+                                <!--                                        </span>-->
+                                <!--                                        <br/>-->
+                                <!--                                        <span>-->
+                                <!--                                            <strong>Specialization:</strong>-->
+                                <!--                                            __________________-->
+                                <!--                                        </span>-->
+                                <!--                                    </td>-->
+                                <!--                                </tr>-->
+
+                                <!-- Row 18: Job Information Header -->
+                                <tr style="background-color: #f0f0f0;">
+                                    <th colspan="4" style="text-align: center;">Employment Information</th>
+                                </tr>
+
+                                <!-- Row 19: Current and Previous Job -->
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Current Applied Job</strong>
+                                    </td>
+                                    <td colspan="3">
+                                        <t t-esc="o.job_id and o.job_id.name or ''"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Previous Experience</strong>
+                                    </td>
+                                    <td colspan="3">
+                                        <t t-esc="o.total_years_experience or '0'"/>
+                                        Years
+                                    </td>
+                                </tr>
+
+                                <!-- Row 20: Teaching Information Header -->
+                                <tr style="background-color: #f0f0f0;">
+                                    <th colspan="4" style="text-align: center;">Lecturer &amp; previous Job
+                                        Information
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <td rowspan="4" style="background-color: #f9f9f9; vertical-align: middle;">
+                                        <strong>Lecturer Information</strong>
+                                    </td>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Lecturer Level</strong>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="o.lecturer_level and o.lecturer_level.name or ''"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Start Date</strong>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="o.lecturer_time or ''"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>End Date</strong>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="o.lecturer_end_date or ''"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Duration</strong>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="o.lecturer_duration_display or ''"/>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 21: Current Address -->
+                                <tr>
+                                    <td rowspan="2" style="background-color: #f9f9f9; vertical-align: middle;">
+                                        <strong>Previous &amp; Last Job</strong>
+                                    </td>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Previous Job</strong>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="o.previous_job or ''"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #f9f9f9;">
+                                        <strong>Last Job</strong>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="o.current_job or ''"/>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 22: Computer Skills Header -->
+                                <tr style="background-color: #f0f0f0;">
+                                    <th colspan="4"
+                                        style="text-align: center; padding: 12px; background-color: #e0e0e0;">
+                                        <i class="fa fa-laptop-code me-2"></i>
+                                        Computer Skills
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="padding: 15px;">
+                                        <t t-set="skill_names"
+                                           t-value="[skill.name for skill in o.computer_skill_ids]"/>
+                                        <table style="width: 100%; border: none; margin: 0;">
+                                            <tr>
+                                                <td style="border: none; padding: 8px; width: 33%;">
+                                                    <i class="fa fa-check-square-o"
+                                                       t-attf-style="color: #{'green' if 'Excel' in skill_names else '#ccc'}; margin-right: 8px;"/>
+                                                    Excel
+                                                </td>
+                                                <td style="border: none; padding: 8px; width: 33%;">
+                                                    <i class="fa fa-check-square-o"
+                                                       t-attf-style="color: #{'green' if 'Word' in skill_names else '#ccc'}; margin-right: 8px;"/>
+                                                    Word
+                                                </td>
+                                                <td style="border: none; padding: 8px; width: 33%;">
+                                                    <i class="fa fa-check-square-o"
+                                                       t-attf-style="color: #{'green' if 'Windows' in skill_names else '#ccc'}; margin-right: 8px;"/>
+                                                    Windows
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: none; padding: 8px;">
+                                                    <i class="fa fa-check-square-o"
+                                                       t-attf-style="color: #{'green' if 'PowerPoint' in skill_names else '#ccc'}; margin-right: 8px;"/>
+                                                    PowerPoint
+                                                </td>
+                                                <td style="border: none; padding: 8px;">
+                                                    <i class="fa fa-check-square-o"
+                                                       t-attf-style="color: #{'green' if 'Access' in skill_names else '#ccc'}; margin-right: 8px;"/>
+                                                    Access
+                                                </td>
+                                                <td style="border: none; padding: 8px;">
+                                                    <i class="fa fa-check-square-o"
+                                                       t-attf-style="color: #{'green' if 'Internet' in skill_names else '#ccc'}; margin-right: 8px;"/>
+                                                    Internet
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <!-- Row 24: Declaration -->
+                                <tr style="background-color: #fffde7;">
+                                    <td colspan="4" style="padding: 15px;">
+                                        <strong>Applicant's Declaration:</strong>
+                                        <p style="margin: 5px 0;">I hereby declare that all the information provided
+                                            above is true, complete, and correct to the best of my knowledge. I
+                                            understand that any false information may lead to the rejection of my
+                                            application or termination of employment.
+                                        </p>
+                                        <div style="margin-top: 20px; display: flex; justify-content: space-between;">
+                                            <div style="text-align: center; width: 45%;">
+                                                <strong>Applicant's Signature:</strong>
+                                                <div style="border-bottom: 1px solid black; margin-top: 5px; height: 30px;"></div>
+                                            </div>
+                                            <div style="text-align: center; width: 45%;">
+                                                <strong>Date:</strong>
+                                                <div style="border-bottom: 1px solid black; margin-top: 5px; height: 30px;">
+                                                    <t t-esc="o.get_current_date()"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Footer -->
+                            <div style="text-align: center; margin-top: 20px; font-size: 10px;">
+                                <span>Page
+                                    <span class="page-number"/>
+                                </span>
+                            </div>
+                        </div>
+                        <p style="page-break-after: always;"/>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
+

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--    Recruitment model related groups-->
+        <record id="egp_hr_recruitment_category" model="ir.module.category">
+            <field name="name">EGP Recruitment Department</field>
+            <field name="description">It covers all groups related to Recruitment Department</field>
+            <field name="sequence">1</field>
+            <field name="visible" eval="True"/>
+        </record>
+        <record id="group_recruitment_amir" model="res.groups">
+            <field name="name">Officer/Amir</field>
+            <field name="category_id" ref="egp_hr_recruitment_category"/>
+        </record>
+        <record id="group_recruitment_expert" model="res.groups">
+            <field name="name">Expert/expert</field>
+            <field name="category_id" ref="egp_hr_recruitment_category"/>
+        </record>
+        <record id="group_recruitment_id_card_manager" model="res.groups">
+            <field name="name">ID Card Manager</field>
+            <field name="category_id" ref="egp_hr_recruitment_category"/>
+        </record>
+
+        <!--  Menu visibilities-->
+        <record id="hr_recruitment.menu_crm_case_categ_all_app" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_crm_case_categ_all_app" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_job_position" model="ir.ui.menu">
+            <field name="groups_id"
+                   eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert')),(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_crm_case_categ0_act_job" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_crm_case_categ0_act_job" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+
+        <record id="hr_recruitment.report_hr_recruitment" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <record id="hr_recruitment.report_hr_recruitment" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_configuration" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_configuration" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_config_applications" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_config_applications" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_degree" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_degree" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_applicant_refuse_reason" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_applicant_refuse_reason" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_config_jobs" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_config_jobs" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_stage" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_stage" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_config_activities" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_config_activities" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+
+        <record id="hr_recruitment.hr_recruitment_menu_config_activity_type" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <record id="hr_recruitment.hr_recruitment_menu_config_activity_type" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+
+        <record id="hr_recruitment.menu_hr_recruitment_config_employees" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('base.group_erp_manager'))]"/>
+        </record>
+
+        <record id="hr_recruitment.hr_applicant_category_menu" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir'))]"/>
+        </record>
+
+        <!--         employee root menu-->
+        <record id="hr.menu_hr_root" model="ir.ui.menu">
+            <field name="groups_id"
+                   eval="[(4, ref('egp_hr_recruitment.group_recruitment_id_card_manager'))]"/>
+        </record>
+
+        <!--         Recruitment Root menu-->
+        <record id="hr_recruitment.menu_hr_recruitment_root" model="ir.ui.menu">
+            <field name="groups_id"
+                   eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir')),(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+
+        <record id="hr.menu_hr_employee_payroll" model="ir.ui.menu">
+            <field name="groups_id"
+                   eval="[(4, ref('egp_hr_recruitment.group_recruitment_id_card_manager'))]"/>
+        </record>
+
+        <record id="hr.menu_hr_employee_user" model="ir.ui.menu">
+            <field name="groups_id"
+                   eval="[(4, ref('egp_hr_recruitment.group_recruitment_id_card_manager'))]"/>
+        </record>
+
+        <record id="hr_recruitment.hr_applicant_category_menu" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+        </record>
+        <record id="egp_hr_recruitment_hr_job_kanban_view" model="ir.ui.view">
+            <field name="name">egp_hr_recruitment_hr_job_kanban.view</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr_recruitment.view_hr_job_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='kanban_boxes']" position="attributes">
+                    <attribute name="groups"
+                               add="base.group_erp_manager,egp_hr_recruitment.group_recruitment_amir,egp_hr_recruitment.group_recruitment_expert"
+                               separator=","/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@name='hr_settings']" position="attributes">
+                    <attribute name="groups">
+                        egp_hr_recruitment.group_recruitment_id_card_manager
+                    </attribute>
+                </xpath>
+                <!-- Add fields employee_pashto_name,pashto_position_title inside the hr_settings page-->
+            </field>
+        </record>
+
+        <!-- Make the UTM menu accessible to custom user groups -->
+        <record id="hr_recruitment.menu_hr_recruitment_utm" model="ir.ui.menu">
+            <field name="groups_id"
+                   eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir')),(4, ref('egp_hr_recruitment.group_recruitment_expert')) ]"/>
+        </record>
+
+        <!--         Mediums menu visible for base.group_erp_manager-->
+        <record id="hr_recruitment.menu_hr_recruitment_utm_mediums" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('base.group_erp_manager'))]"/>
+        </record>
+        <record id="hr_job_hide_filled_for_users" model="ir.rule">
+            <field name="name">Hide filled jobs from recruitment users</field>
+            <field name="model_id" ref="hr_recruitment.model_hr_job"/>
+            <field name="groups"
+                   eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir')),(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
+            <field name="domain_force">[('employee_ids', '=', False)]</field>
+        </record>
+
+    </data>
+</odoo>
+
+
+
