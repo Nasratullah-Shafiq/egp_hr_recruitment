@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    <!-- agent.team: Search view -->
+    <record id="egp_recruitment_committee_team_view_search" model="ir.ui.view">
+        <field name="name">egp.recruitment.committee.team.search</field>
+        <field name="model">egp.recruitment.committee</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field string="Team" name="name"/>
+                <filter string="Archived" domain="[('active', '=', False)]" name="inactive"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- agent.team: Form view -->
+    <record id="egp_recruitment_committee_team_view_form" model="ir.ui.view">
+        <field name="name">egp.recruitment.committee.team.form</field>
+        <field name="model">egp.recruitment.committee</field>
+        <field name="arch" type="xml">
+            <form string="Agent Team">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name" string="Team Name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. YYYY-Team name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="active" invisible="1"/>
+                            <field name="member_ids" widget="many2many_tags"
+                            />
+                        </group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- agent.team: tree view -->
+    <record id="egp_recruitment_committee_team_view_tree" model="ir.ui.view">
+        <field name="name">egp.recruitment.committee.team.tree</field>
+        <field name="model">egp.recruitment.committee</field>
+        <field name="arch" type="xml">
+            <tree string="Agent Team">
+                <field name="name"/>
+                <field name="member_ids" widget="many2many_tags"/>
+                <field name="company_id" options="{'no_create': True}"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- agent.team: Kanban view -->
+    <record id="egp_recruitment_committee_team_view_kanban" model="ir.ui.view">
+        <field name="name">egp.recruitment.committee.team.kanban</field>
+        <field name="model">egp.recruitment.committee</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div>
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- agent.team: actions -->
+    <record id="committee_team_egp_recruitment_action" model="ir.actions.act_window">
+        <field name="name">Committee Teams</field>
+        <field name="res_model">egp.recruitment.committee</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="egp_recruitment_committee_team_view_search"/>
+        <field name="view_ids" eval="[(5, 0, 0),
+                        (0, 0, {'view_mode': 'tree', 'view_id': ref('egp_recruitment_committee_team_view_tree')}),
+                        (0, 0, {'view_mode': 'kanban', 'view_id': ref('egp_recruitment_committee_team_view_kanban')})]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new Agent Team
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="egp_recruitment_committee_team_menu"
+            name="Committee Teams"
+            parent="egp_recruitment_committee_label"
+            action="committee_team_egp_recruitment_action"
+            sequence="30"
+            groups="egp_hr_recruitment.group_recruitment_amir,base.group_erp_manager,egp_hr_recruitment.group_recruitment_expert"
+            />
+
+
+</odoo>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="inherit_hr_kanban_view_applicant" model="ir.ui.view">
+            <field name="name">hr.applicant.kanban.inherit</field>
+            <field name="model">hr.applicant</field>
+            <field name="inherit_id" ref="hr_recruitment.hr_kanban_view_applicant"/>
+            <field name="arch" type="xml">
+                <xpath expr="//kanban" position="attributes">
+                    <attribute name="records_draggable">false</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- add Hired state in hr.job kanban view -->
+        <record id="inherit_hr_job_kanban_view" model="ir.ui.view">
+            <field name="name">hr.job.kanban.inherit</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr_recruitment.view_hr_job_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//kanban/field[@name='no_of_hired_employee']" position="after">
+                    <field name="hired_employee_names"/>
+                </xpath>
+
+                <xpath expr="//div[@class='container o_recruitment_job_container o_kanban_card_content mt-0 mt-sm-3']"
+                       position="before">
+
+                    <!--                    <div t-if="record.hired_employee_names.raw_value" class="mt-2">-->
+                    <!--                        <i class="fa fa-user-check me-1 text-success"/>-->
+                    <!--                        <strong>Hired:</strong>-->
+
+                    <!--                        <span class="ms-1">-->
+                    <!--                            <t t-foreach="record.hired_employee_names.raw_value.split(', ')" t-as="emp">-->
+                    <!--                                <span-->
+                    <!--                                        class="me-1"-->
+                    <!--                                        style="-->
+                    <!--                    background-color: #28a745;-->
+                    <!--                    color: white;-->
+                    <!--                    border-radius: 15px;-->
+                    <!--                    padding: 4px 12px;-->
+                    <!--                    font-weight: 500;-->
+                    <!--                    display: inline-block;-->
+                    <!--                "-->
+                    <!--                                        t-esc="emp"-->
+                    <!--                                />-->
+                    <!--                            </t>-->
+                    <!--                        </span>-->
+                    <!--                    </div>-->
+                    <field name="employee_id"/>
+
+                    <templates>
+                        <t t-name="card">
+
+                            <!-- Your card content -->
+
+                            <div t-if="record.employee_id.raw_value" class="mt-2">
+                                <i class="fa fa-user me-1 text-primary"/>
+                                <strong>Employee:</strong>
+
+                                <span class="ms-1">
+                                    <span
+                                            style="
+                            background-color: #28a745;
+                            color: white;
+                            border-radius: 15px;
+                            padding: 4px 12px;
+                            font-weight: 500;
+                            display: inline-block;
+                        "
+                                            t-esc="record.employee_id.value"
+                                    />
+                                </span>
+                            </div>
+
+                        </t>
+                    </templates>
+                    <!-- display in another way -->
+
+                    <!--                    <div t-if="record.hired_employee_names.raw_value" class="mt-2">-->
+                    <!--                        <i class="fa fa-user-check me-1 text-success"/>-->
+                    <!--                        <strong>-->
+                    <!--                            Hired (<t t-esc="record.no_of_hired_employee.raw_value"/>):-->
+                    <!--                        </strong>-->
+
+                    <!--                        <span class="badge bg-light text-dark ms-2"-->
+                    <!--                              t-att-title="record.hired_employee_names.raw_value">-->
+                    <!--                            View Names-->
+                    <!--                        </span>-->
+                    <!--                    </div>-->
+
+
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Add search filter for Hired and Empty Employee state -->
+        <record id="inherit_hr_job_search_view" model="ir.ui.view">
+            <field name="name">hr.job.search.inherit</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr.view_job_filter"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//search" position="inside">
+                    <separator/>
+                    <!-- positions WITH hired employees -->
+                    <filter name="with_hired_employees"
+                            string="With Hired Employees"
+                            domain="[('no_of_hired_employee', '>', 0)]"
+                            help="Positions that have at least one hired employee"/>
+
+                    <!-- WITHOUT hired employees (Empty positions) -->
+                    <filter name="without_hired_employees"
+                            string="📭 Empty Positions (No Hired Employees)"
+                            domain="['|', ('no_of_hired_employee', '=', 0), ('no_of_hired_employee', '=', False)]"
+                            help="Positions with no hired employees yet"/>
+
+                    <!-- Combined filter group -->
+                    <filter name="hiring_status_group"
+                            string="Hiring Status"
+                            groups="base.group_user">
+                        <filter name="has_hired"
+                                string="Has Hired Employees"
+                                domain="[('no_of_hired_employee', '>', 0)]"/>
+                        <filter name="no_hired"
+                                string="No Hired Employees (Empty)"
+                                domain="['|', ('no_of_hired_employee', '=', 0), ('no_of_hired_employee', '=', False)]"/>
+                    </filter>
+
+                    <separator/>
+
+                    <filter name="group_by_hiring_status"
+                            string="Group by Hiring Status"
+                            context="{'group_by': 'no_of_hired_employee'}"
+                            help="Group positions by number of hired employees"/>
+
+                    <filter name="group_by_hired_count"
+                            string="Group by Hired Count"
+                            context="{'group_by': 'no_of_hired_employee'}"
+                            help="Group by count of hired employees (0, 1, 2, etc.)"/>
+
+                    <!-- Group by department with hiring filter -->
+                    <filter name="group_by_department_hiring"
+                            string="Department with Hiring Status"
+                            context="{'group_by': 'department_id'}"
+                            help="Group by department"/>
+
+                    <!-- Group by recruitment stage -->
+                    <filter name="group_by_stage"
+                            string="Recruitment Stage"
+                            context="{'group_by': 'stage_id'}"
+                            help="Group by recruitment stage"/>
+
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- Inherit Applicant Search View -->
+        <record id="view_hr_applicant_search_inherit_stage" model="ir.ui.view">
+            <field name="name">hr.applicant.search.inherit.stage</field>
+            <field name="model">hr.applicant</field>
+            <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_search_bis"/>
+            <field name="arch" type="xml">
+
+                <!-- Add Filter by Stage -->
+                <xpath expr="//search" position="inside">
+                    <separator/>
+
+                    <filter name="filter_stage_open"
+                            string="Open Stage"
+                            domain="[('stage_id.fold','=',False)]"/>
+
+                    <filter name="filter_stage_closed"
+                            string="Closed Stage"
+                            domain="[('stage_id.fold','=',True)]"/>
+                    <filter name="stage_interview"
+                            string="Interview"
+                            domain="[('stage_id.name','=','Interview')]"/>
+                </xpath>
+
+                <!-- Add Group By Stage -->
+                <xpath expr="//search/group" position="inside">
+                    <filter name="group_by_stage"
+                            string="Stage"
+                            context="{'group_by': 'stage_id'}"/>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>
+
+

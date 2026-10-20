@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="egp_hr_recruitment_applicant_form_inherited" model="ir.ui.view">
+            <field name="name">egp_hr.recruitment.applicant.form</field>
+            <field name="model">hr.applicant</field>
+            <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name ='job_id']" position="after">
+                    <field name="position_code"/>
+                    <field name="position_rank_id"/>
+                    <field name="work_location_id"/>
+                    <field name="job_department_id" readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='email_from']" position="before">
+                    <field name="father_name" placeholder="Father Name" readonly="type_of_application != 'offline'"/>
+                    <field name="grand_father_name" placeholder="Grand Father Name"
+                           readonly="type_of_application != 'offline'"/>
+                    <field name="tazkira_number" placeholder="Tazkira number"
+                           readonly="type_of_application != 'offline'"/>
+                    <field name="date_of_birth" placeholder="Date of birth"
+                           readonly="type_of_application != 'offline'"/>
+                    <field name="age_display" readonly="1" string="Age (years)"/>
+                    <field name="gender"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_phone']" position="after">
+                    <field name="native_language"/>
+                    <field name="other_language" invisible="native_language != 'other'"/>
+                </xpath>
+                <xpath expr="//field[@name='type_id']" position="after">
+                    <field name="total_years_experience" placeholder="Experience"
+                           readonly="type_of_application != 'offline'"/>
+                </xpath>
+
+                <xpath expr="//group[field[@name='job_id']]" position="before">
+                    <group string="Education information" name="education_information">
+                        <field name="education_country" readonly="type_of_application != 'offline'"/>
+                        <field name="applicant_faculty_name" readonly="type_of_application != 'offline'"/>
+                        <field name="education_reference" readonly="type_of_application != 'offline'"/>
+                        <field name="graduation_year" readonly="type_of_application != 'offline'"/>
+                        <field name="is_document_approved" readonly="type_of_application != 'offline'"/>
+                    </group>
+                </xpath>
+
+
+                <xpath expr="//group[field[@name='job_id']]" position="after">
+                    <group string="Permanent address information" name="permanent_address">
+                        <!--  address fields  -->
+                        <label for="country_id" string="Permanent Address"/>
+                        <div class="o_address_format">
+                            <field name="province_id" class="o_address_state" placeholder="Province"
+                                   domain="[('country_id','=',3)]"
+                                   options="{'no_open': True, 'no_create_edit': True}"
+                                   context="{'default_country_id': country_id}"
+                                   readonly="type_of_application != 'offline'"/>
+                            <field name="district_id" class="o_address_state" placeholder="District"
+                                   options="{'no_open': True, 'no_create_edit': True}"
+                                   domain="[('province_id','=',province_id)]"
+                                   readonly="type_of_application != 'offline'"/>
+                            <field name="village" placeholder="Village / Nahia"/>
+                            <field name="country_id" placeholder="Country" class="o_address_country"
+                                   options="{'no_open': True, 'no_create_edit': True}"
+                                   readonly="type_of_application != 'offline'"/>
+                        </div>
+                    </group>
+                </xpath>
+
+                <xpath expr="//group[@name='permanent_address']" position="after">
+                    <group string="Current address information" name="current_address">
+                        <label for="country_id" string="Current Address"/>
+                        <div class="o_address_format">
+                            <field name="current_province_id"
+                                   class="o_address_state"
+                                   placeholder="Province"
+                                   domain="[('country_id', '=', country_id)]"
+                                   options="{'no_open': True, 'no_create_edit': True}"
+                                   context="{'default_country_id': country_id}"
+                                   readonly="type_of_application != 'offline'"/>
+                            <field name="current_district_id" class="o_address_state" placeholder="Current District"
+                                   options="{'no_open': True, 'no_create_edit': True}"
+                                   domain="[('province_id','=',current_province_id)]"
+                                   readonly="type_of_application != 'offline'"/>
+                            <field name="current_village" placeholder="Village / Nahia"/>
+                            <field name="country_id" placeholder="Country" class="o_address_country"
+                                   options="{'no_open': True, 'no_create_edit': True}"
+                                   readonly="type_of_application != 'offline'"/>
+                        </div>
+                    </group>
+                </xpath>
+
+
+                <xpath expr="//group[@name='current_address']" position="after">
+                    <group string="Previous Job &amp; Lecturer information" name="previous_job_lecturer_info">
+                        <field name="previous_job" readonly="type_of_application != 'offline'"/>
+                        <field name="current_job" readonly="type_of_application != 'offline'"/>
+                        <field name="lecturer_time" readonly="type_of_application != 'offline'"/>
+                        <field name="lecturer_end_date" readonly="type_of_application != 'offline'"/>
+                        <field name="lecturer_duration_display" readonly="type_of_application != 'offline'"/>
+                        <field name="lecturer_level" options="{'no_open': True}"
+                               readonly="type_of_application != 'offline'"/>
+                        <field name="computer_skill_ids" widget="many2many_tags"
+                               readonly="type_of_application != 'offline'"/>
+                    </group>
+                </xpath>
+
+
+                <xpath expr="//field[@name='categ_ids']" position="after">
+                    <field name="written_test_marks"/>
+                    <field name="sequence_number"/>
+                    <field name="sequence_number1"/>
+                    <field name="interview_marks"/>
+                    <field name="total_marks"/>
+                </xpath>
+                <xpath expr="//field[@name='written_test_marks']" position="attributes">
+                    <attribute name="invisible">sequence_number in (0,1,4)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='interview_marks']" position="attributes">
+                    <attribute name="invisible">sequence_number in (0,1,4)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='total_marks']" position="attributes">
+                    <attribute name="invisible">sequence_number in (0,1,2,3)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='sequence_number']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='sequence_number1']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <!-- Locate the refuse button and modify it I mean assign custom my egp group amir group-->
+                <xpath expr="//button[@name='archive_applicant']" position="attributes">
+                    <attribute name="groups">egp_hr_recruitment.group_recruitment_amir</attribute>
+                </xpath>
+                <xpath expr="//field[@name='type_id']" position="attributes">
+                    <attribute name="required">1</attribute>
+
+                </xpath>
+                <xpath expr="//field[@name='availability']" position="after">
+                    <field name="committee_members" widget="many2many_tags" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='committee_members']" position="after">
+                    <field name="committee_member_positions" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='committee_member_positions']" position="after">
+                    <field name="committee_chief" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='availability']" position="after">
+                    <field name="committee_team_id"/>
+                </xpath>
+                <!-- modify the partner_name field -->
+                <xpath expr="//field[@name='partner_name']" position="attributes">
+                    <attribute name="placeholder">Muhammad(PBUH)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='committee_team_id']" position="after">
+                    <field name="comment"/>
+                </xpath>
+                <xpath expr="//field[@name='committee_chief']" position="after">
+                    <field name="type_of_application" readonly="True"/>
+                </xpath>
+                <!--invisible of Recruitor and Interviewers fields-->
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <!-- make odoo default department to invisible -->
+                <xpath expr="//field[@name='department_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <!-- make odoo default  fields to readonly -->
+                <xpath expr="//field[@name='job_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="widget">label</attribute>
+                    <!-- Prevent creating and opening related records -->
+                    <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='work_location_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="widget">label</attribute>
+                    <!-- Prevent creating and opening related records -->
+                    <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='job_department_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="widget">label</attribute>
+                    <!-- Prevent creating and opening related records -->
+                    <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='interviewer_ids']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='email_cc']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='priority']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='availability']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <!--change the name to Applicant Full Name-->
+                <xpath expr="//field[@name='partner_name']" position="attributes">
+                    <attribute name="string">Applicant Full Name</attribute>
+                </xpath>
+                <!-- Add the statusbar widget at the top of the form -->
+                <xpath expr="//field[@name='stage_id']" position="attributes">
+                    <attribute name="options">{'fold_field': 'fold', 'clickable': '0'}</attribute>
+                </xpath>
+
+                <!-- change mobile string into WhatsApp -->
+                <xpath expr="//field[@name='partner_mobile']" position="attributes">
+                    <attribute name="string">WhatsApp</attribute>
+                </xpath>
+
+
+                <xpath expr="//header" position="inside">
+                    <!-- Add email notification button in header -->
+                    <field name="stage_id" invisible="1"/>
+                    <field name="stage_sequence" invisible="1"/>
+
+                    <button name="action_send_stage_notification"
+                            type="object"
+                            string="Send Notification"
+                            class="btn-primary"
+                            invisible="stage_sequence in [0, 1]"/>
+
+                    <!--invisible="('stage_id.sequence','not in',[1,2])"-->
+
+                    <button name="action_set_status_short_list"
+                            type="object"
+                            string="Short List"
+                            class="btn-secondary"
+                            invisible="sequence_number1 in [1,2,3,4]"
+                            confirm="Are you sure you want to move to the Short List stage?"/>
+                    <button name="action_set_status_written_test"
+                            type="object"
+                            string="Written Test"
+                            class="btn-success"
+                            invisible="sequence_number1 in [0,2,3,4]"
+                            confirm="Are you sure you want to move to the Written Test stage?"
+                    />
+                    <button name="action_set_status_interview"
+                            type="object"
+                            string="Interview"
+                            invisible="sequence_number1 in [0,1,3,4]"
+                            class="btn-success"
+                            confirm="Are you sure you want to move to the Interview stage?"/>
+
+                    <button name="action_set_status_hired"
+                            type="object"
+                            string="Hired"
+                            class="btn-warning"
+                            invisible="sequence_number1 in [0,1,2,4]"
+                            confirm="Are you sure you want to move to the Hired stage?"/>
+
+                </xpath>
+                <xpath expr="//field[@name='stage_id']" position="attributes">
+                    <attribute name="clickable">0</attribute>
+                    <attribute name="options">{'clickable':False}</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

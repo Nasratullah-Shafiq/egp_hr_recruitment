@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Add company phone to header - Desktop Version -->
+    <template id="custom_website_header_phone"
+              name="Custom Website Header Phone"
+              inherit_id="website.website.header_text_element"
+              priority="99">
+
+        <xpath expr="//div[@id='o_main_nav']//ul[contains(@class,'navbar-nav')]"
+               position="replace">
+
+            <!-- DEFINE company -->
+            <t t-set="company" t-value="website.company_id"/>
+
+            <li t-if="company.phone" class="o_header_phone d-none d-lg-block">
+                <a t-att-href="'tel:%s' % company.phone.replace(' ', '')"
+                   class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+                    <i class="fa fa-phone me-2"/>
+                    <t t-esc="company.phone"/>
+                </a>
+            </li>
+
+        </xpath>
+
+    </template>
+
+    <!-- Add company phone to mobile header -->
+    <template id="custom_website_header_phone_mobile"
+              name="Custom Website Header Phone Mobile"
+              inherit_id="website.website.header_text_element"
+              priority="99">
+
+        <xpath expr="//ul[hasclass('o_header_mobile_buttons_wrap')]"
+               position="inside">
+
+            <!-- DEFINE company -->
+            <t t-set="company" t-value="website.company_id"/>
+
+            <li t-if="company.phone" class="o_not_editable">
+                <a t-att-href="'tel:%s' % company.phone.replace(' ', '')"
+                   class="nav-link btn p-2 o_not_editable"
+                   aria-label="Call us">
+                    <i class="fa fa-phone fa-lg"/>
+                </a>
+            </li>
+
+        </xpath>
+
+    </template>
+</odoo>

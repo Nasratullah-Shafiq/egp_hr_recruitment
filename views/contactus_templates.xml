@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Inherit Contact Us page to make company info dynamic -->
+    <template id="custom_contact_us"
+              name="Custom Contact Us"
+              inherit_id="website.contactus"
+              priority="99">
+
+        <!-- Replace static company info with dynamic data -->
+        <xpath expr="//div[@class='col-lg-4 mt-4 mt-lg-0']" position="replace">
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary mb-3">
+                            <i class="fa fa-building me-2"/>Contact Information
+                        </h5>
+                        <t t-set="company" t-value="website.company_id"/>
+                        <t t-set="p" t-value="company.partner_id.sudo()"/>
+
+                        <ul class="list-unstyled mb-0 ps-2">
+
+                            <!-- Company Name -->
+                            <li>
+                                <t t-esc="company.name"/>
+                            </li>
+
+                            <!-- Address -->
+                            <li>
+                                <i class="fa fa-map-marker fa-fw me-2"/>
+                                <span class="o_force_ltr">
+                                    <t t-esc="p.street"/>
+                                    <t t-if="p.street2">,
+                                        <t t-esc="p.street2"/>
+                                    </t>
+                                    <t t-if="p.city">,
+                                        <t t-esc="p.city"/>
+                                    </t>
+                                    <t t-if="p.state_id">,
+                                        <t t-esc="p.state_id.name"/>
+                                    </t>
+                                    <t t-if="p.country_id">,
+                                        <t t-esc="p.country_id.name"/>
+                                    </t>
+                                    <t t-if="p.zip">,
+                                        <t t-esc="p.zip"/>
+                                    </t>
+                                </span>
+                            </li>
+
+                            <!-- Phone -->
+                            <li>
+                                <i class="fa fa-phone fa-fw me-2"/>
+                                <span class="o_force_ltr">
+                                    <t t-esc="company.phone"/>
+                                </span>
+                            </li>
+
+                            <!-- Email -->
+                            <li>
+                                <i class="fa fa-envelope fa-fw me-2"/>
+                                <span>
+                                    <t t-esc="company.email"/>
+                                </span>
+                            </li>
+                        </ul>
+
+                        <!-- Business Hours -->
+                        <div class="mt-4 pt-2 border-top">
+                            <h6 class="text-primary mb-2">
+                                <i class="fa fa-clock-o me-2"/>Business Hours
+                            </h6>
+                            <ul class="list-unstyled small">
+                                <li>Saturday - Wednesday: 8:00 AM - 4:00 PM</li>
+                                <li>Thursday: 80:00 AM - 2:00 PM</li>
+                                <li>Friday: Closed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+
+    </template>
+
+</odoo>
