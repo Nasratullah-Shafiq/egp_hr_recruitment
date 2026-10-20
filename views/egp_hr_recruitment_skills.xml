@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <!-- Inherit the hr.applicant form view -->
+        <record id="view_applicant_form_inherit_skills_page" model="ir.ui.view">
+            <field name="name">hr.applicant.form.skills.page</field>
+            <field name="model">hr.applicant</field>
+            <field name="inherit_id" ref="hr_recruitment_skills.hr_applicant_view_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="(//page)[2]" position="attributes">
+                    <attribute name="groups">base.group_erp_manager</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

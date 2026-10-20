@@ -1,0 +1,1481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <template id="signup_phone_field"
+              inherit_id="auth_signup.fields"
+              name="Add Phone on Signup Form">
+
+        <xpath expr="//div[hasclass('field-name')]" position="after">
+
+            <div class="mb-3 field-phone">
+                <label for="phone" class="form-label">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    class="form-control form-control-sm"
+                    placeholder="Phone Number"
+                    t-att-value="phone or ''"
+                    required="required"
+                />
+            </div>
+
+        </xpath>
+
+    </template>
+
+    <template id="apply_job_inherit" name="Apply for Job Inherit" inherit_id="website_hr_recruitment.apply">
+
+        <!-- Add CSS for Multi-Step Form -->
+        <xpath expr="//div[hasclass('s_website_form_rows')]" position="before">
+            <style>
+                /* Multi-step Form Styles */
+                .msf-container {
+                max-width: 900px;
+                margin: 0 auto;
+                background: #fff;
+                border-radius: 20px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+                overflow: hidden;
+                }
+
+                /* Progress Bar */
+                .msf-progress {
+                background: linear-gradient(135deg, #f8f9ff 0%, #f0f2f8 100%);
+                padding: 30px 40px 25px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                }
+
+                .msf-progress-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+                gap: 10px;
+                }
+
+                .msf-progress-title {
+                font-size: 14px;
+                font-weight: 600;
+                color: #2D3674;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                background: rgba(45, 54, 116, 0.1);
+                padding: 4px 12px;
+                border-radius: 30px;
+                display: inline-block;
+                }
+
+                .msf-progress-percentage {
+                font-size: 24px;
+                font-weight: 700;
+                color: #2D3674;
+                background: rgba(45, 54, 116, 0.1);
+                padding: 4px 12px;
+                border-radius: 30px;
+                }
+
+                .msf-progress-bar-wrapper {
+                background: #e5e7eb;
+                border-radius: 12px;
+                height: 10px;
+                overflow: hidden;
+                margin-bottom: 25px;
+                }
+
+                .msf-progress-bar-fill {
+                background: linear-gradient(90deg, #2D3674 0%, #4a56a0 100%);
+                height: 100%;
+                border-radius: 12px;
+                transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                width: 0%;
+                }
+
+                .progress-steps {
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                margin-top: 10px;
+                }
+
+                .progress-steps::before {
+                content: '';
+                position: absolute;
+                top: 28px;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #e5e7eb 0%, #d1d5db 100%);
+                z-index: 1;
+                }
+
+                .step-item {
+                text-align: center;
+                position: relative;
+                z-index: 2;
+                flex: 1;
+                cursor: pointer;
+                }
+
+                .step-circle {
+                width: 56px;
+                height: 56px;
+                background: #ffffff;
+                border: 3px solid #d1d5db;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 12px;
+                font-weight: 700;
+                font-size: 18px;
+                color: #9ca3af;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+
+                .step-item.active .step-circle {
+                border-color: #2D3674;
+                background: linear-gradient(135deg, #2D3674 0%, #4a56a0 100%);
+                color: #fff;
+                box-shadow: 0 8px 20px rgba(45, 54, 116, 0.3);
+                transform: scale(1.05);
+                }
+
+                .step-item.completed .step-circle {
+                border-color: #10b981;
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                color: #fff;
+                }
+
+                .step-item.completed .step-circle span {
+                display: none;
+                }
+
+                .step-label {
+                font-size: 13px;
+                font-weight: 600;
+                color: #2D3674;
+                margin-top: 5px;
+                background: rgba(45, 54, 116, 0.08);
+                padding: 4px 8px;
+                border-radius: 20px;
+                display: inline-block;
+                width: auto;
+                margin-left: auto;
+                margin-right: auto;
+                }
+
+                .step-item.active .step-label {
+                color: #fff;
+                background: #2D3674;
+                box-shadow: 0 2px 8px rgba(45, 54, 116, 0.2);
+                }
+
+                .step-item.completed .step-label {
+                color: #10b981;
+                background: rgba(16, 185, 129, 0.1);
+                }
+
+                /* Form Steps */
+                .msf-step {
+                display: none;
+                padding: 30px;
+                animation: fadeIn 0.5s ease;
+                }
+
+                .msf-step.active-step {
+                display: block;
+                }
+
+                @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+                }
+
+                /* Navigation Buttons */
+                .msf-navigation {
+                padding: 20px 30px;
+                background: #f8f9fa;
+                border-top: 1px solid #e9ecef;
+                display: flex;
+                justify-content: space-between;
+                }
+
+                .btn-msf-prev, .btn-msf-next, .btn-msf-submit {
+                padding: 12px 30px;
+                border-radius: 50px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                cursor: pointer;
+                }
+
+                .btn-msf-prev {
+                background: #6c757d;
+                color: #fff;
+                border: none;
+                }
+
+                .btn-msf-prev:hover {
+                background: #5a6268;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                }
+
+                .btn-msf-next {
+                background: #2D3674;
+                color: #fff;
+                border: none;
+                }
+
+                .btn-msf-next:hover {
+                background: #232b5c;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(45, 54, 116, 0.3);
+                }
+
+                .btn-msf-submit {
+                background: #198754;
+                color: #fff;
+                border: none;
+                }
+
+                .btn-msf-submit:hover {
+                background: #157347;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(25, 135, 84, 0.3);
+                }
+
+                .btn-msf-submit:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+                transform: none;
+                }
+
+                /* Section Cards */
+                .section-card {
+                background: #fff;
+                border-radius: 15px;
+                margin-bottom: 25px;
+                border: 1px solid #e9ecef;
+                overflow: hidden;
+                }
+
+                .section-header {
+                background: linear-gradient(135deg, #f8f9ff 0%, #f0f2f8 100%);
+                color: #2D3674;
+                padding: 15px 20px;
+                font-weight: 600;
+                font-size: 18px;
+                border-bottom: 2px solid rgba(45, 54, 116, 0.1);
+                }
+
+                .section-header i {
+                margin-right: 10px;
+                color: #2D3674;
+                }
+
+                .section-body {
+                padding: 20px;
+                }
+
+                /* Form Fields Enhancement */
+                .msf-step .s_website_form_field {
+                margin-bottom: 15px;
+                }
+
+                .msf-step label {
+                font-weight: 600;
+                margin-bottom: 8px;
+                color: #495057;
+                }
+
+                .msf-step input, .msf-step select, .msf-step textarea {
+                border-radius: 10px;
+                border: 1px solid #dee2e6;
+                padding: 10px 15px;
+                transition: all 0.3s ease;
+                }
+
+                .msf-step input:focus, .msf-step select:focus, .msf-step textarea:focus {
+                border-color: #2D3674;
+                box-shadow: 0 0 0 3px rgba(45, 54, 116, 0.1);
+                outline: none;
+                }
+
+                /* Skill Checkboxes */
+                .skill-group {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                }
+
+                .skill-badge {
+                background: #f8f9fa;
+                border: 2px solid #e9ecef;
+                border-radius: 50px;
+                padding: 8px 20px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                }
+
+                .skill-badge:hover {
+                border-color: #2D3674;
+                background: rgba(45, 54, 116, 0.05);
+                }
+
+                .skill-badge input {
+                display: none;
+                }
+
+                .skill-badge.selected {
+                background: #2D3674;
+                border-color: #2D3674;
+                color: #fff;
+                }
+
+                /* Required Field Indicator */
+                .required-field label::after {
+                content: '*';
+                color: #dc3545;
+                margin-left: 5px;
+                }
+
+                /* Hide original form content */
+                .s_website_form_rows {
+                display: none !important;
+                }
+
+                /* Loading Overlay - Permanent HTML element */
+                #msf-loading-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.85);
+                z-index: 999999;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                backdrop-filter: blur(3px);
+                }
+
+                .msf-loading-spinner {
+                width: 70px;
+                height: 70px;
+                border: 7px solid rgba(255,255,255,0.25);
+                border-top: 7px solid #2D3674;
+                border-right: 7px solid #4a56a0;
+                border-bottom: 7px solid #10b981;
+                border-left: 7px solid #f39c12;
+                border-radius: 50%;
+                animation: msf-spin 1s linear infinite;
+                }
+
+                .msf-loading-text {
+                color: white;
+                margin-top: 25px;
+                font-size: 20px;
+                font-family: Arial, sans-serif;
+                font-weight: 600;
+                text-align: center;
+                }
+
+                .msf-loading-subtext {
+                color: #d0d0d0;
+                margin-top: 10px;
+                font-size: 14px;
+                font-family: Arial, sans-serif;
+                text-align: center;
+                }
+
+                .msf-loading-dots {
+                color: white;
+                margin-top: 18px;
+                font-size: 18px;
+                letter-spacing: 6px;
+                animation: msf-pulse 1.5s infinite;
+                }
+
+                @keyframes msf-spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+                }
+
+                @keyframes msf-pulse {
+                0% { opacity: 0.3; }
+                50% { opacity: 1; }
+                100% { opacity: 0.3; }
+                }
+
+                /* Error Message Styling */
+                .invalid-feedback {
+                display: block;
+                width: 100%;
+                margin-top: 0.25rem;
+                font-size: 0.875em;
+                color: #dc3545;
+                }
+
+                .is-invalid {
+                border-color: #dc3545 !important;
+                }
+
+                /* Responsive */
+                @media (max-width: 768px) {
+                .step-circle {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+                }
+                .step-label {
+                font-size: 10px;
+                padding: 2px 6px;
+                }
+                .msf-step {
+                padding: 20px;
+                }
+                .progress-steps::before {
+                top: 20px;
+                }
+                }
+            </style>
+        </xpath>
+
+        <!-- Hide the original form content -->
+        <xpath expr="//div[hasclass('s_website_form_rows')]" position="attributes">
+            <attribute name="style">display: none !important;</attribute>
+        </xpath>
+
+        <!-- Add the permanent loader overlay (hidden by default) -->
+        <xpath expr="//div[hasclass('s_website_form_rows')]" position="after">
+            <div id="msf-loading-overlay" style="display: none;">
+                <div class="msf-loading-spinner"></div>
+                <div class="msf-loading-text">Submitting your application...</div>
+                <div class="msf-loading-subtext">Please wait while we process your information</div>
+                <div class="msf-loading-dots">● ● ●</div>
+            </div>
+        </xpath>
+
+        <!-- Add the multi-step form after the hidden original form -->
+        <xpath expr="//div[hasclass('s_website_form_rows')]" position="after">
+            <div class="msf-container">
+                <!-- Progress Bar -->
+                <div class="msf-progress">
+                    <div class="msf-progress-header">
+                        <span class="msf-progress-title">Application Progress</span>
+                        <span class="msf-progress-percentage" id="progressPercentage">0%</span>
+                    </div>
+                    <div class="msf-progress-bar-wrapper">
+                        <div class="msf-progress-bar-fill" id="mainProgressBar"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <div class="step-item" data-step="1">
+                            <div class="step-circle">1</div>
+                            <div class="step-label">Personal Info</div>
+                        </div>
+                        <div class="step-item" data-step="2">
+                            <div class="step-circle">2</div>
+                            <div class="step-label">Address Details</div>
+                        </div>
+                        <div class="step-item" data-step="3">
+                            <div class="step-circle">3</div>
+                            <div class="step-label">Education</div>
+                        </div>
+                        <div class="step-item" data-step="4">
+                            <div class="step-circle">4</div>
+                            <div class="step-label">Experience</div>
+                        </div>
+                        <div class="step-item" data-step="5">
+                            <div class="step-circle">5</div>
+                            <div class="step-label">Skills &amp; Docs</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Personal Information -->
+                <div class="msf-step" data-step="1">
+                    <div class="section-card">
+                        <div class="section-header">
+                            <i class="fa fa-user-circle"></i>
+                            Personal Information
+                        </div>
+                        <div class="section-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field" data-type="char"
+                                         data-name="partner_name">
+                                        <label for="partner_name">First Name</label>
+                                        <input type="text" id="partner_name" class="form-control" name="partner_name"
+                                               required="" t-att-value="request.env.user.partner_id.name or ''"/>
+                                        <input type="hidden" name="name" id="applicant_name_hidden"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field" data-type="char" data-name="last_name">
+                                        <label for="last_name">Last Name</label>
+                                        <input type="text" id="last_name" class="form-control" name="last_name"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field" data-type="char"
+                                         data-name="father_name">
+                                        <label for="father_name">Father Name</label>
+                                        <input type="text" id="father_name" class="form-control" name="father_name"
+                                               required=""/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field" data-type="char"
+                                         data-name="grand_father_name">
+                                        <label for="grand_father_name">Grand Father Name</label>
+                                        <input type="text" id="grand_father_name" class="form-control"
+                                               name="grand_father_name" required=""/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field" data-type="char"
+                                         data-name="tazkira_number">
+                                        <label for="tazkira_number">Tazkira Number</label>
+                                        <input type="text" id="tazkira_number" class="form-control"
+                                               name="tazkira_number" required=""/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field" data-type="date"
+                                         data-name="date_of_birth">
+                                        <label for="date_of_birth">Date of Birth</label>
+                                        <input type="date" id="date_of_birth" class="form-control" name="date_of_birth"
+                                               required=""/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field">
+                                        <label>Age</label>
+                                        <input type="text" id="age_display" class="form-control" readonly="readonly"
+                                               placeholder="Age will be calculated"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field" data-type="selection" data-name="gender">
+                                        <label for="gender">Gender</label>
+                                        <select id="gender" class="form-control" name="gender">
+                                            <option value="">Select Gender</option>
+                                            <t t-foreach="request.env['hr.applicant'].fields_get()['gender']['selection']"
+                                               t-as="option">
+                                                <option t-att-value="option[0]"
+                                                        t-att-selected="'selected' if option[0] == 'male' else None">
+                                                    <t t-esc="option[1]"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-header">
+                            <i class="fa fa-phone"></i>
+                            Contact Information
+                        </div>
+                        <div class="section-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field" data-type="char" data-name="partner_phone">
+                                        <label for="partner_phone">Phone Number</label>
+                                        <input type="tel" id="partner_phone" class="form-control" name="partner_phone"
+                                               t-att-value="request.env.user.partner_id.phone or ''"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field" data-type="char"
+                                         data-name="partner_mobile">
+                                        <label for="partner_mobile">WhatsApp Number</label>
+                                        <input type="tel" id="partner_mobile" class="form-control" name="partner_mobile"
+                                               t-att-value="request.env.user.partner_id.mobile or request.env.user.partner_id.phone or ''"
+                                               required=""/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="s_website_form_field" data-type="email" data-name="partner_email">
+                                        <label for="partner_email">Email</label>
+                                        <input type="email" id="partner_email" class="form-control" name="partner_email"
+                                               t-att-value="request.env.user.partner_id.email or ''"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Address Information -->
+                <div class="msf-step" data-step="2">
+                    <div class="section-card">
+                        <div class="section-header">
+                            <i class="fa fa-map-marker-alt"></i>
+                            Permanent Address
+                        </div>
+                        <div class="section-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field">
+                                        <label for="country_id">Country</label>
+                                        <select id="country_id" name="country_id" class="form-select" required="">
+                                            <option value="">Select Country...</option>
+                                            <t t-foreach="countries" t-as="country">
+                                                <option t-key="country.id" t-att-value="country.id"
+                                                        t-att-selected="'selected' if country.code == 'AF' else None">
+                                                    <t t-esc="country.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field">
+                                        <label for="province_id">Province</label>
+                                        <select id="province_id" name="province_id" required="" class="form-select"
+                                                disabled="disabled">
+                                            <option value="">Select Province...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field">
+                                        <label for="district_id">District</label>
+                                        <select id="district_id" name="district_id" class="form-select"
+                                                disabled="disabled">
+                                            <option value="">Select District...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field">
+                                        <label for="village">Village/Nahia</label>
+                                        <input type="text" id="village" class="form-control" name="village"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-header">
+                            <i class="fa fa-home"></i>
+                            Current Address
+                        </div>
+                        <div class="section-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field">
+                                        <label for="current_province_id">Province</label>
+                                        <select id="current_province_id" name="current_province_id" required=""
+                                                class="form-select" disabled="disabled">
+                                            <option value="">Select Current Province...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field">
+                                        <label for="current_district_id">District</label>
+                                        <select id="current_district_id" name="current_district_id" class="form-select"
+                                                disabled="disabled">
+                                            <option value="">Select Current District...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="s_website_form_field">
+                                        <label for="current_village">Village/Nahia</label>
+                                        <input type="text" id="current_village" class="form-control"
+                                               name="current_village"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Education Information -->
+                <div class="msf-step" data-step="3">
+                    <div class="section-card">
+                        <div class="section-header">
+                            <i class="fa fa-graduation-cap"></i>
+                            Education Information
+                        </div>
+                        <div class="section-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field">
+                                        <label for="education_country">Country</label>
+                                        <select id="education_country" name="education_country" required=""
+                                                class="form-select">
+                                            <option value="">Select Country...</option>
+                                            <t t-foreach="countries" t-as="country">
+                                                <option t-key="country.id" t-att-value="country.id"
+                                                        t-att-selected="'selected' if country.code == 'AF' else None">
+                                                    <t t-esc="country.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field">
+                                        <label for="education_reference">Education Reference</label>
+                                        <input type="text" id="education_reference" class="form-control"
+                                               name="education_reference" required=""/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field">
+                                        <label for="applicant_faculty_name">Faculty Name</label>
+                                        <select id="applicant_faculty_name" class="form-control"
+                                                name="applicant_faculty_name" required="">
+                                            <option value="">Select Faculty</option>
+                                            <t t-foreach="request.env['hr.applicant'].fields_get()['applicant_faculty_name']['selection']"
+                                               t-as="option">
+                                                <option t-att-value="option[0]">
+                                                    <t t-esc="option[1]"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field">
+                                        <label for="graduation_year">Graduation Year</label>
+                                        <input type="number" id="graduation_year" class="form-control"
+                                               name="graduation_year" required="" placeholder="YYYY"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="s_website_form_field required-field">
+                                        <label for="total_years_experience">Work Experience</label>
+                                        <select id="total_years_experience" class="form-control"
+                                                name="total_years_experience" required="">
+                                            <option value="">Select Experience</option>
+                                            <t t-foreach="request.env['hr.applicant'].fields_get()['total_years_experience']['selection']"
+                                               t-as="option">
+                                                <option t-att-value="option[0]">
+                                                    <t t-esc="option[1]"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="s_website_form_field">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="is_document_approved"
+                                                   name="is_document_approved" value="1" role="switch"/>
+                                            <label class="form-check-label" for="is_document_approved">
+                                                <strong>Document Approved by Ministry of Higher Education?</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="degree_field_container" style="display: none;" class="col-md-12">
+                                    <div class="s_website_form_field required-field">
+                                        <label for="type_id">Degree</label>
+                                        <select id="type_id" name="type_id" class="form-select">
+                                            <option value="">Select Degree...</option>
+                                            <t t-foreach="degrees" t-as="degree">
+                                                <option t-key="degree.id" t-att-value="degree.id">
+                                                    <t t-esc="degree.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Job & Lecturer Experience -->
+                <div class="msf-step" data-step="4">
+                    <div class="section-card">
+                        <div class="section-header">
+                            <i class="fa fa-briefcase"></i>
+                            Work Experience
+                        </div>
+                        <div class="section-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field">
+                                        <label for="previous_job">Previous Job</label>
+                                        <input type="text" id="previous_job" class="form-control" name="previous_job"
+                                               placeholder="e.g., Software Engineer at ABC Company"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field">
+                                        <label for="current_job">Last/Current Job</label>
+                                        <input type="text" id="current_job" class="form-control" name="current_job"
+                                               required="" placeholder="e.g., Senior Developer at XYZ Corp"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-header">
+                            <i class="fa fa-chalkboard-teacher"></i>
+                            Lecturer Experience
+                        </div>
+                        <div class="section-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field required-field">
+                                        <label for="lecturer_time">Start Date</label>
+                                        <input type="date" id="lecturer_time" class="form-control" name="lecturer_time"
+                                               required=""/>
+                                        <small class="text-muted">When did you start as a lecturer?</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field">
+                                        <label for="lecturer_end_date">End Date</label>
+                                        <input type="date" id="lecturer_end_date" class="form-control"
+                                               name="lecturer_end_date"/>
+                                        <div class="mt-2">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="currently_working"
+                                                       name="is_currently_lecturer" value="1" class="form-check-input"/>
+                                                <label for="currently_working">I am currently working as a lecturer
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field">
+                                        <label>Lecturer Duration</label>
+                                        <input type="text" id="lecturer_duration_display"
+                                               name="lecturer_duration_display" class="form-control" readonly="readonly"
+                                               placeholder="Auto-calculated when dates selected"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="s_website_form_field">
+                                        <label for="lecturer_level">Lecturer Level/Qualification</label>
+                                        <select id="lecturer_level" name="lecturer_level" class="form-select">
+                                            <option value="">Select Level...</option>
+                                            <t t-foreach="degrees" t-as="degree">
+                                                <option t-key="degree.id" t-att-value="degree.id">
+                                                    <t t-esc="degree.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Skills & Documents -->
+                <div class="msf-step" data-step="5">
+                    <div class="section-card">
+                        <div class="section-header">
+                            <i class="fa fa-laptop-code"></i>
+                            Computer Skills
+                        </div>
+                        <div class="section-body">
+                            <div class="s_website_form_field" data-type="many2many" data-name="computer_skill_ids">
+                                <div class="skill-group">
+                                    <t t-set="skills" t-value="request.env['applicant.skill'].sudo().search([])"/>
+                                    <t t-foreach="skills" t-as="skill">
+                                        <div class="skill-badge" t-att-data-skill-id="skill.id">
+                                            <input type="checkbox" class="computer-skill" name="computer_skill_ids"
+                                                   t-att-value="skill.id" t-att-id="'skill_' + str(skill.id)"/>
+                                            <label t-att-for="'skill_' + str(skill.id)">
+                                                <t t-esc="skill.name"/>
+                                            </label>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-header">
+                            <i class="fa fa-paperclip"></i>
+                            Attachments
+                        </div>
+                        <div class="section-body">
+                            <div class="s_website_form_field required-field">
+                                <label for="attachment_ids">Upload Documents (CV, Certificates, etc.)</label>
+                                <input type="file" id="attachment_ids" name="attachment_ids" class="form-control"
+                                       required="" multiple="multiple"/>
+                                <small class="text-muted">You can select multiple files. Supported formats: PDF, DOC,
+                                    DOCX, JPG, PNG
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="type_of_application" value="online"/>
+
+                    <div class="section-card">
+                        <div class="section-header">
+                            <i class="fa fa-check-circle"></i>
+                            Declaration
+                        </div>
+                        <div class="section-body">
+                            <div class="form-check">
+                                <input type="checkbox" id="declaration_check" class="form-check-input" required=""/>
+                                <label class="form-check-label" for="declaration_check">
+                                    I hereby declare that all the information provided is true and correct to the best
+                                    of my knowledge.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="msf-navigation">
+                    <button type="button" class="btn-msf-prev" id="prevBtn" style="display: none;">← Previous</button>
+                    <button type="button" class="btn-msf-next" id="nextBtn">Next →</button>
+                    <button type="submit" class="btn-msf-submit" id="submitBtn" style="display: none;">✓ Submit
+                        Application
+                    </button>
+                </div>
+            </div>
+        </xpath>
+
+        <!-- JavaScript for multi-step functionality - WITH PROPER FORM DATA HANDLING -->
+        <xpath expr="//div[hasclass('s_website_form_rows')]" position="after">
+            <script><![CDATA[
+                (function() {
+                    let currentStep = 1;
+                    const totalSteps = 5;
+                    let isSubmitting = false;
+
+                    function updateProgressBar(step) {
+                        const percentage = (step / totalSteps) * 100;
+                        const progressBar = document.getElementById('mainProgressBar');
+                        const percentageText = document.getElementById('progressPercentage');
+                        if (progressBar) progressBar.style.width = percentage + '%';
+                        if (percentageText) percentageText.textContent = Math.round(percentage) + '%';
+                    }
+
+                    function updateStepsUI(step) {
+                        const stepItems = document.querySelectorAll('.step-item');
+                        for (let i = 0; i < stepItems.length; i++) {
+                            const item = stepItems[i];
+                            const stepNum = parseInt(item.getAttribute('data-step'));
+                            if (stepNum === step) {
+                                item.classList.add('active');
+                                item.classList.remove('completed');
+                            } else if (stepNum < step) {
+                                item.classList.add('completed');
+                                item.classList.remove('active');
+                            } else {
+                                item.classList.remove('active', 'completed');
+                            }
+                        }
+                        updateProgressBar(step);
+                    }
+
+                    function showLoadingOverlay() {
+                        var overlay = document.getElementById('msf-loading-overlay');
+                        if (overlay) {
+                            overlay.style.display = 'flex';
+                            document.body.style.overflow = 'hidden';
+                        }
+                    }
+
+                    function showStep(step) {
+                        var steps = document.querySelectorAll('.msf-step');
+                        for (var i = 0; i < steps.length; i++) {
+                            steps[i].classList.remove('active-step');
+                        }
+                        var currentStepEl = document.querySelector('.msf-step[data-step="' + step + '"]');
+                        if (currentStepEl) currentStepEl.classList.add('active-step');
+
+                        updateStepsUI(step);
+
+                        var prevBtn = document.getElementById('prevBtn');
+                        var nextBtn = document.getElementById('nextBtn');
+                        var submitBtn = document.getElementById('submitBtn');
+
+                        if (prevBtn) prevBtn.style.display = step === 1 ? 'none' : 'inline-block';
+                        if (nextBtn && submitBtn) {
+                            if (step === totalSteps) {
+                                nextBtn.style.display = 'none';
+                                submitBtn.style.display = 'inline-block';
+                            } else {
+                                nextBtn.style.display = 'inline-block';
+                                submitBtn.style.display = 'none';
+                            }
+                        }
+
+                        var container = document.querySelector('.msf-container');
+                        if (container) container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+
+                    function validateStep(step) {
+                        var stepContainer = document.querySelector('.msf-step[data-step="' + step + '"]');
+                        if (!stepContainer) return true;
+
+                        var requiredFields = stepContainer.querySelectorAll('[required]');
+                        var isValid = true;
+
+                        for (var i = 0; i < requiredFields.length; i++) {
+                            var field = requiredFields[i];
+                            if (!field) continue;
+
+                            var degreeContainer = document.getElementById('degree_field_container');
+                            if (field.id === 'type_id' && degreeContainer && degreeContainer.style.display === 'none') {
+                                continue;
+                            }
+
+                            if (field.id === 'lecturer_end_date') {
+                                var currentlyWorking = document.getElementById('currently_working');
+                                if (currentlyWorking && currentlyWorking.checked) continue;
+                            }
+
+                            try {
+                                if (field.type === 'checkbox') {
+                                    if (!field.checked && field.id !== 'currently_working' && field.id !== 'is_document_approved') {
+                                        isValid = false;
+                                        field.classList.add('is-invalid');
+                                    } else if (field.classList) {
+                                        field.classList.remove('is-invalid');
+                                    }
+                                } else {
+                                    if (!field.value || !field.value.trim()) {
+                                        isValid = false;
+                                        if (field.classList) field.classList.add('is-invalid');
+                                    } else {
+                                        if (field.classList) field.classList.remove('is-invalid');
+                                    }
+                                }
+                            } catch(e) {
+                                console.warn('Error validating field:', field.id, e);
+                            }
+                        }
+
+                        if (step === 5) {
+                            var declarationCheck = document.getElementById('declaration_check');
+                            if (declarationCheck && !declarationCheck.checked) {
+                                isValid = false;
+                                declarationCheck.classList.add('is-invalid');
+                            } else if (declarationCheck && declarationCheck.classList) {
+                                declarationCheck.classList.remove('is-invalid');
+                            }
+                        }
+
+                        return isValid;
+                    }
+
+                    window.changeStep = function(direction) {
+                        if (direction === 1) {
+                            if (!validateStep(currentStep)) return;
+                            currentStep++;
+                        } else if (direction === -1) {
+                            currentStep--;
+                        }
+                        if (currentStep >= 1 && currentStep <= totalSteps) showStep(currentStep);
+                    };
+
+                    function getSelectedSkills() {
+                        var selected = [];
+                        var skillCheckboxes = document.querySelectorAll('.computer-skill');
+                        for (var i = 0; i < skillCheckboxes.length; i++) {
+                            if (skillCheckboxes[i] && skillCheckboxes[i].checked) {
+                                selected.push(parseInt(skillCheckboxes[i].value));
+                            }
+                        }
+                        return selected;
+                    }
+
+                    // Function to update form data with user entered values
+                    function updateFormData(form) {
+                        // Get values from our multi-step form fields
+                        var firstName = document.getElementById('partner_name');
+                        var lastName = document.getElementById('last_name');
+                        var phone = document.getElementById('partner_phone');
+                        var mobile = document.getElementById('partner_mobile');
+                        var email = document.getElementById('partner_email');
+
+                        // Merge first name and last name into full name
+                        var fullName = '';
+                        if (firstName && firstName.value) {
+                            fullName = firstName.value;
+                            if (lastName && lastName.value) {
+                                fullName += ' ' + lastName.value;
+                            }
+                        }
+
+                        // Find the original name field in the form and update it
+                        var originalNameField = form.querySelector('input[name="partner_name"]');
+                        if (originalNameField && fullName) {
+                            originalNameField.value = fullName;
+                            console.log('Updated partner_name to:', fullName);
+                        }
+
+                        // Also update the hidden name field if it exists
+                        var hiddenNameField = document.getElementById('applicant_name_hidden');
+                        if (hiddenNameField && fullName) {
+                            hiddenNameField.value = fullName;
+                            console.log('Updated applicant_name_hidden to:', fullName);
+                        }
+
+                        // Update phone number if user entered a value
+                        if (phone && phone.value) {
+                            var originalPhoneField = form.querySelector('input[name="partner_phone"]');
+                            if (originalPhoneField) {
+                                originalPhoneField.value = phone.value;
+                                console.log('Updated partner_phone to:', phone.value);
+                            }
+                        }
+
+                        // Update mobile number if user entered a value
+                        if (mobile && mobile.value) {
+                            var originalMobileField = form.querySelector('input[name="partner_mobile"]');
+                            if (originalMobileField) {
+                                originalMobileField.value = mobile.value;
+                                console.log('Updated partner_mobile to:', mobile.value);
+                            }
+                        }
+
+                        // Update email if user entered a value
+                        if (email && email.value) {
+                            var originalEmailField = form.querySelector('input[name="partner_email"]');
+                            if (originalEmailField) {
+                                originalEmailField.value = email.value;
+                                console.log('Updated partner_email to:', email.value);
+                            }
+                        }
+                    }
+
+                    function setupFormSubmit(form) {
+                        if (!form) return;
+
+                        var submitBtn = document.getElementById('submitBtn');
+                        if (!submitBtn) return;
+
+                        // Remove any existing click handlers to avoid duplicates
+                        var newSubmitBtn = submitBtn.cloneNode(true);
+                        submitBtn.parentNode.replaceChild(newSubmitBtn, submitBtn);
+                        submitBtn = newSubmitBtn;
+
+                        submitBtn.addEventListener('click', function(e) {
+                            console.log('Submit button clicked - validating');
+
+                            if (!validateStep(currentStep)) {
+                                showStep(currentStep);
+                                e.preventDefault();
+                                e.stopPropagation();
+                                return false;
+                            }
+
+                            // Update form data with user entered values BEFORE submission
+                            updateFormData(form);
+
+                            // Add hidden field for skills
+                            var existingHidden = form.querySelector('input[name="computer_skill_ids"][type="hidden"]');
+                            if (!existingHidden) {
+                                var selectedSkills = getSelectedSkills();
+                                var hiddenInput = document.createElement('input');
+                                hiddenInput.type = 'hidden';
+                                hiddenInput.name = 'computer_skill_ids';
+                                hiddenInput.value = selectedSkills.length > 0 ? JSON.stringify([[6, 0, selectedSkills]]) : JSON.stringify([[5, 0, 0]]);
+                                form.appendChild(hiddenInput);
+                            }
+
+                            // Disable skills checkboxes
+                            var skillCheckboxes = document.querySelectorAll('.computer-skill');
+                            for (var i = 0; i < skillCheckboxes.length; i++) {
+                                if (skillCheckboxes[i]) skillCheckboxes[i].disabled = true;
+                            }
+
+                            // Show loader and disable button
+                            setTimeout(function() {
+                                showLoadingOverlay();
+                                submitBtn.disabled = true;
+                                submitBtn.innerHTML = 'Submitting...';
+
+                                var prevBtn = document.getElementById('prevBtn');
+                                var nextBtn = document.getElementById('nextBtn');
+                                if (prevBtn) prevBtn.disabled = true;
+                                if (nextBtn) nextBtn.disabled = true;
+                            }, 10);
+
+                            console.log('Allowing natural form submission');
+                            return true;
+                        });
+                    }
+
+                    // Initialize the application
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var prevBtn = document.getElementById('prevBtn');
+                        var nextBtn = document.getElementById('nextBtn');
+
+                        if (prevBtn) prevBtn.onclick = function() { changeStep(-1); };
+                        if (nextBtn) nextBtn.onclick = function() { changeStep(1); };
+
+                        var stepItems = document.querySelectorAll('.step-item');
+                        for (var i = 0; i < stepItems.length; i++) {
+                            var item = stepItems[i];
+                            if (item) {
+                                item.addEventListener('click', function() {
+                                    var targetStep = parseInt(this.getAttribute('data-step'));
+                                    var canNavigate = true;
+                                    for (var s = 1; s < targetStep; s++) {
+                                        if (!validateStep(s)) {
+                                            canNavigate = false;
+                                            showStep(s);
+                                            break;
+                                        }
+                                    }
+                                    if (canNavigate && targetStep !== currentStep) {
+                                        currentStep = targetStep;
+                                        showStep(currentStep);
+                                    }
+                                });
+                            }
+                        }
+
+                        // Function to handle name merging in real-time
+                        function setupNameMerging() {
+                            var firstName = document.getElementById('partner_name');
+                            var lastName = document.getElementById('last_name');
+                            var nameHidden = document.getElementById('applicant_name_hidden');
+
+                            function mergeNames() {
+                                if (firstName && nameHidden) {
+                                    var fullName = firstName.value || '';
+                                    if (lastName && lastName.value) {
+                                        fullName += (fullName ? ' ' : '') + lastName.value;
+                                    }
+                                    nameHidden.value = fullName;
+                                }
+                            }
+
+                            if (firstName) {
+                                firstName.addEventListener('input', mergeNames);
+                            }
+                            if (lastName) {
+                                lastName.addEventListener('input', mergeNames);
+                            }
+                            mergeNames(); // Initial merge
+                        }
+
+                        setupNameMerging();
+
+                        // Age calculation
+                        var dobField = document.getElementById('date_of_birth');
+                        var ageField = document.getElementById('age_display');
+                        if (dobField && ageField) {
+                            var calculateAge = function() {
+                                if (!dobField.value) {
+                                    if (ageField) ageField.value = '';
+                                    return;
+                                }
+                                var birth = new Date(dobField.value);
+                                var now = new Date();
+                                var years = now.getFullYear() - birth.getFullYear();
+                                if (now.getMonth() < birth.getMonth() || (now.getMonth() === birth.getMonth() && now.getDate() < birth.getDate())) {
+                                    years--;
+                                }
+                                if (ageField) ageField.value = (years > 0 ? years : 0) + ' years';
+                            };
+                            dobField.onchange = calculateAge;
+                            dobField.oninput = calculateAge;
+                            calculateAge();
+                        }
+
+                        // Lecturer Duration Calculation
+                        var start = document.getElementById('lecturer_time');
+                        var end = document.getElementById('lecturer_end_date');
+                        var checkbox = document.getElementById('currently_working');
+                        var display = document.getElementById('lecturer_duration_display');
+
+                        function calculateDuration() {
+                            if (!start || !display) return;
+                            if (!start.value) {
+                                if (display) display.value = '';
+                                return;
+                            }
+                            var startDate = new Date(start.value);
+                            var endDate;
+                            var isPresent = false;
+
+                            if (checkbox && checkbox.checked) {
+                                endDate = new Date();
+                                isPresent = true;
+                                if (end) {
+                                    end.disabled = true;
+                                    end.value = '';
+                                }
+                            } else {
+                                if (end) {
+                                    end.disabled = false;
+                                    if (!end.value) {
+                                        if (display) display.value = 'Please select end date';
+                                        return;
+                                    }
+                                    endDate = new Date(end.value);
+                                }
+                            }
+
+                            if (startDate > endDate) {
+                                if (display) display.value = 'Invalid dates';
+                                return;
+                            }
+
+                            var years = endDate.getFullYear() - startDate.getFullYear();
+                            var months = endDate.getMonth() - startDate.getMonth();
+                            var days = endDate.getDate() - startDate.getDate();
+
+                            if (days < 0) {
+                                months--;
+                                days += new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate();
+                            }
+                            if (months < 0) {
+                                years--;
+                                months += 12;
+                            }
+
+                            var result = [];
+                            if (years > 0) result.push(years + ' year' + (years !== 1 ? 's' : ''));
+                            if (months > 0) result.push(months + ' month' + (months !== 1 ? 's' : ''));
+                            if (days > 0 && years === 0 && months === 0) result.push(days + ' day' + (days !== 1 ? 's' : ''));
+
+                            if (display) {
+                                if (result.length) {
+                                    display.value = result.join(' ');
+                                    if (isPresent) display.value += ' (Present)';
+                                } else {
+                                    display.value = 'Less than a day';
+                                    if (isPresent) display.value += ' (Present)';
+                                }
+                            }
+                        }
+
+                        if (checkbox) {
+                            if (checkbox.checked && end) {
+                                end.disabled = true;
+                                end.value = '';
+                            }
+                            checkbox.addEventListener('change', function() {
+                                if (this.checked) {
+                                    if (end) {
+                                        end.disabled = true;
+                                        end.value = '';
+                                    }
+                                } else {
+                                    if (end) end.disabled = false;
+                                }
+                                calculateDuration();
+                            });
+                        }
+
+                        if (start) start.addEventListener('change', calculateDuration);
+                        if (end) end.addEventListener('change', calculateDuration);
+                        calculateDuration();
+
+                        // Document Approval - Show/Hide Degree Field
+                        var docCheckbox = document.getElementById('is_document_approved');
+                        var degreeContainer = document.getElementById('degree_field_container');
+                        var degreeSelect = document.getElementById('type_id');
+
+                        if (docCheckbox && degreeContainer && degreeSelect) {
+                            if (docCheckbox.checked) {
+                                degreeContainer.style.display = 'block';
+                                degreeSelect.setAttribute('required', 'required');
+                            } else {
+                                degreeContainer.style.display = 'none';
+                                degreeSelect.removeAttribute('required');
+                                degreeSelect.value = '';
+                            }
+                            docCheckbox.addEventListener('change', function() {
+                                if (this.checked) {
+                                    degreeContainer.style.display = 'block';
+                                    degreeSelect.setAttribute('required', 'required');
+                                } else {
+                                    degreeContainer.style.display = 'none';
+                                    degreeSelect.removeAttribute('required');
+                                    degreeSelect.value = '';
+                                }
+                            });
+                        }
+
+                        // Skills badges handler
+                        var skillBadges = document.querySelectorAll('.skill-badge');
+                        for (var i = 0; i < skillBadges.length; i++) {
+                            var badge = skillBadges[i];
+                            if (badge) {
+                                var chk = badge.querySelector('input');
+                                badge.addEventListener('click', function(e) {
+                                    var chkBox = this.querySelector('input');
+                                    if (e.target !== chkBox && chkBox) {
+                                        chkBox.checked = !chkBox.checked;
+                                    }
+                                    if (chkBox && chkBox.checked) {
+                                        this.classList.add('selected');
+                                    } else if (chkBox) {
+                                        this.classList.remove('selected');
+                                    }
+                                });
+                                if (chk && chk.checked && badge.classList) {
+                                    badge.classList.add('selected');
+                                }
+                            }
+                        }
+
+                        // Setup form submit
+                        var form = document.querySelector('form');
+                        setupFormSubmit(form);
+
+                        // Initial step
+                        showStep(1);
+                    });
+                })();
+            ]]></script>
+        </xpath>
+
+        <!-- Keep your original working XPath expressions -->
+        <xpath expr="//div[@class='s_website_form_rows row s_col_no_bgcolor']" position="attributes">
+            <attribute name="class">s_website_form_rows row s_col_no_bgcolor two-columns-form</attribute>
+        </xpath>
+
+        <xpath expr="//div[contains(@class, 's_website_form_rows') and contains(@class, 'row')]" position="after">
+            <style>
+                .two-columns-form {
+                display: none !important;
+                }
+            </style>
+        </xpath>
+
+        <xpath expr="//div[@data-name='Field']//span[contains(@class, 'text-muted')]" position="replace"/>
+        <xpath expr="//div[@data-name='Field' and .//input[@name='linkedin_profile']]" position="replace"/>
+
+        <!-- disable form autocomplete -->
+        <xpath expr="//form" position="attributes">
+            <attribute name="autocomplete">off</attribute>
+        </xpath>
+
+    </template>
+
+    <template id="job_filtered_no_hired" inherit_id="website_hr_recruitment.index"
+              name="Jobs - Show Only Unfilled Positions">
+        <xpath expr="//div[@class='row flex-column']/div[@t-foreach='jobs'][1]" position="before">
+            <t t-set="jobs" t-value="jobs.filtered(lambda j: not j.no_of_hired_employee)"/>
+        </xpath>
+    </template>
+
+</odoo>
