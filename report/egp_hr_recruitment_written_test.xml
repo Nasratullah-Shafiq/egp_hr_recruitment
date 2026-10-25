@@ -21,6 +21,7 @@
                                 </p>
                             </div>
                         </div>
+                        
                         <!--                        Logo and Title Section-->
                         <div class="row" style="margin-top:15px;">
                             <div class="col-2" style="margin-left: 10px; margin-top: 10px;">
@@ -30,6 +31,7 @@
                             <div class="col-8 text-center">
                                 <p>Islamic Emirate of Afghanistan</p>
                                 <p>
+
                                     <t t-esc="company.name"/>
                                 </p>
                                 <p>Human Resource Department</p>
