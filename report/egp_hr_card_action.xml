@@ -9,6 +9,7 @@
         <field name="binding_model_id" ref="hr.model_hr_employee"/>
         <field name="binding_type">report</field>
     </record>
+    
     <!--     Supreme Court Judical Employee ID card action  -->
 <!--    <record id="action_judical_employee_card" model="ir.actions.report">-->
 <!--        <field name="name">Judical Employee Card</field>-->
