@@ -9,34 +9,34 @@
         <field name="binding_model_id" ref="hr.model_hr_employee"/>
         <field name="binding_type">report</field>
     </record>
-    
+
     <!--     Supreme Court Judical Employee ID card action  -->
-<!--    <record id="action_judical_employee_card" model="ir.actions.report">-->
-<!--        <field name="name">Judical Employee Card</field>-->
-<!--        <field name="model">hr.employee</field>-->
-<!--        <field name="report_type">qweb-pdf</field>-->
-<!--        <field name="report_name">egp_hr_recruitment.judical_employee_card</field>-->
-<!--        <field name="report_file">egp_hr_recruitment.judical_employee_card</field>-->
-<!--        <field name="binding_model_id" ref="hr.model_hr_employee"/>-->
-<!--        <field name="paperformat_id" ref="paperformat_judical_employee_card"/>-->
-<!--        <field name="binding_type">report</field>-->
-<!--    </record>-->
+    <!--    <record id="action_judical_employee_card" model="ir.actions.report">-->
+    <!--        <field name="name">Judical Employee Card</field>-->
+    <!--        <field name="model">hr.employee</field>-->
+    <!--        <field name="report_type">qweb-pdf</field>-->
+    <!--        <field name="report_name">egp_hr_recruitment.judical_employee_card</field>-->
+    <!--        <field name="report_file">egp_hr_recruitment.judical_employee_card</field>-->
+    <!--        <field name="binding_model_id" ref="hr.model_hr_employee"/>-->
+    <!--        <field name="paperformat_id" ref="paperformat_judical_employee_card"/>-->
+    <!--        <field name="binding_type">report</field>-->
+    <!--    </record>-->
 
     <record id="action_judical_employee_card" model="ir.actions.report">
-    <field name="name">Judical Employee Card</field>
-    <field name="model">hr.employee</field>
+        <field name="name">Judical Employee Card</field>
+        <field name="model">hr.employee</field>
 
-    <field name="report_type">qweb-pdf</field>
+        <field name="report_type">qweb-pdf</field>
 
-    <field name="report_name">egp_hr_recruitment.judical_employee_card</field>
-    <field name="report_file">egp_hr_recruitment.judical_employee_card</field>
+        <field name="report_name">egp_hr_recruitment.judical_employee_card</field>
+        <field name="report_file">egp_hr_recruitment.judical_employee_card</field>
 
-    <!-- 85.6 × 54 mm ID Card Paper Format -->
-    <field name="paperformat_id" ref="paperformat_judical_employee_card"/>
+        <!-- 85.6 × 54 mm ID Card Paper Format -->
+        <field name="paperformat_id" ref="paperformat_judical_employee_card"/>
 
-    <field name="binding_model_id" ref="hr.model_hr_employee"/>
-    <field name="binding_type">report</field>
-</record>
+        <field name="binding_model_id" ref="hr.model_hr_employee"/>
+        <field name="binding_type">report</field>
+    </record>
     <!--     Supreme Court Military Employee ID Card Action -->
     <record id="action_military_employee_card" model="ir.actions.report">
         <field name="name">Milirtary Employee Card</field>
@@ -61,12 +61,25 @@
 
     <!--     ARCS Employee ID Card action   -->
     <record id="action_arcs_employee_card" model="ir.actions.report">
-        <field name="name"> Employee Card </field>
+        <field name="name">Employee Card</field>
         <field name="model">hr.employee</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">egp_hr_recruitment.arcs_employee_card</field>
         <field name="report_file">egp_hr_recruitment.arcs_employee_card</field>
         <field name="binding_model_id" ref="hr.model_hr_employee"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!--     ARCS Temporary Employee ID Card action   -->
+    <record id="action_arcs_temporary_employee_card" model="ir.actions.report">
+        <field name="name">Temporary Employee Card</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_hr_recruitment.arcs_temporary_employee_card</field>
+        <field name="report_file">egp_hr_recruitment.arcs_temporary_employee_card</field>
+        <field name="binding_model_id" ref="hr.model_hr_employee"/>
+        <field name="paperformat_id"
+           ref="egp_hr_recruitment.paperformat_temporary_employee_card"/>
         <field name="binding_type">report</field>
     </record>
 </odoo>
