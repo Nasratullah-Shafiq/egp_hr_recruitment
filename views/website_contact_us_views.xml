@@ -27,6 +27,7 @@
         </field>
     </record>
 
+
     <!-- Form View -->
     <record id="view_website_contact_form" model="ir.ui.view">
         <field name="name">website.contact.form</field>

@@ -21,7 +21,6 @@
                 <field name="job_id"/>
                 <field name="grade_id"/>
                 <field name="transfer_date"/>
-
             </tree>
 
         </field>

@@ -20,3 +20,4 @@
                eval="[(4, ref('egp_hr_recruitment.group_recruitment_id_card_manager'))]"/>
     </record>
 </odoo>
+

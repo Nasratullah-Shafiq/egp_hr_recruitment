@@ -14,7 +14,6 @@
             </tree>
         </field>
     </record>
-
     <record id="egp_recruitment_view_property_tag_form" model="ir.ui.view">
         <field name="name">egp.recruitment.committee.team.language.form</field>
         <field name="model">egp.recruitment.committee.team.language</field>

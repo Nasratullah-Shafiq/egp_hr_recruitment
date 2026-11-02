@@ -12,7 +12,6 @@
             </field>
         </record>
 
-
         <!-- add Hired state in hr.job kanban view -->
         <record id="inherit_hr_job_kanban_view" model="ir.ui.view">
             <field name="name">hr.job.kanban.inherit</field>
