@@ -111,6 +111,7 @@ class EmployeeJobInformation(models.Model):
                 'Please select an employee first.'
             )
 
+
         vals = {
             'execution_type': self.execution_type,
             'p2_form_no': self.p2_form_no,
