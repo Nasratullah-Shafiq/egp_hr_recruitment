@@ -24,6 +24,7 @@
                         <span t-out="employee.name"/>
                     </p>
                 </div>
+                
                 <div style="text-align: center; font-size: 15pt; margin-top: 20px;">
                     <span t-out="employee.english_position_title"/>
                 </div>
