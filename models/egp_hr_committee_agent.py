@@ -6,7 +6,6 @@ import re
 from markupsafe import Markup
 from random import randint
 
-
 # get random color int for language
 def _get_default_color(self):
     return randint(1, 11)

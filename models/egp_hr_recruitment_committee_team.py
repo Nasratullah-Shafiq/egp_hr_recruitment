@@ -10,3 +10,4 @@ class RecruitmentCommitteeTeam(models.Model):
                                  default=lambda self: self.env.company)
     member_ids = fields.Many2many('agent.view', string="Team Members")
     color = fields.Integer("Color Index", default=0)
+

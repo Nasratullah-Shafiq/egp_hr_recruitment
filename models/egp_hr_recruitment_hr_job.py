@@ -8,6 +8,7 @@ class Job(models.Model):
                                        groups="hr.group_hr_user,egp_hr_recruitment.group_recruitment_amir,egp_hr_recruitment.group_recruitment_expert",
                                        tracking=True)
 
+
     hired_employee_names = fields.Char(
         compute='_compute_hired_employee_names'
     )

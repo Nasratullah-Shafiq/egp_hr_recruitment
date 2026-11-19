@@ -6,7 +6,6 @@ from datetime import datetime
 _logger = logging.getLogger(__name__)
 
 
-
 class WebsiteContact(models.Model):
     _name = 'website.contact'
     _inherit = ['mail.thread', 'mail.activity.mixin']

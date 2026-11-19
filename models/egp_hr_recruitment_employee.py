@@ -7,7 +7,6 @@ class egp_hr_recruitmentEmployee(models.Model):
     father_name = fields.Char(string='Father Name')
     recruitment_date = fields.Date(string="Recruitment Date", readonly=True)
 
-
     barcode = fields.Char(string="Badge ID", help="ID used for employee identification.",
                           groups="egp_hr_recruitment.group_recruitment_amir,egp_hr_recruitment.group_recruitment_id_card_manager",copy=False)
     #hr_holidays(Time off) fields that located in hr.employee model i have assign my group to it
