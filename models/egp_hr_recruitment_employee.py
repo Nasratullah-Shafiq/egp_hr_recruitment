@@ -18,6 +18,7 @@ class egp_hr_recruitmentEmployee(models.Model):
         groups="base.group_erp_manager,egp_hr.group_employee_officers,egp_hr.group_employee_expert,egp_hr_recruitment.group_recruitment_id_card_manager,egp_hr_recruitment.group_recruitment_amir")
 
 
+
 @api.model
 def create(self, vals):
     # Create the employee record

@@ -11,6 +11,7 @@
                                 <p>امارت اسلامی افغانستان</p>
                                 <!--                                <p>وزارت مخابرات و تکنالوژی معلوماتی</p>-->
                                 <p>
+
                                     <t t-esc="company.name"/>
                                 </p>
                             </div>
@@ -23,6 +24,8 @@
                         </div>
                         
                         <!--                        Logo and Title Section-->
+                        
+
                         
                         
                         <div class="row" style="margin-top:15px;">

@@ -11,6 +11,7 @@ class HrApplicant(models.Model):
     _order = "total_marks desc"
 
 
+
     father_name = fields.Char(string='Father Name', required=True)
     last_name = fields.Char(string='Last Name')
     grand_father_name = fields.Char(string='Grand Father Name', required=True)

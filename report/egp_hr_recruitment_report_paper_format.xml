@@ -14,6 +14,7 @@
     <field name="page_width">85</field>
     <field name="page_height">54</field>
 
+
     <!-- 85mm wide × 54mm high -->
     <field name="orientation">Landscape</field>
 
@@ -31,6 +32,7 @@
     <!-- PDF resolution -->
     <field name="dpi">96</field>
     
+
 
 </record>
     </data>

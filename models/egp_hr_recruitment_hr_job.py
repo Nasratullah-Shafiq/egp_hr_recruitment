@@ -20,6 +20,7 @@ class Job(models.Model):
         help="Employee currently assigned to this job position.",
     )
 
+
     @api.depends("employee_ids")
     def _compute_employee_id(self):
         for job in self:

@@ -11,6 +11,7 @@
                             <div class="col-6 text-center">
                                 <p>امارت اسلامی افغانستان</p>
                                 <p>
+
                                     <t t-esc="company.name"/>
                                 </p>
                             </div>
@@ -28,8 +29,7 @@
                                 <img src="egp_hr_recruitment/static/description/MCIT_logo.png" height="150"
                                      width="200"/>
                             </div>
-                            
-                            
+                                                        
                             <div class="col-8 text-center">
                                 <p>Islamic Emirate of Afghanistan</p>
                                 <p>

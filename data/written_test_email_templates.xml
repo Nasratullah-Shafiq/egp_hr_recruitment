@@ -26,6 +26,7 @@
             <strong>Location:</strong> ${object.work_location_id.name}
         </p>
 
+
         <p>
             Please be prepared for the test.
         </p>
