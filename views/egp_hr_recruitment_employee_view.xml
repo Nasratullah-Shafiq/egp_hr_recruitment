@@ -13,6 +13,7 @@
                 <attribute name="groups">egp_hr_recruitment.group_recruitment_id_card_manager</attribute>
             </xpath>
         </field>
+        
     </record>
     <!-- get print of Employee Badge or Card only for ID Card Manager -->
     <record id="hr.hr_employee_print_badge" model="ir.actions.report">

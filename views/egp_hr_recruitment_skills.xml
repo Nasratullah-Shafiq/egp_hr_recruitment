@@ -11,6 +11,7 @@
                     <attribute name="groups">base.group_erp_manager</attribute>
                 </xpath>
             </field>
+            
         </record>
     </data>
 </odoo>
