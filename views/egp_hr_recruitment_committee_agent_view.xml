@@ -12,8 +12,8 @@
             </pivot>
         </field>
     </record>
-
-
+    
+    
     <!-- Search View for Agent -->
     <record id="egp_recruitment_view_agent_search" model="ir.ui.view">
         <field name="name">egp.recruitment.committee.team.view.search</field>

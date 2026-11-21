@@ -10,6 +10,7 @@
         <xpath expr="//div[@id='o_main_nav']//ul[contains(@class,'navbar-nav')]"
                position="replace">
 
+
             <!-- DEFINE company -->
             <t t-set="company" t-value="website.company_id"/>
 

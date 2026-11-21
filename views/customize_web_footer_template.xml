@@ -10,6 +10,7 @@
                      style="background-color:#2d3674; color:white;"
                      t-ignore="true" t-if="not no_footer">
 
+
                     <section class="s_text_block pt40 pb16">
                         <div class="container">
                             <div class="row">
