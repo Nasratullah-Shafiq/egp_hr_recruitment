@@ -12,7 +12,6 @@
                     <field name="work_location_id"/>
                     <field name="job_department_id" readonly="1"/>
                 </xpath>
-
                 <xpath expr="//field[@name='email_from']" position="before">
                     <field name="father_name" placeholder="Father Name" readonly="type_of_application != 'offline'"/>
                     <field name="grand_father_name" placeholder="Grand Father Name"

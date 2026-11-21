@@ -30,7 +30,6 @@
             </div>
         </t>
     </template>
-
     <!-- thank message template -->
     <record id="job_apply_thanks" model="website.page">
         <field name="name">Thanks (Apply Job)</field>
