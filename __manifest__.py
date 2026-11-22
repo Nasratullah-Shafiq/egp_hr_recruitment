@@ -39,10 +39,7 @@
         'report/egp_hr_recruitment_applicant_report.xml',
 
         # Paper formats must be loaded before report actions
-        'report/egp_hr_recruitment_report_paper_format.xml',
-
-        # Paper formats
-        'report/paperformat_temporary_employee_card.xml',
+        'report/egp_hr_recruitment_card_paper_format.xml',
 
         # Report actions
         'report/egp_hr_card_action.xml',
@@ -50,7 +47,6 @@
         # Report templates
         'report/egp_hr_card_template.xml',
         'report/egp_hr_service_card_template.xml',
-        'report/egp_hr_recruitment_administrative_paper_format.xml',
         'report/egp_hr_administrative_card_template.xml',
         'report/egp_hr_military_card_template.xml',
         'report/egp_hr_judical_card_template.xml',
