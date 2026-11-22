@@ -1089,7 +1089,7 @@
 
 <odoo>
 
-    <template id="administrative_employee_card1">
+    <template id="arcs_temporary_employee_card">
 
         <t t-call="web.html_container">
 
