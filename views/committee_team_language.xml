@@ -19,8 +19,7 @@
         <field name="model">egp.recruitment.committee.team.language</field>
         <field name="arch" type="xml">
             <form>
-            
-                <sheet>
+                            <sheet>
                     <group>
                         <group>
                             <field name="language"/>
