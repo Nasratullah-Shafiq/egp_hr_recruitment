@@ -2,7 +2,7 @@
     <!--     Supreme Court Administrative Employee ID Card Action  -->
     <record id="action_administrative_employee_card" model="ir.actions.report">
         <field name="name">Administrative Employee Card</field>
-        <field name="model">hr.employee</field>
+        <field name="model">hr.employee.card</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">egp_hr_recruitment.administrative_employee_card</field>
         <field name="report_file">egp_hr_recruitment.administrative_employee_card</field>
@@ -14,7 +14,7 @@
     <!--     Supreme Court Judical Employee ID Card Action  -->
     <record id="action_judical_employee_card" model="ir.actions.report">
         <field name="name">Judical Employee Card</field>
-        <field name="model">hr.employee</field>
+        <field name="model">hr.employee.card</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">egp_hr_recruitment.judical_employee_card</field>
         <field name="report_file">egp_hr_recruitment.judical_employee_card</field>
@@ -27,7 +27,7 @@
     <!--     Supreme court Service Employee ID Card action  -->
     <record id="action_service_employee_card" model="ir.actions.report">
         <field name="name">Service Employee Card</field>
-        <field name="model">hr.employee</field>
+        <field name="model">hr.employee.card</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">egp_hr_recruitment.service_employee_card</field>
         <field name="report_file">egp_hr_recruitment.service_employee_card</field>
@@ -39,7 +39,7 @@
     <!--     Supreme Court Military Employee ID Card Action -->
     <record id="action_military_employee_card" model="ir.actions.report">
         <field name="name">Milirtary Employee Card</field>
-        <field name="model">hr.employee</field>
+        <field name="model">hr.employee.card</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">egp_hr_recruitment.military_employee_card</field>
         <field name="report_file">egp_hr_recruitment.military_employee_card</field>
@@ -52,7 +52,7 @@
     <!--     ARCS Employee ID Card action   -->
     <record id="action_arcs_employee_card" model="ir.actions.report">
         <field name="name">Employee Card</field>
-        <field name="model">hr.employee</field>
+        <field name="model">hr.employee.card</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">egp_hr_recruitment.arcs_employee_card</field>
         <field name="report_file">egp_hr_recruitment.arcs_employee_card</field>
@@ -64,7 +64,7 @@
     <!--     ARCS Temporary Employee ID Card action   -->
     <record id="action_arcs_temporary_employee_card" model="ir.actions.report">
         <field name="name">Temporary Employee Card</field>
-        <field name="model">hr.employee</field>
+        <field name="model">hr.employee.card</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">egp_hr_recruitment.arcs_temporary_employee_card</field>
         <field name="report_file">egp_hr_recruitment.arcs_temporary_employee_card</field>

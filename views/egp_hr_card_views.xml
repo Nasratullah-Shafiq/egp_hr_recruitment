@@ -38,16 +38,59 @@
         <field name="arch" type="xml">
             <form string="Employee Card">
                 <header>
-                    <button
-                            name="action_print_employee_card"
+                    <!-- Print Employee Card Button -->
+                    <button name="action_print_employee_card"
                             type="object"
                             string="Print Employee Card"
                             class="btn-primary"
                             icon="fa-print"
+                            invisible="card_status == 'cancelled'"/>
 
-                    />
+                    <!-- Draft Employee Card Button -->
+                    <button name="action_reset_to_draft"
+                            type="object"
+                            string="Reset to Draft"
+                            class="btn-warning"
+                            confirm="Are you sure you want to reset this cancelled card to draft?"
+                            invisible="card_status != 'cancelled'"/>
+
+                    <!-- Cancel Card Button -->
+                    <button name="action_cancel_card"
+                            type="object"
+                            string="Cancel Card"
+                            class="btn-danger"
+                            confirm="Are you sure you want to cancel this employee card?"
+                            invisible="card_status != 'printed'"/>
+
+                    <!-- Status Bar -->
+                    <field name="card_status"
+                           widget="statusbar"
+                           statusbar_visible="draft,printed,cancelled,expired"/>
                 </header>
                 <sheet>
+                    <!-- Draft Ribbon -->
+                    <widget name="web_ribbon"
+                            title="Draft"
+                            bg_color="bg-info"
+                            invisible="card_status != 'draft'"/>
+
+                    <!-- Printed Ribbon -->
+                    <widget name="web_ribbon"
+                            title="Printed"
+                            bg_color="bg-success"
+                            invisible="card_status != 'printed'"/>
+
+                    <!-- Expired Ribbon -->
+                    <widget name="web_ribbon"
+                            title="Expired"
+                            bg_color="bg-warning"
+                            invisible="card_status != 'expired'"/>
+
+                    <!-- Cancelled Ribbon -->
+                    <widget name="web_ribbon"
+                            title="Cancelled"
+                            bg_color="bg-danger"
+                            invisible="card_status != 'cancelled'"/>
 
                     <!-- Employee Name -->
                     <div class="oe_title">
@@ -66,6 +109,7 @@
                             <field name="job_id"/>
                             <field name="department_id"/>
                             <field name="category"/>
+                            <field name="identification_no"/>
                             <field name="job_status"/>
                         </group>
 
@@ -73,7 +117,7 @@
                             <field name="employee_photo"
                                    widget="image"
                                    class="oe_avatar"
-                                   options="{'size': [150, 150]}"/>
+                                   options="{'size': [300, 300]}"/>
                         </group>
 
                     </group>
