@@ -9,32 +9,31 @@
 
 
                     @page {
-                        size: 54mm 87mm;
-                        margin: 0;
+                    size: 54mm 87mm;
+                    margin: 0;
                     }
-                    
 
 
                     html, body {
-                        width: 54mm !important;
-                        height: 87mm !important;
-                        margin: 0 !important;
-                        padding: 0 !important;
+                    width: 54mm !important;
+                    height: 87mm !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
                     }
 
                     * {
-                        box-sizing: border-box;
+                    box-sizing: border-box;
                     }
 
                     .arcs-card-page {
-                        width: 54mm !important;
-                        height: 87mm !important;
-                        margin: 0 !important;
-                        padding: 0 !important;
-                        border: none !important;
-                        position: relative !important;
-                        overflow: hidden !important;
-                        page-break-inside: avoid;
+                    width: 54mm !important;
+                    height: 86mm !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    border: none !important;
+                    position: relative !important;
+                    overflow: hidden !important;
+                    page-break-inside: avoid;
                     }
 
                 </style>
@@ -45,5 +44,4 @@
             </body>
         </html>
     </template>
-
 </odoo>
