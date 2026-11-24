@@ -2,7 +2,7 @@ from odoo import fields, models, api
 class egp_hr_recruitmentEmployee(models.Model):
     _inherit = "hr.employee"
     issue_date = fields.Date(string='Issue Date',groups="egp_hr_recruitment.group_recruitment_id_card_manager")
-    expire_date = fields.Date(string='Expire Date',groups ="egp_hr_recruitment.group_recruitment_id_card_manager" )
+    expire_date = fields.Date(string='Expire Date',groups ="egp_hr_recruitment.group_recruitment_id_card_manager")
 
     father_name = fields.Char(string='Father Name')
     recruitment_date = fields.Date(string="Recruitment Date", readonly=True)

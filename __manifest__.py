@@ -61,6 +61,7 @@
         'views/egp_hr_recruitment_hr_applicant_list_view.xml',
         'views/hired_position_view.xml',
         'views/egp_hr_job_views.xml',
+        'views/egp_hr_card_views.xml',
 
         # Committee View files
         'views/egp_hr_recruitment_committee_agent_view.xml',

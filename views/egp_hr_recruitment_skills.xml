@@ -10,8 +10,7 @@
                  <xpath expr="(//page)[2]" position="attributes">
                     <attribute name="groups">base.group_erp_manager</attribute>
                 </xpath>
-            </field>
-                        
+            </field>         
         </record>
     </data>
 </odoo>

@@ -69,3 +69,6 @@ access_res_country_state_recruitment_amir,res.country.state,model_res_country_st
 access_res_country_group_recruitment_expert,res.country.state,model_res_country_state,egp_hr_recruitment.group_recruitment_expert,1,1,1,0
 
 access_employee_job_information_user,employee.job.information user,model_employee_job_information,base.group_user,1,1,1,1
+
+
+access_employee_card_manager,employee.card.manager,model_hr_employee_card,base.group_user,1,1,1,1
