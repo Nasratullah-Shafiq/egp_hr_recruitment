@@ -1,21 +1,21 @@
 from odoo import fields, models, api
 class egp_hr_recruitmentEmployee(models.Model):
     _inherit = "hr.employee"
-    issue_date = fields.Date(string='Issue Date',groups="egp_hr_recruitment.group_recruitment_id_card_manager")
-    expire_date = fields.Date(string='Expire Date',groups ="egp_hr_recruitment.group_recruitment_id_card_manager")
+    issue_date = fields.Date(string='Issue Date',groups="egp_hr_recruitment.group_id_card_officer")
+    expire_date = fields.Date(string='Expire Date',groups ="egp_hr_recruitment.group_id_card_officer")
 
     father_name = fields.Char(string='Father Name')
     recruitment_date = fields.Date(string="Recruitment Date", readonly=True)
 
     barcode = fields.Char(string="Badge ID", help="ID used for employee identification.",
-                          groups="egp_hr_recruitment.group_recruitment_amir,egp_hr_recruitment.group_recruitment_id_card_manager",copy=False)
+                          groups="egp_hr_recruitment.group_recruitment_amir,egp_hr_recruitment.group_id_card_officer",copy=False)
     #hr_holidays(Time off) fields that located in hr.employee model i have assign my group to it
     current_leave_id = fields.Many2one('hr.leave', string="Current Leave",
-                                       groups="egp_hr.super_admin,egp_hr.officer,egp_hr_recruitment.group_recruitment_id_card_manager")
+                                       groups="egp_hr.super_admin,egp_hr.officer,egp_hr_recruitment.group_id_card_officer")
     message_main_attachment_id = fields.Many2one(
         'ir.attachment',
         string="Main Attachment",
-        groups="base.group_erp_manager,egp_hr.group_employee_officers,egp_hr.group_employee_expert,egp_hr_recruitment.group_recruitment_id_card_manager,egp_hr_recruitment.group_recruitment_amir")
+        groups="base.group_erp_manager,egp_hr.group_employee_officers,egp_hr.group_employee_expert,egp_hr_recruitment.group_id_card_officer,egp_hr_recruitment.group_recruitment_amir")
 
 
 

@@ -177,6 +177,9 @@ class EmployeeCard(models.Model):
     #         _('Please select an employee category before printing the employee card.')
     #     )
 
+    def action_print_arcs_employee_card(self):
+        self.ensure_one()
+
     def action_cancel_card(self):
         self.ensure_one()
 

@@ -25,7 +25,6 @@
                 <field name="confirmation_sent" string="Confirmed" widget="boolean"/>
             </tree>
         </field>
-        
     </record>
 
 
