@@ -31,7 +31,6 @@
                     <field name="agent_type" string="Agent Type" icon="fa-users" enable_counters="1" select="multi"/>
                 </searchpanel>
             </search>
-
         </field>
     </record>
 
