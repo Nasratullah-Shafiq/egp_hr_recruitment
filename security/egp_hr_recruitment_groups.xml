@@ -9,27 +9,22 @@
             <field name="sequence">1</field>
             <field name="visible" eval="True"/>
         </record>
+
         <record id="group_recruitment_amir" model="res.groups">
             <field name="name">Officer/Amir</field>
             <field name="category_id" ref="egp_hr_recruitment_category"/>
         </record>
+
         <record id="group_recruitment_expert" model="res.groups">
             <field name="name">Expert/expert</field>
             <field name="category_id" ref="egp_hr_recruitment_category"/>
         </record>
-        
+
         <record id="group_id_card_officer" model="res.groups">
             <field name="name">ID Card Officer</field>
             <field name="category_id" ref="egp_hr_recruitment_category"/>
             <field name="comment">The user will be able to manage and approve employee ID cards.</field>
         </record>
-
-<!--        <record id="group_id_card_officer" model="res.groups">&ndash;&gt;-->
-<!--            <field name="name">EGP-HR ID Card Officer</field>-->
-<!--            <field name="category_id" ref="base.module_category_human_resources_employees"/>-->
-<!--            <field name="implied_ids" eval="[(6, 0, [ref('base.group_user')])]"/>-->
-<!--            <field name="comment">The user will be able to manage and approve employee ID cards.</field>-->
-<!--        </record>-->
 
         <!--  Menu visibilities-->
         <record id="hr_recruitment.menu_crm_case_categ_all_app" model="ir.ui.menu">
@@ -39,7 +34,7 @@
         <record id="hr_recruitment.menu_crm_case_categ_all_app" model="ir.ui.menu">
             <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
         </record>
-        
+
 
         <record id="hr_recruitment.menu_hr_job_position" model="ir.ui.menu">
             <field name="groups_id"
@@ -141,15 +136,15 @@
                    eval="[(4, ref('egp_hr_recruitment.group_recruitment_amir')),(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
         </record>
 
-<!--        <record id="hr.menu_hr_employee_payroll" model="ir.ui.menu">-->
-<!--            <field name="groups_id"-->
-<!--                   eval="[(4, ref('egp_hr_recruitment.group_id_card_officer'))]"/>-->
-<!--        </record>-->
+        <!--        <record id="hr.menu_hr_employee_payroll" model="ir.ui.menu">-->
+        <!--            <field name="groups_id"-->
+        <!--                   eval="[(4, ref('egp_hr_recruitment.group_id_card_officer'))]"/>-->
+        <!--        </record>-->
 
-<!--        <record id="hr.menu_hr_employee_user" model="ir.ui.menu">-->
-<!--            <field name="groups_id"-->
-<!--                   eval="[(4, ref('egp_hr_recruitment.group_id_card_officer'))]"/>-->
-<!--        </record>-->
+        <!--        <record id="hr.menu_hr_employee_user" model="ir.ui.menu">-->
+        <!--            <field name="groups_id"-->
+        <!--                   eval="[(4, ref('egp_hr_recruitment.group_id_card_officer'))]"/>-->
+        <!--        </record>-->
 
         <record id="hr_recruitment.hr_applicant_category_menu" model="ir.ui.menu">
             <field name="groups_id" eval="[(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>

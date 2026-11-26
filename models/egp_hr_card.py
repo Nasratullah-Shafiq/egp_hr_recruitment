@@ -73,6 +73,33 @@ class EmployeeCard(models.Model):
 
     )
 
+    identification_no = fields.Char(
+        string='Identification No',
+        related='employee_id.identification_no',
+        store=True,
+        readonly=True,
+        tracking=True
+    )
+
+    english_name = fields.Char(
+        string='English Name',
+        related='employee_id.english_name',
+        store=True,
+    )
+
+    english_father_name = fields.Char(
+        string='English Father Name',
+        related='employee_id.english_father_name',
+        store=True,
+    )
+
+    english_job_position = fields.Char(
+        string='English Job Position',
+        related='employee_id.english_job_position',
+        store=True,
+
+    )
+
     card_count = fields.Integer(
         string='Card Count',
         default=1
@@ -94,13 +121,7 @@ class EmployeeCard(models.Model):
         tracking=True
     )
 
-    identification_no = fields.Char(
-        string='Identification No',
-        related='employee_id.identification_no',
-        store=True,
-        readonly=True,
-        tracking=True
-    )
+
 
     card_status = fields.Selection(
         [

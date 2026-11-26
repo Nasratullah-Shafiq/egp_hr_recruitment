@@ -13,6 +13,7 @@
                     <!-- egp_hr_recruitment.group_recruitment_id_card_manager -->
                 </xpath>   
                 </field>
+                
         </record>
     </data>
 </odoo>

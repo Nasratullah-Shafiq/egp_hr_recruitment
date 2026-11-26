@@ -13,7 +13,7 @@
             <field name="name"><![CDATA[کارشناس استخدام]]></field>
             <field name="login">r_expert@gmail.com</field>
             <field name="password">123</field>
-            <field name ="email">soliamankarimi33@gmail.com</field>
+            <field name="email">soliamankarimi33@gmail.com</field>
             <field name="groups_id"
                    eval="[(4, ref('base.group_user')),(4, ref('base.group_partner_manager')),(4, ref('egp_hr_recruitment.group_recruitment_expert'))]"/>
         </record>
@@ -25,5 +25,28 @@
             <field name="groups_id"
                    eval="[(4, ref('base.group_user')), (4, ref('egp_hr_recruitment.group_id_card_officer'))]"/>
         </record>
+
+        <!-- Default Supreme Court ID card officer user assigned to Supreme Court employee and ID card officer groups. -->
+        <record id="egp_hr_recruitment_recruitment_default_user_supreme_court_idcard_manager" model="res.users">
+            <field name="name"><![CDATA[مدیر ای ډي کارت محکمه]]></field>
+            <field name="login">supreme_court_id_card_officer@gmail.com</field>
+            <field name="password">123</field>
+            <field name="groups_id"
+                   eval="[(4, ref('base.group_user')),
+                  (4, ref('egp_hr.group_supreme_court_employee_officers')),
+                  (4, ref('egp_hr_recruitment.group_id_card_officer'))]"/>
+        </record>
+
+        <!-- Default ARCS ID card officer user assigned to ARCS employee and ID card officer groups. -->
+        <record id="egp_hr_recruitment_recruitment_default_user_arcs_idcard_manager" model="res.users">
+            <field name="name"><![CDATA[مدیر ای ډي کارت سره میاشت]]></field>
+            <field name="login">arcs_id_card_officer@gmail.com</field>
+            <field name="password">123</field>
+            <field name="groups_id"
+                   eval="[(4, ref('base.group_user')),
+                  (4, ref('egp_hr.group_arcs_employee_officers')),
+                  (4, ref('egp_hr_recruitment.group_id_card_officer'))]"/>
+        </record>
+
     </data>
 </odoo>

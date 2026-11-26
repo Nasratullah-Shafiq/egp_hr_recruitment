@@ -20,6 +20,7 @@
          <xpath expr="//field[@name='availability']" position="attributes">
             <attribute name="groups">hr_recruitment.group_hr_recruitment_manager</attribute>
         </xpath>
+        
     </field>
 </record>
     </data>
